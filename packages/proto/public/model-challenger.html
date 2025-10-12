@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <title>Dodge Challenger • Model</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
   </head>
@@ -12,7 +18,12 @@
         <a href="./index.html">Car Models</a> ▸
         <strong>Dodge Challenger</strong>
       </nav>
-      <h1>Dodge Challenger</h1>
+      <h1>
+        <svg class="icon" aria-hidden="true" focusable="false">
+          <use href="/icons/vehicles.svg#icon-coupe" />
+        </svg>
+        Dodge Challenger
+      </h1>
     </header>
 
     <main>
@@ -41,7 +52,12 @@
           <h2 id="mods">Common Modifications</h2>
           <p>Car Model can-have Modifications. See trims for compatibility.</p>
           <ul>
-            <li><a href="./mod-intake.html">Cold Air Intake</a></li>
+            <li>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="/icons/performance.svg#icon-intake" />
+              </svg>
+              <a href="./mod-intake.html">Cold Air Intake</a>
+            </li>
             <!-- Add more mod pages as you create them -->
           </ul>
         </section>

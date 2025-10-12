@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <title>Challenger SXT • Trim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
   </head>
@@ -23,11 +29,21 @@
     <main>
       <article>
         <section aria-labelledby="engine">
-          <h2 id="engine">Engine</h2>
+          <h2 id="engine">
+            <svg class="icon" aria-hidden="true" focusable="false">
+              <use href="/icons/performance.svg#icon-engine" />
+            </svg>
+            Engine
+          </h2>
           <dl>
             <dt>Type</dt>
             <dd>3.6L V6</dd>
-            <dt>Base HP</dt>
+            <dt>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="/icons/specs.svg#icon-horsepower" />
+              </svg>
+              Base HP
+            </dt>
             <dd>303 hp</dd>
             <dt>Base Torque</dt>
             <dd>268 lb-ft</dd>
@@ -39,7 +55,12 @@
         <section aria-labelledby="perf-metrics">
           <h2 id="perf-metrics">Performance Metrics (Base)</h2>
           <dl>
-            <dt>0–60 mph</dt>
+            <dt>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="/icons/specs.svg#icon-speed" />
+              </svg>
+              0–60 mph
+            </dt>
             <dd>~6.3 s (est.)</dd>
             <dt>Top Speed</dt>
             <dd>~130 mph (est.)</dd>
@@ -51,6 +72,9 @@
           <h3>Performance Mods</h3>
           <ul>
             <li>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="/icons/performance.svg#icon-intake" />
+              </svg>
               <a href="./mod-intake.html">Cold Air Intake</a> — +~5 hp (est.)
             </li>
             <!-- Add exhaust, tune, etc. later -->
