@@ -1,0 +1,22 @@
+:root {
+  /* Accent colors */
+  --color-accent: #c41e3a;
+  --color-accent-contrast: #ffffff;
+  --color-accent-hover: #a1162f;
+
+  /* Background colors */
+  --color-bg-page: #f5f5f5;
+  --color-bg-header: #2c2c2c;
+  --color-bg-section: #ffffff;
+
+  /* Text colors */
+  --color-text: #333333;
+  --color-text-inverted: #ffffff;
+
+  /* Link colors (reference other tokens) */
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
+
+  /* Border colors */
+  --color-border-muted: #e0e0e0;
+}
