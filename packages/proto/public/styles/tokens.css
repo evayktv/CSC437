@@ -43,4 +43,20 @@
   /* Line heights */
   --lh-body: 1.6;
   --lh-heading: 1.2;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Layout tokens */
+  --container-max: 1200px;
+  --grid-gap: var(--space-md);
+
+  /* Breakpoints */
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
 }
