@@ -9,8 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
   </head>
   <body>
     <header>
@@ -26,7 +28,7 @@
       </p>
     </header>
 
-    <main>
+    <main class="container">
       <article>
         <section aria-labelledby="engine">
           <h2 id="engine">
@@ -70,8 +72,8 @@
         <section aria-labelledby="compatible-mods">
           <h2 id="compatible-mods">Compatible Modifications</h2>
           <h3>Performance Mods</h3>
-          <ul>
-            <li>
+          <ul class="grid-cards">
+            <li class="card">
               <svg class="icon" aria-hidden="true" focusable="false">
                 <use href="/icons/performance.svg#icon-intake" />
               </svg>
@@ -81,9 +83,15 @@
           </ul>
 
           <h3>Aesthetic Mods</h3>
-          <ul>
-            <li>20" Wheels (5x115) — Market Value: ↑ if quality/fitment</li>
-            <li>Wrap / Vinyl — Market Value: neutral/↓ if poor quality</li>
+          <ul class="grid-cards">
+            <li class="card">
+              <strong>20" Wheels (5x115)</strong>
+              <small>Market Value: ↑ if quality/fitment</small>
+            </li>
+            <li class="card">
+              <strong>Wrap / Vinyl</strong>
+              <small>Market Value: neutral/↓ if poor quality</small>
+            </li>
           </ul>
         </section>
 

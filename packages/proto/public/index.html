@@ -9,8 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
   </head>
   <body>
     <header>
@@ -18,11 +20,11 @@
       <p>Select a model to view trims, mods, and performance.</p>
     </header>
 
-    <main>
+    <main class="container">
       <section aria-labelledby="models">
         <h2 id="models">Models</h2>
-        <ul>
-          <li>
+        <ul class="grid-cards">
+          <li class="card">
             <svg class="icon" aria-hidden="true" focusable="false">
               <use href="/icons/vehicles.svg#icon-coupe" />
             </svg>

@@ -9,8 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
   </head>
   <body>
     <header>
@@ -26,7 +28,7 @@
       </h1>
     </header>
 
-    <main>
+    <main class="container">
       <article>
         <section aria-labelledby="overview">
           <h2 id="overview">Overview</h2>
@@ -42,8 +44,10 @@
 
         <section aria-labelledby="trims">
           <h2 id="trims">Trims (Engine)</h2>
-          <ul>
-            <li><a href="./trim-challenger-sxt.html">SXT (3.6L V6)</a></li>
+          <ul class="grid-cards">
+            <li class="card">
+              <a href="./trim-challenger-sxt.html">SXT (3.6L V6)</a>
+            </li>
             <!-- Add R/T, Scat Pack, etc. later -->
           </ul>
         </section>
@@ -51,8 +55,8 @@
         <section aria-labelledby="mods">
           <h2 id="mods">Common Modifications</h2>
           <p>Car Model can-have Modifications. See trims for compatibility.</p>
-          <ul>
-            <li>
+          <ul class="grid-cards">
+            <li class="card">
               <svg class="icon" aria-hidden="true" focusable="false">
                 <use href="/icons/performance.svg#icon-intake" />
               </svg>
