@@ -3,13 +3,82 @@ body {
   background: var(--color-bg-page);
   color: var(--color-text);
   margin: 0;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--fs-400);
+  line-height: var(--lh-body);
+  min-height: 100vh;
 }
 
 header {
   background: var(--color-bg-header);
   color: var(--color-text-inverted);
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--color-border-muted);
+  padding: 1.5rem 2rem;
+  border-bottom: 3px solid var(--color-accent);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin-bottom: 0.25em;
+}
+
+header p {
+  margin: 0.5em 0 0 0;
+  opacity: 0.9;
+}
+
+header nav {
+  margin-bottom: 1rem;
+  font-size: var(--fs-300);
+}
+
+header nav a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+header nav strong {
+  color: var(--color-text-inverted);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-display);
+  line-height: var(--lh-heading);
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: var(--fs-900);
+  font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+  font-size: var(--fs-800);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 {
+  font-size: var(--fs-700);
+  font-weight: var(--font-weight-semibold);
+}
+
+code,
+kbd,
+samp,
+pre,
+.spec-mono {
+  font-family: var(--font-family-mono);
+  font-size: var(--fs-300);
+}
+
+dt {
+  font-weight: var(--font-weight-bold);
 }
 
 a {
@@ -28,11 +97,88 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-/* Benday boxes for sections/nav */
-section,
-nav {
+/* Main content area */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Benday boxes for sections */
+section {
   background: var(--color-bg-section);
   border: 1px solid var(--color-border-muted);
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+section:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Footer navigation */
+footer {
+  background: var(--color-bg-section);
+  border-top: 1px solid var(--color-border-muted);
+  padding: 1.5rem 2rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+footer nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--fs-300);
+  opacity: 0.8;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Definition lists */
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem 1.5rem;
+  margin: 1rem 0;
+}
+
+dd {
+  margin: 0;
+}
+
+/* Base icon styling */
+svg.icon {
+  display: inline;
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+/* Larger icons in headings */
+h1 svg.icon,
+h2 svg.icon,
+h3 svg.icon {
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: top;
 }
