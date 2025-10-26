@@ -193,3 +193,19 @@ h3 svg.icon {
   height: 1.25em;
   accent-color: var(--color-accent);
 }
+
+body.dark-mode header {
+  color: var(--color-text);
+}
+
+body.dark-mode header h1 {
+  color: var(--color-text);
+}
+
+body.dark-mode header nav strong {
+  color: var(--color-text);
+}
+
+body.dark-mode .dark-mode-toggle {
+  color: var(--color-text);
+}
