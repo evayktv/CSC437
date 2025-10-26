@@ -12,11 +12,6 @@ export class CarModelCardElement extends LitElement {
   years?: string;
 
   override render() {
-    console.log("Rendering car-model-card", {
-      icon: this.icon,
-      href: this.href,
-      years: this.years,
-    });
     return html`
       <a href="${this.href}" class="card-link">
         <svg class="icon" aria-hidden="true" focusable="false">
