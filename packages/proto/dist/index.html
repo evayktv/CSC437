@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Car Models • CSC437 Proto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <script src="/scripts/dark-mode.js" defer></script>
+    <script type="module" crossorigin src="/assets/index-DYRPqXIB.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Car Models</h1>
+      <p>Select a model to view trims, mods, and performance.</p>
+      <label class="dark-mode-toggle">
+        <input type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+    </header>
+
+    <main class="container">
+      <section aria-labelledby="models">
+        <h2 id="models">Models</h2>
+        <ul class="grid-cards">
+          <li>
+            <car-model-card
+              icon="icon-coupe"
+              href="./model-challenger.html"
+              years="2008–2023"
+            >
+              Dodge Challenger
+            </car-model-card>
+          </li>
+          <!-- Add more models as you go -->
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Site">
+        <p>
+          Car Enthusiast Community Platform • Built for automotive enthusiasts
+        </p>
+        <p>
+          <small>Icons inspired by Material Design and automotive themes</small>
+        </p>
+      </nav>
+    </footer>
+  </body>
+</html>

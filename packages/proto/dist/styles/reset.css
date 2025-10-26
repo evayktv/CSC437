@@ -1,0 +1,43 @@
+/* CSS Reset - Universal resets for consistent cross-browser behavior */
+
+/* Universal box-sizing and margin reset */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Body line height for better readability */
+body {
+  line-height: 1.5;
+}
+
+/* Reset lists - remove default padding, margin, and list-style */
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Reset form controls to inherit font and color */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Images and SVG - block display, responsive sizing */
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Keep focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
