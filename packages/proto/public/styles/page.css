@@ -175,3 +175,21 @@ h3 svg.icon {
   width: 1.5em;
   vertical-align: top;
 }
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-size: var(--fs-300);
+  color: var(--color-text-inverted);
+  margin-top: var(--space-sm);
+}
+
+.dark-mode-toggle input[type="checkbox"] {
+  cursor: pointer;
+  width: 1.25em;
+  height: 1.25em;
+  accent-color: var(--color-accent);
+}

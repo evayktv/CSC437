@@ -60,3 +60,19 @@
   --bp-tablet: 768px;
   --bp-desktop: 1024px;
 }
+
+/* Dark Mode */
+body.dark-mode {
+  --color-bg-page: #1a1a1a;
+  --color-bg-header: #0d0d0d;
+  --color-bg-section: #2c2c2c;
+
+  --color-text: #e0e0e0;
+  --color-text-inverted: #1a1a1a;
+
+  --color-accent: #ff4757;
+  --color-accent-contrast: #ffffff;
+  --color-accent-hover: #ff6b7a;
+
+  --color-border-muted: #404040;
+}
