@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Dodge Challenger",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=challenger",
+    "years": "2008–2023"
+  },
+  {
+    "name": "Chevrolet Camaro",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=camaro",
+    "years": "2010–2024"
+  },
+  {
+    "name": "Ford Mustang",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=mustang",
+    "years": "2015–2024"
+  }
+]

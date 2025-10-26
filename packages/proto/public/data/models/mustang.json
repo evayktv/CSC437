@@ -1,0 +1,50 @@
+{
+  "name": "Ford Mustang",
+  "icon": "icon-coupe",
+  "overview": {
+    "manufacturer": "Ford",
+    "bodyStyle": "Coupe",
+    "history": "Sixth generation (2015–2023)"
+  },
+  "trims": [
+    {
+      "name": "EcoBoost",
+      "engine": "2.3L Turbo I4",
+      "horsepower": 310,
+      "torque": 350,
+      "zeroToSixty": "~5.1 s",
+      "topSpeed": "~145 mph",
+      "years": "2015–2023"
+    },
+    {
+      "name": "GT",
+      "engine": "5.0L V8",
+      "horsepower": 450,
+      "torque": 410,
+      "zeroToSixty": "~4.3 s",
+      "topSpeed": "~155 mph",
+      "years": "2015–2023"
+    }
+  ],
+  "modifications": [
+    {
+      "name": "Cold Air Intake",
+      "type": "Performance (Intake)",
+      "hpGain": "+~10 hp",
+      "costRange": "$250–$600",
+      "install": "Bolt-on; DIY-friendly"
+    },
+    {
+      "name": "Performance Tune",
+      "type": "Performance (ECU)",
+      "hpGain": "+~30 hp",
+      "costRange": "$400–$800",
+      "install": "Professional required"
+    }
+  ],
+  "history": [
+    "2015–2017: Sixth generation launch",
+    "2018–2020: Refresh with new styling",
+    "2021–2023: Final years, special editions"
+  ]
+}

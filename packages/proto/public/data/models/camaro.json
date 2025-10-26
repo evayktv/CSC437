@@ -1,0 +1,50 @@
+{
+  "name": "Chevrolet Camaro",
+  "icon": "icon-coupe",
+  "overview": {
+    "manufacturer": "Chevrolet",
+    "bodyStyle": "Coupe",
+    "history": "Sixth generation (2016–2024)"
+  },
+  "trims": [
+    {
+      "name": "LT",
+      "engine": "2.0L Turbo I4",
+      "horsepower": 275,
+      "torque": 295,
+      "zeroToSixty": "~5.4 s",
+      "topSpeed": "~155 mph",
+      "years": "2016–2024"
+    },
+    {
+      "name": "SS",
+      "engine": "6.2L V8",
+      "horsepower": 455,
+      "torque": 455,
+      "zeroToSixty": "~4.0 s",
+      "topSpeed": "~165 mph",
+      "years": "2016–2024"
+    }
+  ],
+  "modifications": [
+    {
+      "name": "Cold Air Intake",
+      "type": "Performance (Intake)",
+      "hpGain": "+~8 hp",
+      "costRange": "$200–$500",
+      "install": "Bolt-on; DIY-friendly"
+    },
+    {
+      "name": "Cat-Back Exhaust",
+      "type": "Performance (Exhaust)",
+      "hpGain": "+~10 hp",
+      "costRange": "$800–$1500",
+      "install": "Professional recommended"
+    }
+  ],
+  "history": [
+    "2016–2018: Sixth generation launch",
+    "2019–2021: Mid-cycle refresh",
+    "2022–2024: Final years of production"
+  ]
+}
