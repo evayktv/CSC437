@@ -1,0 +1,148 @@
+[
+  {
+    "slug": "challenger",
+    "name": "Dodge Challenger",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=challenger",
+    "years": "2008–2023",
+    "overview": {
+      "manufacturer": "Dodge",
+      "bodyStyle": "Coupe",
+      "history": "Modern generation (2008–2023)"
+    },
+    "trims": [
+      {
+        "name": "SXT",
+        "engine": "3.6L V6",
+        "horsepower": 303,
+        "torque": 268,
+        "zeroToSixty": "~6.3 s",
+        "topSpeed": "~130 mph",
+        "years": "2011–2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~5 hp",
+        "costRange": "$150–$400",
+        "install": "Bolt-on; DIY-friendly"
+      }
+    ],
+    "history": [
+      "2008–2010: Early modern refresh",
+      "2011–2014: Updates & special editions",
+      "2015–2023: Facelifts, Hellcat/Demon era"
+    ]
+  },
+  {
+    "slug": "camaro",
+    "name": "Chevrolet Camaro",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=camaro",
+    "years": "2010–2024",
+    "overview": {
+      "manufacturer": "Chevrolet",
+      "bodyStyle": "Coupe",
+      "history": "Sixth generation (2016–2024)"
+    },
+    "trims": [
+      {
+        "name": "LT",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 275,
+        "torque": 295,
+        "zeroToSixty": "~5.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "SS",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~165 mph",
+        "years": "2016–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~8 hp",
+        "costRange": "$200–$500",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Cat-Back Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~10 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2016–2018: Sixth generation launch",
+      "2019–2021: Mid-cycle refresh",
+      "2022–2024: Final years of production"
+    ]
+  },
+  {
+    "slug": "mustang",
+    "name": "Ford Mustang",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=mustang",
+    "years": "2015–2024",
+    "overview": {
+      "manufacturer": "Ford",
+      "bodyStyle": "Coupe",
+      "history": "Sixth generation (2015–2023)"
+    },
+    "trims": [
+      {
+        "name": "EcoBoost",
+        "engine": "2.3L Turbo I4",
+        "horsepower": 310,
+        "torque": 350,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~145 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "GT",
+        "engine": "5.0L V8",
+        "horsepower": 450,
+        "torque": 410,
+        "zeroToSixty": "~4.3 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~10 hp",
+        "costRange": "$250–$600",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Performance Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~30 hp",
+        "costRange": "$400–$800",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2015–2017: Sixth generation launch",
+      "2018–2020: Refresh with new styling",
+      "2021–2023: Final years, special editions"
+    ]
+  }
+]

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Car Models • CSC437 Proto</title>
+    <title>Car Model • CSC437 Proto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,12 +14,20 @@
     <link rel="stylesheet" href="/styles/page.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
     <script src="/scripts/dark-mode.js" defer></script>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" crossorigin src="/assets/index-BZwoVv-h.js"></script>
   </head>
   <body>
     <header>
-      <h1>Car Models</h1>
-      <p>Select a model to view trims, mods, and performance.</p>
+      <nav aria-label="Breadcrumb">
+        <a href="./index.html">Car Models</a> ▸
+        <strong id="car-name">Loading...</strong>
+      </nav>
+      <h1 id="car-title">
+        <svg class="icon" aria-hidden="true" focusable="false">
+          <use href="/icons/vehicles.svg#icon-coupe" />
+        </svg>
+        <span>Loading...</span>
+      </h1>
       <label class="dark-mode-toggle">
         <input type="checkbox" autocomplete="off" />
         Dark mode
@@ -27,20 +35,12 @@
     </header>
 
     <main class="container">
-      <section aria-labelledby="models">
-        <h2 id="models">Models</h2>
-        <car-catalog src="/api/cars"></car-catalog>
-      </section>
+      <car-model-detail></car-model-detail>
     </main>
 
     <footer>
       <nav aria-label="Site">
-        <p>
-          Car Enthusiast Community Platform • Built for automotive enthusiasts
-        </p>
-        <p>
-          <small>Icons inspired by Material Design and automotive themes</small>
-        </p>
+        <a href="./index.html">Home</a>
       </nav>
     </footer>
   </body>
