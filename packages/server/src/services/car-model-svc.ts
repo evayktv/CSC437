@@ -52,4 +52,24 @@ function get(slug: string): Promise<CarModel | null> {
   return CarModelDoc.findOne({ slug }).exec();
 }
 
-export default { index, get };
+function create(carData: CarModel): Promise<CarModel> {
+  const car = new CarModelDoc(carData);
+  return car.save();
+}
+
+function update(slug: string, carData: CarModel): Promise<CarModel> {
+  return CarModelDoc.findOneAndUpdate({ slug }, carData, {
+    new: true,
+  }).then((updated) => {
+    if (!updated) throw `${slug} not updated`;
+    else return updated as CarModel;
+  });
+}
+
+function remove(slug: string): Promise<void> {
+  return CarModelDoc.findOneAndDelete({ slug }).then((deleted) => {
+    if (!deleted) throw `${slug} not deleted`;
+  });
+}
+
+export default { index, get, create, update, remove };
