@@ -2,10 +2,12 @@ import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
 
 interface Car {
+  slug: string;
   name: string;
   icon: string;
   href: string;
   years: string;
+  category: string;
 }
 
 export class CarCatalogElement extends LitElement {
@@ -43,7 +45,7 @@ export class CarCatalogElement extends LitElement {
       <ul class="grid-cards">
         ${this.cars.map(
           (car) => html`
-            <li>
+            <li class="car-card">
               <car-model-card
                 icon="${car.icon}"
                 href="${car.href}"
@@ -84,7 +86,7 @@ export class CarCatalogElement extends LitElement {
       }
     }
 
-    li {
+    li.car-card {
       display: block;
     }
   `;

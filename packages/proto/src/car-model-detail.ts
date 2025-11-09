@@ -57,7 +57,7 @@ export class CarModelDetailElement extends LitElement {
       return;
     }
 
-    // Fetch from API
+    // Fetch from API (no auth needed for GET)
     fetch(`/api/cars/${carSlug}`)
       .then((res) => {
         if (!res.ok) {
@@ -70,7 +70,7 @@ export class CarModelDetailElement extends LitElement {
         this.loading = false;
 
         // Update page title
-        document.title = `${data.name} • CSC437 Proto`;
+        document.title = `${data.name} • Throttle Vault`;
 
         // Update header elements
         const carName = document.getElementById("car-name");
@@ -82,6 +82,20 @@ export class CarModelDetailElement extends LitElement {
         this.error = err.message;
         this.loading = false;
       });
+  }
+
+  handleAddToGarage() {
+    const token = localStorage.getItem("auth_token");
+    if (!token) {
+      // Redirect to login if not authenticated
+      window.location.href = "/login.html";
+      return;
+    }
+
+    // Redirect to garage page with model slug as query param
+    const params = new URLSearchParams(window.location.search);
+    const carSlug = params.get("car");
+    window.location.href = `/garage.html?add=${carSlug}`;
   }
 
   render() {
@@ -98,6 +112,12 @@ export class CarModelDetailElement extends LitElement {
     }
 
     return html`
+      <div class="action-bar">
+        <button class="btn-add-to-garage" @click=${this.handleAddToGarage}>
+          🚗 Add to My Garage
+        </button>
+      </div>
+
       <section aria-labelledby="overview-heading">
         <h2 id="overview-heading">Overview</h2>
         <dl>
@@ -181,6 +201,29 @@ export class CarModelDetailElement extends LitElement {
   static styles = css`
     :host {
       display: block;
+    }
+
+    .action-bar {
+      margin-bottom: var(--space-lg, 2rem);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-add-to-garage {
+      padding: 0.75rem 1.5rem;
+      background: #c41e3a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s ease-in-out;
+    }
+
+    .btn-add-to-garage:hover {
+      background: #a01828;
     }
 
     section {

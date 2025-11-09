@@ -2,82 +2,84 @@
 import express, { Request, Response } from "express";
 import { CarModel } from "../models/car-model";
 import CarModels from "../services/car-model-svc";
+import { authenticateUser } from "./auth";
 
 const router = express.Router();
 
-// GET /api/cars - List all cars (catalog view)
-router.get("/", (_req: Request, res: Response) => {
-  CarModels.index()
-    .then((models: CarModel[]) => {
-      // Return lightweight catalog view
-      const catalog = models.map((m) => ({
-        slug: m.slug,
-        name: m.name,
-        category: m.category,
-        icon: m.icon,
-        href: m.href,
-        years: m.years,
-      }));
-      res.json(catalog);
-    })
-    .catch((err) => {
-      console.error("Error fetching cars:", err);
-      res.status(500).send("Failed to load cars");
-    });
+// List all cars (catalog view) - NO AUTH REQUIRED
+router.get("/", async (_req: Request, res: Response) => {
+  try {
+    const models = await CarModels.index();
+    const catalog = models.map((m) => ({
+      slug: m.slug,
+      name: m.name,
+      category: m.category,
+      icon: m.icon,
+      href: m.href,
+      years: m.years,
+    }));
+    res.json(catalog);
+  } catch (err) {
+    console.error("Error fetching cars:", err);
+    res.status(500).send("Failed to load cars");
+  }
 });
 
-// GET /api/cars/:slug - Get detailed car model by slug
-router.get("/:slug", (req: Request, res: Response) => {
-  const { slug } = req.params;
+// Get detailed car model by slug - NO AUTH REQUIRED
+router.get("/:slug", async (req: Request, res: Response) => {
+  try {
+    const { slug } = req.params;
+    const model = await CarModels.get(slug);
 
-  CarModels.get(slug)
-    .then((model: CarModel | null) => {
-      if (!model) {
-        return res.status(404).send(`Car "${slug}" not found`);
-      }
-      res.json(model);
-    })
-    .catch((err) => {
-      console.error("Error fetching car details:", err);
-      res.status(500).send("Failed to load car details");
-    });
+    if (!model) {
+      return res.status(404).send(`Car "${slug}" not found`);
+    }
+    res.json(model);
+  } catch (err) {
+    console.error("Error fetching car details:", err);
+    res.status(500).send("Failed to load car details");
+  }
 });
 
-// POST /api/cars - Create new car
-router.post("/", (req: Request, res: Response) => {
-  const newCar = req.body;
-
-  CarModels.create(newCar)
-    .then((car: CarModel) => res.status(201).json(car))
-    .catch((err) => {
-      console.error("Error creating car:", err);
-      res.status(500).send("Failed to create car");
-    });
+// Create a new car - AUTH REQUIRED
+router.post("/", authenticateUser, async (req: Request, res: Response) => {
+  try {
+    const newCar = req.body as CarModel;
+    const createdCar = await CarModels.create(newCar);
+    res.status(201).json(createdCar);
+  } catch (err: any) {
+    console.error("Error creating car:", err);
+    res.status(500).send(`Failed to create car: ${err.message}`);
+  }
 });
 
-// PUT /api/cars/:slug - Update existing car
-router.put("/:slug", (req: Request, res: Response) => {
-  const { slug } = req.params;
-  const updatedCar = req.body;
-
-  CarModels.update(slug, updatedCar)
-    .then((car: CarModel) => res.json(car))
-    .catch((err) => {
-      console.error("Error updating car:", err);
-      res.status(404).send(`Car "${slug}" not found or failed to update`);
-    });
+// Update an existing car - AUTH REQUIRED
+router.put("/:slug", authenticateUser, async (req: Request, res: Response) => {
+  try {
+    const { slug } = req.params;
+    const updatedCarData = req.body as CarModel;
+    const updatedCar = await CarModels.update(slug, updatedCarData);
+    res.json(updatedCar);
+  } catch (err: any) {
+    console.error("Error updating car:", err);
+    res.status(404).send(`Failed to update car: ${err.message}`);
+  }
 });
 
-// DELETE /api/cars/:slug - Delete car
-router.delete("/:slug", (req: Request, res: Response) => {
-  const { slug } = req.params;
-
-  CarModels.remove(slug)
-    .then(() => res.status(204).end())
-    .catch((err) => {
+// Delete a car - AUTH REQUIRED
+router.delete(
+  "/:slug",
+  authenticateUser,
+  async (req: Request, res: Response) => {
+    try {
+      const { slug } = req.params;
+      await CarModels.remove(slug);
+      res.status(204).end();
+    } catch (err: any) {
       console.error("Error deleting car:", err);
-      res.status(404).send(`Car "${slug}" not found`);
-    });
-});
+      res.status(404).send(`Failed to delete car: ${err.message}`);
+    }
+  }
+);
 
 export default router;
