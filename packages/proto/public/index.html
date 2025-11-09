@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Car Models • CSC437 Proto</title>
+    <title>Models • Throttle Vault</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,37 +17,177 @@
   </head>
   <body>
     <header>
-      <h1>Car Models</h1>
-      <p>Select a model to view trims, mods, and performance.</p>
-      <label class="dark-mode-toggle">
-        <input type="checkbox" autocomplete="off" />
-        Dark mode
-      </label>
+      <div class="header-content">
+        <div class="header-left">
+          <h1>Throttle Vault</h1>
+          <p>Your ultimate destination for high-performance vehicles</p>
+        </div>
+        <div class="header-right">
+          <nav class="main-nav">
+            <a href="/index.html">Models</a>
+            <a href="/garage.html" id="garage-link" style="display: none"
+              >My Garage</a
+            >
+          </nav>
+          <div id="auth-status" class="auth-status">
+            <span id="auth-message">Login to access your garage</span>
+            <button
+              id="sign-in-btn"
+              class="sign-in-btn"
+              onclick="window.location.href='/login.html'"
+            >
+              Sign In
+            </button>
+            <span id="username-display" style="display: none"></span>
+            <button
+              id="sign-out-btn"
+              class="sign-out-btn"
+              style="display: none"
+            >
+              Sign Out
+            </button>
+          </div>
+          <label class="dark-mode-toggle">
+            <input type="checkbox" autocomplete="off" />
+            Dark mode
+          </label>
+        </div>
+      </div>
     </header>
+    <style>
+      header .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+      }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .main-nav {
+        display: flex;
+        gap: 1rem;
+      }
+      .main-nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      .main-nav a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .auth-status {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+      }
+      #username-display {
+        font-weight: 600;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      #auth-message {
+        font-weight: 500;
+        color: white;
+        font-size: 0.9rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .sign-in-btn {
+        padding: 0.5rem 1rem;
+        background: var(--color-accent, #c41e3a);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        font-weight: 600;
+        font-family: inherit;
+      }
+      .sign-in-btn:hover {
+        opacity: 0.85;
+      }
+      .sign-out-btn {
+        padding: 0.5rem 1rem;
+        background: var(--color-accent, #c41e3a);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        font-weight: 600;
+        font-family: inherit;
+      }
+      .sign-out-btn:hover {
+        opacity: 0.85;
+      }
+      @media (max-width: 768px) {
+        header .header-content {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .header-right {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+    </style>
+    <script>
+      // Check authentication status
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("auth_token");
+        const username = localStorage.getItem("username");
+        const usernameDisplay = document.getElementById("username-display");
+        const signOutBtn = document.getElementById("sign-out-btn");
+        const signInBtn = document.getElementById("sign-in-btn");
+        const authMessage = document.getElementById("auth-message");
+        const garageLink = document.getElementById("garage-link");
+
+        if (token && username) {
+          // User is logged in - show username and sign out
+          authMessage.style.display = "none";
+          signInBtn.style.display = "none";
+          usernameDisplay.textContent = `Welcome, ${username}`;
+          usernameDisplay.style.display = "block";
+          signOutBtn.style.display = "block";
+          if (garageLink) garageLink.style.display = "block";
+        } else {
+          // User is not logged in - show sign in button and message
+          authMessage.style.display = "block";
+          signInBtn.style.display = "block";
+          usernameDisplay.style.display = "none";
+          signOutBtn.style.display = "none";
+          if (garageLink) garageLink.style.display = "none";
+        }
+
+        // Handle sign out
+        signOutBtn.addEventListener("click", () => {
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("username");
+          window.location.href = "/login.html";
+        });
+      });
+    </script>
 
     <main class="container">
       <section aria-labelledby="models">
         <h2 id="models">Models</h2>
-        <ul class="grid-cards">
-          <li class="card">
-            <svg class="icon" aria-hidden="true" focusable="false">
-              <use href="/icons/vehicles.svg#icon-coupe" />
-            </svg>
-            <a href="./model-challenger.html">Dodge Challenger</a>
-            <small> (history: 2008–2023 modern gen)</small>
-          </li>
-          <!-- Add more models as you go -->
-        </ul>
+        <car-catalog src="/api/cars"></car-catalog>
       </section>
     </main>
 
     <footer>
       <nav aria-label="Site">
+        <p>Throttle Vault • Where horsepower meets passion</p>
         <p>
-          Car Enthusiast Community Platform • Built for automotive enthusiasts
-        </p>
-        <p>
-          <small>Icons inspired by Material Design and automotive themes</small>
+          <small>Your trusted source for high-performance vehicle specs</small>
         </p>
       </nav>
     </footer>
