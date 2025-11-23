@@ -33,4 +33,12 @@ export interface CarModel {
   }>;
 
   history: string[]; // Array of historical milestones
+
+  images?: {
+    hero?: string; // Main hero image path, e.g., "/images/cars/camaro-hero.jpg"
+    gallery?: string[]; // Additional gallery images
+    trims?: {
+      [trimName: string]: string; // Trim-specific images
+    };
+  };
 }

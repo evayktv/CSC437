@@ -1,0 +1,543 @@
+[
+  {
+    "slug": "challenger",
+    "name": "Dodge Challenger",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=challenger",
+    "years": "2008–2023",
+    "overview": {
+      "manufacturer": "Dodge",
+      "bodyStyle": "Coupe",
+      "history": "Modern generation (2008–2023) - The third generation Challenger revived the classic muscle car with modern performance"
+    },
+    "trims": [
+      {
+        "name": "SXT",
+        "engine": "3.6L V6",
+        "horsepower": 303,
+        "torque": 268,
+        "zeroToSixty": "~6.3 s",
+        "topSpeed": "~130 mph",
+        "years": "2011–2023"
+      },
+      {
+        "name": "GT",
+        "engine": "3.6L V6",
+        "horsepower": 305,
+        "torque": 268,
+        "zeroToSixty": "~6.2 s",
+        "topSpeed": "~130 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "R/T",
+        "engine": "5.7L V8 HEMI",
+        "horsepower": 375,
+        "torque": 410,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~155 mph",
+        "years": "2008–2023"
+      },
+      {
+        "name": "R/T Scat Pack",
+        "engine": "6.4L V8 HEMI",
+        "horsepower": 485,
+        "torque": 475,
+        "zeroToSixty": "~4.2 s",
+        "topSpeed": "~175 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "SRT Hellcat",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 717,
+        "torque": 656,
+        "zeroToSixty": "~3.6 s",
+        "topSpeed": "~199 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "SRT Hellcat Redeye",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 797,
+        "torque": 707,
+        "zeroToSixty": "~3.4 s",
+        "topSpeed": "~203 mph",
+        "years": "2018–2023"
+      },
+      {
+        "name": "SRT Demon",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 808,
+        "torque": 717,
+        "zeroToSixty": "~2.3 s",
+        "topSpeed": "~211 mph",
+        "years": "2018"
+      },
+      {
+        "name": "SRT Demon 170",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 1025,
+        "torque": 945,
+        "zeroToSixty": "~1.66 s",
+        "topSpeed": "~211 mph",
+        "years": "2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~5 hp",
+        "costRange": "$150–$400",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Cat-Back Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~8 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Pulley Upgrade",
+        "type": "Performance (Supercharger)",
+        "hpGain": "+~50 hp",
+        "costRange": "$300–$600",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "1970–1974: First generation Challenger introduced as Dodge's answer to the Mustang and Camaro, available in multiple body styles",
+      "1978–1983: Second generation Challenger (rebadged Mitsubishi Galant Lambda) - smaller, fuel-efficient model",
+      "2008: Third generation Challenger debuts at Chicago Auto Show, reviving the classic muscle car design",
+      "2008–2010: Early production years with 5.7L V8 and 6.1L V8 SRT8 models",
+      "2011: Introduction of 3.6L Pentastar V6 engine, improving fuel economy while maintaining performance",
+      "2015: Major refresh with new 6.4L Scat Pack and 6.2L Hellcat supercharged V8 (717 hp)",
+      "2018: Limited production SRT Demon (808 hp) sets world record for fastest production car 0-60 mph",
+      "2018–2020: Hellcat Redeye introduced with 797 hp, plus widebody options",
+      "2021–2023: Final years with special editions including Last Call series",
+      "2023: Final production year with Demon 170 (1025 hp) - the most powerful production muscle car ever made"
+    ],
+    "images": {
+      "hero": "/images/cars/dodge-challenger.webp"
+    }
+  },
+  {
+    "slug": "camaro",
+    "name": "Chevrolet Camaro",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=camaro",
+    "years": "1967–2024",
+    "overview": {
+      "manufacturer": "Chevrolet",
+      "bodyStyle": "Coupe",
+      "history": "Six generations of American muscle car, from the original pony car to modern performance machine"
+    },
+    "trims": [
+      {
+        "name": "LS",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 275,
+        "torque": 295,
+        "zeroToSixty": "~5.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2018"
+      },
+      {
+        "name": "LT",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 275,
+        "torque": 295,
+        "zeroToSixty": "~5.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "LT1",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~165 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "SS",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~165 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "1LE",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~165 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "ZL1",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~3.5 s",
+        "topSpeed": "~198 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "ZL1 1LE",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~3.4 s",
+        "topSpeed": "~198 mph",
+        "years": "2018–2024"
+      },
+      {
+        "name": "Z/28",
+        "engine": "7.0L V8",
+        "horsepower": 505,
+        "torque": 481,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~190 mph",
+        "years": "2014–2015"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~8 hp",
+        "costRange": "$200–$500",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Cat-Back Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~10 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Supercharger Kit",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~150 hp",
+        "costRange": "$5000–$8000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Headers",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~15 hp",
+        "costRange": "$600–$1200",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "1967–1969: First generation Camaro introduced to compete with Ford Mustang, available in multiple body styles and engine options",
+      "1970–1981: Second generation with iconic split-bumper design, Z28 performance package, and IROC-Z variants",
+      "1982–1992: Third generation with modern fuel injection, IROC-Z becoming a standalone model",
+      "1993–2002: Fourth generation with complete redesign, LS1 V8 engine, and SS performance package",
+      "2010–2015: Fifth generation revival with retro styling, V6 and V8 options, ZL1 supercharged model",
+      "2016–2024: Sixth generation with Alpha platform, lighter weight, improved handling, and track-focused 1LE packages",
+      "2017: ZL1 introduced with 650 hp supercharged V8, competing directly with Hellcat and GT500",
+      "2018: ZL1 1LE track package adds extreme aerodynamics and suspension for road course dominance",
+      "2020: LT1 trim introduced as entry-level V8 option, making 455 hp more accessible",
+      "2024: Final model year announced, marking the end of Camaro production after 57 years"
+    ],
+    "images": {
+      "hero": "/images/cars/chevorlet-camaro.webp"
+    }
+  },
+  {
+    "slug": "mustang",
+    "name": "Ford Mustang",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=mustang",
+    "years": "1964–2024",
+    "overview": {
+      "manufacturer": "Ford",
+      "bodyStyle": "Coupe",
+      "history": "The original pony car, continuously produced since 1964, defining the American muscle car segment"
+    },
+    "trims": [
+      {
+        "name": "EcoBoost",
+        "engine": "2.3L Turbo I4",
+        "horsepower": 310,
+        "torque": 350,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~145 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "EcoBoost Premium",
+        "engine": "2.3L Turbo I4",
+        "horsepower": 310,
+        "torque": 350,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~145 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "GT",
+        "engine": "5.0L V8",
+        "horsepower": 450,
+        "torque": 410,
+        "zeroToSixty": "~4.3 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "GT Premium",
+        "engine": "5.0L V8",
+        "horsepower": 450,
+        "torque": 410,
+        "zeroToSixty": "~4.3 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "Bullitt",
+        "engine": "5.0L V8",
+        "horsepower": 480,
+        "torque": 420,
+        "zeroToSixty": "~4.2 s",
+        "topSpeed": "~163 mph",
+        "years": "2019–2020"
+      },
+      {
+        "name": "Mach 1",
+        "engine": "5.0L V8",
+        "horsepower": 480,
+        "torque": 420,
+        "zeroToSixty": "~4.1 s",
+        "topSpeed": "~168 mph",
+        "years": "2021–2023"
+      },
+      {
+        "name": "Shelby GT350",
+        "engine": "5.2L Flat-Plane V8",
+        "horsepower": 526,
+        "torque": 429,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~189 mph",
+        "years": "2016–2020"
+      },
+      {
+        "name": "Shelby GT350R",
+        "engine": "5.2L Flat-Plane V8",
+        "horsepower": 526,
+        "torque": 429,
+        "zeroToSixty": "~3.8 s",
+        "topSpeed": "~189 mph",
+        "years": "2016–2020"
+      },
+      {
+        "name": "Shelby GT500",
+        "engine": "5.2L Supercharged V8",
+        "horsepower": 760,
+        "torque": 625,
+        "zeroToSixty": "~3.3 s",
+        "topSpeed": "~180 mph",
+        "years": "2020–2023"
+      },
+      {
+        "name": "Dark Horse",
+        "engine": "5.0L V8",
+        "horsepower": 500,
+        "torque": 418,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~168 mph",
+        "years": "2024–"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~10 hp",
+        "costRange": "$250–$600",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Performance Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~30 hp",
+        "costRange": "$400–$800",
+        "install": "Professional required"
+      },
+      {
+        "name": "Supercharger Kit",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~200 hp",
+        "costRange": "$6000–$10000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~12 hp",
+        "costRange": "$700–$1500",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "1964: Mustang introduced at World's Fair, creating the 'pony car' segment - over 22,000 sold on first day",
+      "1965–1973: First generation with multiple body styles, high-performance variants including GT, Mach 1, and Boss 302/429",
+      "1974–1978: Second generation Mustang II - smaller, fuel-efficient model responding to oil crisis",
+      "1979–1993: Third generation Fox platform with modern unibody construction, 5.0L V8 becoming legendary",
+      "1994–2004: Fourth generation with complete redesign, SN95 platform, and New Edge styling refresh",
+      "2005–2014: Fifth generation retro-styling revival, S197 platform, reintroduction of GT500 and Boss 302",
+      "2015–2023: Sixth generation S550 platform with independent rear suspension, EcoBoost turbo option, and track-focused GT350/GT500",
+      "2016: Shelby GT350 introduced with flat-plane crank V8, focused on road course performance",
+      "2020: Shelby GT500 debuts with 760 hp supercharged V8, most powerful production Mustang ever",
+      "2021: Mach 1 returns as mid-tier performance model, bridging gap between GT and GT500",
+      "2024: Seventh generation S650 platform launches with Dark Horse as new performance flagship, continuing Mustang legacy"
+    ],
+    "images": {
+      "hero": "/images/cars/ford-mustang.webp"
+    }
+  },
+  {
+    "slug": "corvette",
+    "name": "Chevrolet Corvette",
+    "category": "sports-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=corvette",
+    "years": "1953–2024",
+    "overview": {
+      "manufacturer": "Chevrolet",
+      "bodyStyle": "Coupe",
+      "history": "America's sports car - eight generations of performance, from fiberglass roadster to mid-engine supercar"
+    },
+    "trims": [
+      {
+        "name": "Stingray",
+        "engine": "6.2L V8",
+        "horsepower": 490,
+        "torque": 465,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~194 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "Stingray Z51",
+        "engine": "6.2L V8",
+        "horsepower": 495,
+        "torque": 470,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~194 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "Z06",
+        "engine": "5.5L Flat-Plane V8",
+        "horsepower": 670,
+        "torque": 460,
+        "zeroToSixty": "~2.6 s",
+        "topSpeed": "~212 mph",
+        "years": "2023–2024"
+      },
+      {
+        "name": "E-Ray",
+        "engine": "6.2L V8 + Electric",
+        "horsepower": 655,
+        "torque": 595,
+        "zeroToSixty": "~2.5 s",
+        "topSpeed": "~194 mph",
+        "years": "2024–"
+      },
+      {
+        "name": "ZR1",
+        "engine": "5.5L Twin-Turbo V8",
+        "horsepower": 1064,
+        "torque": 828,
+        "zeroToSixty": "~2.0 s",
+        "topSpeed": "~215 mph",
+        "years": "2025–"
+      },
+      {
+        "name": "Grand Sport",
+        "engine": "6.2L V8",
+        "horsepower": 460,
+        "torque": 465,
+        "zeroToSixty": "~3.6 s",
+        "topSpeed": "~194 mph",
+        "years": "2017–2019"
+      },
+      {
+        "name": "Z06 (C7)",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~205 mph",
+        "years": "2015–2019"
+      },
+      {
+        "name": "ZR1 (C7)",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 755,
+        "torque": 715,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~212 mph",
+        "years": "2019"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~12 hp",
+        "costRange": "$300–$700",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Headers & Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~25 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Supercharger Kit",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~200 hp",
+        "costRange": "$8000–$12000",
+        "install": "Professional required"
+      },
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~40 hp",
+        "costRange": "$500–$1000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "1953: First generation Corvette introduced at GM Motorama, America's first mass-produced fiberglass sports car",
+      "1953–1962: C1 generation with inline-6 and V8 engine options, establishing Corvette as performance icon",
+      "1963–1967: C2 Sting Ray with split-window coupe, independent rear suspension, and big-block V8 options up to 427ci",
+      "1968–1982: C3 generation with iconic styling, T-top roof option, and performance variants including ZR1 and Z28",
+      "1984–1996: C4 generation with complete redesign, digital dashboard, and modern performance technology",
+      "1997–2004: C5 generation with LS1 V8 engine, improved handling, and Z06 high-performance variant",
+      "2005–2013: C6 generation with LS2/LS3 V8 engines, Z06 with 7.0L V8, and ZR1 with supercharged 6.2L",
+      "2014–2019: C7 Stingray with new LT1 V8, Z06 with supercharged 650 hp, and ZR1 with 755 hp",
+      "2020: C8 generation debuts with revolutionary mid-engine layout, first production mid-engine Corvette",
+      "2020–2024: C8 Stingray establishes new performance benchmarks, Z06 with flat-plane crank V8, E-Ray hybrid",
+      "2025: ZR1 announced with twin-turbo V8 producing over 1000 hp, marking pinnacle of Corvette performance"
+    ],
+    "images": {
+      "hero": "/images/cars/chevrolet-corvette.webp"
+    }
+  }
+]
