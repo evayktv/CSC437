@@ -17,10 +17,12 @@
   <body>
     <mu-history provides="throttle:history">
       <mu-auth provides="throttle:auth" redirect="/app/login">
-        <article class="page">
-          <throttle-header></throttle-header>
-          <mu-switch></mu-switch>
-        </article>
+        <mu-store provides="throttle:model">
+          <article class="page">
+            <throttle-header></throttle-header>
+            <mu-switch></mu-switch>
+          </article>
+        </mu-store>
       </mu-auth>
     </mu-history>
   </body>

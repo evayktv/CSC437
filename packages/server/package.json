@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Express server with MongoDB for car catalog",
   "main": "dist/index.js",
+  "exports": {
+    "./models": {
+      "import": "./src/models/index.ts"
+    }
+  },
   "scripts": {
     "dev": "nodemon",
     "build": "npx etsc",

@@ -1,38 +1,12 @@
 import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
 import { Auth, History, Observer } from "@calpoly/mustang";
-
-interface CarModel {
-  slug: string;
-  name: string;
-  category: string;
-  icon: string;
-  years: string;
-  overview: {
-    manufacturer: string;
-    bodyStyle: string;
-    history: string;
-  };
-  trims: Array<{
-    name: string;
-    engine: string;
-    horsepower: number;
-    torque: number;
-    zeroToSixty: string;
-    topSpeed: string;
-    years: string;
-  }>;
-  modifications: Array<{
-    name: string;
-    type: string;
-    hpGain: string;
-    costRange: string;
-    install: string;
-  }>;
-  history: string[];
-}
+import { CarModel } from "@csc437/server/models";
 
 export class CarModelDetailElement extends LitElement {
+  @property({ type: Object })
+  carModel?: CarModel;
+
   @property()
   slug?: string;
 
@@ -57,11 +31,28 @@ export class CarModelDetailElement extends LitElement {
       }
     });
 
-    this.loadCarData();
+    // If carModel is provided, use it; otherwise load from API
+    if (this.carModel) {
+      this.car = this.carModel;
+      this.loading = false;
+    } else {
+      this.loadCarData();
+    }
   }
 
   updated(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has("slug")) {
+    // If carModel property is set, use it
+    if (changedProperties.has("carModel") && this.carModel) {
+      this.car = this.carModel;
+      this.loading = false;
+      this.error = null;
+      // Update page title
+      document.title = `${this.carModel.name} • Throttle Vault`;
+      return;
+    }
+
+    // Otherwise, load from API if slug changes
+    if (changedProperties.has("slug") && !this.carModel) {
       this.loadCarData();
     }
   }
