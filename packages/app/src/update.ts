@@ -40,9 +40,10 @@ export default function update(
     }
     case "garage/save": {
       const { car } = message[1];
+      const { onSuccess, onFailure } = message[2] || {};
       return [
         model,
-        saveGarageCar(car, user).then((savedCar) => [
+        saveGarageCar(car, user, { onSuccess, onFailure }).then((savedCar) => [
           "garage/saved",
           { car: savedCar },
         ]),
@@ -115,7 +116,11 @@ function requestGarage(user: Auth.User): Promise<GarageCar[]> {
     });
 }
 
-function saveGarageCar(car: GarageCar, user: Auth.User): Promise<GarageCar> {
+function saveGarageCar(
+  car: GarageCar,
+  user: Auth.User,
+  callbacks?: { onSuccess?: () => void; onFailure?: (err: Error) => void }
+): Promise<GarageCar> {
   const url = car._id ? `/api/garage/${car._id}` : "/api/garage";
   const method = car._id ? "PUT" : "POST";
 
@@ -134,8 +139,15 @@ function saveGarageCar(car: GarageCar, user: Auth.User): Promise<GarageCar> {
       throw new Error(`Failed to save garage car: ${response.status}`);
     })
     .then((json: unknown) => {
-      if (json) return json as GarageCar;
+      if (json) {
+        if (callbacks?.onSuccess) callbacks.onSuccess();
+        return json as GarageCar;
+      }
       throw new Error("No JSON in response from server");
+    })
+    .catch((err) => {
+      if (callbacks?.onFailure) callbacks.onFailure(err as Error);
+      throw err;
     });
 }
 

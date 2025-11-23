@@ -1,6 +1,9 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { property, state } from "lit/decorators.js";
-import { Auth, Observer } from "@calpoly/mustang";
+import { Auth, Form, Observer, View } from "@calpoly/mustang";
+import { GarageCar } from "@csc437/server/models";
+import { Msg } from "../messages";
+import { Model } from "../model";
 
 export interface GarageCarFormData {
   id?: string;
@@ -19,7 +22,11 @@ interface CarModel {
   trims: Array<{ name: string }>;
 }
 
-export class GarageCarFormElement extends LitElement {
+export class GarageCarFormElement extends View<Model, Msg> {
+  static uses = {
+    "mu-form": Form.Element,
+  };
+
   @property({ type: String })
   mode: "create" | "edit" = "create";
 
@@ -30,9 +37,6 @@ export class GarageCarFormElement extends LitElement {
   private errorMessage: string | null = null;
 
   @state()
-  private isLoading: boolean = false;
-
-  @state()
   private availableModels: CarModel[] = [];
 
   @state()
@@ -40,6 +44,10 @@ export class GarageCarFormElement extends LitElement {
 
   _user = new Auth.User();
   _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
+
+  constructor() {
+    super("throttle:model");
+  }
 
   async connectedCallback() {
     super.connectedCallback();
@@ -74,6 +82,80 @@ export class GarageCarFormElement extends LitElement {
     } catch (error) {
       console.error("Failed to load models:", error);
     }
+
+    // Hide mu-form's default submit button after render
+    this.hideDefaultSubmitButton();
+  }
+
+  updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // Hide mu-form's default submit button after each update
+    this.hideDefaultSubmitButton();
+  }
+
+  private _submitButtonObserver?: MutationObserver;
+
+  private hideDefaultSubmitButton() {
+    // Use multiple strategies to hide the default submit button
+    requestAnimationFrame(() => {
+      // Strategy 1: Query from shadowRoot
+      const muForm = this.shadowRoot?.querySelector("mu-form");
+      if (muForm) {
+        this.hideSubmitButtonsInElement(muForm);
+      }
+
+      // Strategy 2: Query from light DOM
+      const muFormLight = this.querySelector("mu-form");
+      if (muFormLight) {
+        this.hideSubmitButtonsInElement(muFormLight);
+      }
+
+      // Strategy 3: Setup MutationObserver to catch buttons added dynamically
+      if (!this._submitButtonObserver) {
+        this.setupSubmitButtonObserver();
+      }
+    });
+  }
+
+  private setupSubmitButtonObserver() {
+    const targetNode = this.shadowRoot || this;
+    this._submitButtonObserver = new MutationObserver(() => {
+      const muForm =
+        this.shadowRoot?.querySelector("mu-form") ||
+        this.querySelector("mu-form");
+      if (muForm) {
+        this.hideSubmitButtonsInElement(muForm);
+      }
+    });
+
+    this._submitButtonObserver.observe(targetNode, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  private hideSubmitButtonsInElement(element: Element) {
+    // Hide our custom "Add to Garage" button
+    const customButtons = element.querySelectorAll("button.btn-submit");
+    customButtons.forEach((button) => {
+      const btn = button as HTMLElement;
+      btn.style.display = "none";
+      btn.style.visibility = "hidden";
+      btn.style.height = "0";
+      btn.style.width = "0";
+      btn.style.padding = "0";
+      btn.style.margin = "0";
+      btn.style.opacity = "0";
+      btn.style.position = "absolute";
+      btn.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this._submitButtonObserver) {
+      this._submitButtonObserver.disconnect();
+    }
   }
 
   private async handleModelChange(e: Event) {
@@ -103,64 +185,106 @@ export class GarageCarFormElement extends LitElement {
     }
   }
 
-  async handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    this.errorMessage = "";
-    this.isLoading = true;
+  handleSubmit(event: Form.SubmitEvent<GarageCar>) {
+    this.errorMessage = null;
 
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
+    if (!this._user.authenticated) {
+      this.errorMessage = "Authentication required. Please log in.";
+      return;
+    }
 
-    const garageCar: any = {
-      modelSlug: formData.get("modelSlug") as string,
-      modelName:
-        this.selectedModel?.name || (formData.get("modelName") as string),
-      nickname: formData.get("nickname") as string,
-      year: parseInt(formData.get("year") as string),
-      trim: formData.get("trim") as string,
-      mileage: formData.get("mileage")
-        ? parseInt(formData.get("mileage") as string)
-        : undefined,
-      notes: formData.get("notes") as string,
-    };
+    const formData = event.detail;
 
-    try {
-      if (!this._user.authenticated) {
-        this.errorMessage = "Authentication required. Please log in.";
-        this.isLoading = false;
+    // Debug: Log form data to see what we're getting
+    console.log("Form data received:", formData);
+
+    // Extract and validate required fields
+    const modelSlug = formData.modelSlug || "";
+    const nickname = formData.nickname || "";
+    const yearValue = formData.year;
+    const trimValue = formData.trim || "";
+    const mileageValue = formData.mileage;
+    const notes = formData.notes || "";
+
+    // Validate required fields
+    if (!modelSlug) {
+      this.errorMessage = "Please select a model";
+      return;
+    }
+    if (!nickname) {
+      this.errorMessage = "Please enter a nickname";
+      return;
+    }
+    if (!yearValue) {
+      this.errorMessage = "Please enter a year";
+      return;
+    }
+    if (!trimValue) {
+      this.errorMessage = "Please select or enter a trim";
+      return;
+    }
+
+    // Convert year to number
+    let year: number;
+    if (typeof yearValue === "string") {
+      year = parseInt(yearValue, 10);
+      if (isNaN(year)) {
+        this.errorMessage = "Please enter a valid year";
         return;
       }
-
-      const url =
-        this.mode === "edit" && this.carData?.id
-          ? `/api/garage/${this.carData.id}`
-          : "/api/garage";
-
-      const response = await fetch(url, {
-        method: this.mode === "create" ? "POST" : "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          ...Auth.headers(this._user),
-        },
-        body: JSON.stringify(garageCar),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to save vehicle");
-      }
-
-      this.dispatchEvent(new CustomEvent("save-success"));
-      this.handleClose();
-    } catch (error) {
-      this.errorMessage =
-        error instanceof Error
-          ? error.message
-          : "An unexpected error occurred.";
-      console.error("Error saving garage car:", error);
-    } finally {
-      this.isLoading = false;
+    } else if (typeof yearValue === "number") {
+      year = yearValue;
+    } else {
+      this.errorMessage = "Please enter a valid year";
+      return;
     }
+
+    // Convert mileage to number if provided
+    let mileage: number | undefined;
+    if (mileageValue) {
+      if (typeof mileageValue === "string") {
+        mileage = parseInt(mileageValue, 10);
+        if (isNaN(mileage)) {
+          mileage = undefined;
+        }
+      } else if (typeof mileageValue === "number") {
+        mileage = mileageValue;
+      }
+    }
+
+    // Build garage car object
+    const garageCar: GarageCar = {
+      modelSlug,
+      modelName: this.selectedModel?.name || "",
+      nickname,
+      year,
+      trim: trimValue,
+      mileage,
+      notes,
+      username: this._user.username || "",
+    };
+
+    // If editing, include the _id
+    if (this.mode === "edit" && this.carData?.id) {
+      garageCar._id = this.carData.id;
+    }
+
+    console.log("Sending garage car:", garageCar);
+
+    this.dispatchMessage([
+      "garage/save",
+      { car: garageCar },
+      {
+        onSuccess: () => {
+          this.dispatchEvent(new CustomEvent("save-success"));
+          this.handleClose();
+        },
+        onFailure: (err: Error) => {
+          this.errorMessage = err.message || "Failed to save vehicle";
+          console.error("Error saving garage car:", err);
+        },
+      },
+    ]);
   }
 
   handleClose() {
@@ -178,7 +302,20 @@ export class GarageCarFormElement extends LitElement {
             ? html`<div class="error-message">${this.errorMessage}</div>`
             : ""}
 
-          <form @submit=${this.handleSubmit}>
+          <mu-form
+            .init=${this.carData
+              ? {
+                  modelSlug: this.carData.modelSlug,
+                  modelName: this.carData.modelName,
+                  nickname: this.carData.nickname,
+                  year: this.carData.year,
+                  trim: this.carData.trim,
+                  mileage: this.carData.mileage,
+                  notes: this.carData.notes,
+                }
+              : undefined}
+            @mu-form:submit=${this.handleSubmit}
+          >
             <label>
               <span>Select Model *</span>
               <select
@@ -275,17 +412,10 @@ export class GarageCarFormElement extends LitElement {
               ></textarea>
             </label>
 
-            <button type="submit" ?disabled=${this.isLoading}>
-              ${this.isLoading
-                ? "Saving..."
-                : this.mode === "create"
-                ? "Add to Garage"
-                : "Update Vehicle"}
-            </button>
             <button type="button" class="btn-cancel" @click=${this.handleClose}>
               Cancel
             </button>
-          </form>
+          </mu-form>
         </div>
       </div>
     `;
@@ -329,10 +459,38 @@ export class GarageCarFormElement extends LitElement {
       color: var(--color-text);
     }
 
-    form {
+    mu-form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+    }
+
+    /* Hide our custom submit button - use mu-form's default instead */
+    mu-form button.btn-submit {
+      display: none !important;
+    }
+
+    /* Style mu-form's default submit button */
+    mu-form button[type="submit"]:not(.btn-cancel) {
+      padding: 0.8rem 1.5rem;
+      background: #c41e3a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-family: inherit;
+    }
+
+    mu-form button[type="submit"]:not(.btn-cancel):hover:not(:disabled) {
+      background: #a01828;
+    }
+
+    mu-form button[type="submit"]:not(.btn-cancel):disabled {
+      background: #cccccc;
+      cursor: not-allowed;
     }
 
     label {
