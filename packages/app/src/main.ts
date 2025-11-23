@@ -1,4 +1,4 @@
-import { Auth, define, History, Switch, Store } from "@calpoly/mustang";
+import { Auth, define, Form, History, Switch, Store } from "@calpoly/mustang";
 import { html } from "lit";
 import { Msg } from "./messages";
 import { Model, init } from "./model";
@@ -46,6 +46,7 @@ const routes: Switch.Route[] = [
 define({
   "mu-auth": Auth.Provider,
   "mu-history": History.Provider,
+  "mu-form": Form.Element,
   "mu-store": class AppStore extends Store.Provider<Model, Msg> {
     constructor() {
       super(update, init, "throttle:auth");

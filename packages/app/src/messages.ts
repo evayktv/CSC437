@@ -5,7 +5,14 @@ import { CarModel, GarageCar } from "@csc437/server/models";
 export type Msg =
   | ["car-model/request", { slug: string }]
   | ["garage/request", {}]
-  | ["garage/save", { car: GarageCar }]
+  | [
+      "garage/save",
+      { car: GarageCar },
+      {
+        onSuccess?: () => void;
+        onFailure?: (err: Error) => void;
+      }
+    ]
   | ["garage/delete", { id: string }]
   | Cmd;
 
