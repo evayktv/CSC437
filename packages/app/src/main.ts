@@ -1,5 +1,8 @@
-import { Auth, define, History, Switch } from "@calpoly/mustang";
+import { Auth, define, History, Switch, Store } from "@calpoly/mustang";
 import { html } from "lit";
+import { Msg } from "./messages";
+import { Model, init } from "./model";
+import update from "./update";
 import { ThrottleHeaderElement } from "./components/throttle-header";
 import { CarCatalogElement } from "./components/car-catalog";
 import { CarModelCardElement } from "./components/car-model-card";
@@ -43,6 +46,11 @@ const routes: Switch.Route[] = [
 define({
   "mu-auth": Auth.Provider,
   "mu-history": History.Provider,
+  "mu-store": class AppStore extends Store.Provider<Model, Msg> {
+    constructor() {
+      super(update, init, "throttle:auth");
+    }
+  },
   "mu-switch": class AppSwitch extends Switch.Element {
     constructor() {
       super(routes, "throttle:history", "throttle:auth");
