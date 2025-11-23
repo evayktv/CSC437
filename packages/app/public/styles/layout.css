@@ -1,0 +1,201 @@
+/* Layout System - Mobile-first responsive grid and utilities */
+
+/* Container for readable line lengths */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+main.container {
+  padding-block: var(--space-lg);
+}
+
+/* Better section spacing */
+main.container section {
+  margin-bottom: var(--space-xl);
+}
+
+main.container section:last-child {
+  margin-bottom: 0;
+}
+
+/* Grid system - mobile-first */
+:where(.grid) {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: 1fr; /* Mobile: 1 column */
+}
+
+/* Tablet breakpoint - 8 columns */
+@media (min-width: 768px) {
+  :where(.grid) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+/* Desktop breakpoint - 12 columns */
+@media (min-width: 1024px) {
+  :where(.grid) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* Column span utilities */
+.col-full {
+  grid-column: 1 / -1;
+}
+
+/* Tablet column spans */
+@media (min-width: 768px) {
+  .col-half {
+    grid-column: span 4; /* 4/8 = 1/2 */
+  }
+  .col-third {
+    grid-column: span 2; /* 2/8 = 1/4, closest to 1/3 */
+  }
+}
+
+/* Desktop column spans */
+@media (min-width: 1024px) {
+  .col-half {
+    grid-column: span 6; /* 6/12 = 1/2 */
+  }
+  .col-third {
+    grid-column: span 4; /* 4/12 = 1/3 */
+  }
+  .col-quarter {
+    grid-column: span 3; /* 3/12 = 1/4 */
+  }
+}
+
+/* Card grid pattern for repeated items */
+.grid-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Single item centering */
+.grid-cards li:only-child {
+  justify-self: center;
+  max-width: 300px;
+}
+
+/* Card component */
+.card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border-muted);
+  border-radius: 8px;
+  background: var(--color-bg-section);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+}
+
+.card a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* Card content styling */
+.card strong {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.card small {
+  color: var(--color-text);
+  opacity: 0.8;
+  font-size: var(--fs-300);
+}
+
+.card svg.icon {
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+/* Header layout with flexbox */
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  min-height: 80px;
+}
+
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+header .brand h1 {
+  font-size: var(--fs-700);
+  margin: 0;
+}
+
+header > div:last-child {
+  flex: 1;
+  text-align: right;
+}
+
+header > div:last-child h2 {
+  font-size: var(--fs-800);
+  margin: 0 0 var(--space-xs) 0;
+}
+
+header > div:last-child p {
+  margin: 0;
+  font-size: var(--fs-400);
+}
+
+nav[aria-label="Breadcrumb"] {
+  width: 100%;
+  margin-top: var(--space-sm);
+  font-size: var(--fs-300);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Footer layout */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}

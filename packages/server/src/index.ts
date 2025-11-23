@@ -1,5 +1,7 @@
 // src/index.ts
 import express, { Request, Response } from "express";
+import fs from "node:fs/promises";
+import path from "path";
 import { connect } from "./services/mongo";
 import carsRouter from "./routes/cars";
 import garageRouter from "./routes/garage";
@@ -25,6 +27,12 @@ app.use("/api/garage", authenticateUser, garageRouter); // All routes protected
 // Health check endpoint
 app.get("/hello", (_req: Request, res: Response) => {
   res.send("Hello, World");
+});
+
+// SPA Routes: /app/...
+app.use("/app", (req: Request, res: Response) => {
+  const indexHtml = path.resolve(staticDir, "index.html");
+  fs.readFile(indexHtml, { encoding: "utf8" }).then((html) => res.send(html));
 });
 
 // Connect to MongoDB

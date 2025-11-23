@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login • Throttle Vault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <!-- Script will be updated by Vite build process -->
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+      .login-container {
+        max-width: 400px;
+        margin: 2rem auto;
+        padding: 2rem;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background: var(--color-background-card);
+      }
+
+      .login-container h2 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .login-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .login-container label {
+        font-weight: bold;
+      }
+
+      .login-container input {
+        padding: 0.75rem;
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .login-container button {
+        padding: 0.75rem;
+        background: var(--color-accent);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .login-container button:hover {
+        opacity: 0.9;
+      }
+
+      .error-message {
+        color: var(--color-error, #d32f2f);
+        padding: 0.5rem;
+        background: var(--color-error-bg, #ffebee);
+        border-radius: 4px;
+        text-align: center;
+      }
+
+      .toggle-mode {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .toggle-mode a {
+        color: var(--color-accent);
+        text-decoration: none;
+      }
+
+      .toggle-mode a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <mu-history provides="throttle:history" root="/app">
+      <mu-auth provides="throttle:auth" redirect="/login.html">
+        <header>
+          <h1>Throttle Vault</h1>
+          <p>Login to access high-performance specs</p>
+          <label class="dark-mode-toggle">
+            <input type="checkbox" autocomplete="off" />
+            Dark mode
+          </label>
+        </header>
+
+        <main class="container">
+          <div class="login-container">
+            <login-form api="/auth" redirect="/app"></login-form>
+          </div>
+        </main>
+
+        <footer>
+          <nav aria-label="Site">
+            <p>Throttle Vault • Authentication Required</p>
+          </nav>
+        </footer>
+      </mu-auth>
+    </mu-history>
+  </body>
+</html>
