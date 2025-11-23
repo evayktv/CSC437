@@ -8,6 +8,7 @@ interface Car {
   href: string;
   years: string;
   category: string;
+  image?: string | null;
 }
 
 export class CarCatalogElement extends LitElement {
@@ -49,7 +50,7 @@ export class CarCatalogElement extends LitElement {
               <car-model-card
                 icon="${car.icon}"
                 href="/app/models/${car.slug}"
-                years="${car.years}"
+                .image="${car.image || null}"
               >
                 ${car.name}
               </car-model-card>

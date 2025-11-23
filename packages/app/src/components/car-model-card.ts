@@ -8,19 +8,42 @@ export class CarModelCardElement extends LitElement {
   @property()
   href?: string;
 
-  @property()
-  years?: string;
+  @property({ type: String })
+  image?: string | null;
 
   override render() {
     return html`
       <a href="${this.href}" class="card-link">
-        <svg class="icon" aria-hidden="true" focusable="false">
-          <use href="/icons/vehicles.svg#${this.icon}" />
-        </svg>
+        ${this.image
+          ? html`
+              <div class="card-image">
+                <img
+                  src="${this.image}"
+                  alt=""
+                  @error=${(e: Event) => {
+                    const img = e.target as HTMLImageElement;
+                    img.style.display = "none";
+                    // Fallback to icon if image fails
+                    const fallback = this.shadowRoot?.querySelector(
+                      ".icon-fallback"
+                    ) as HTMLElement;
+                    if (fallback) fallback.style.display = "block";
+                  }}
+                />
+              </div>
+            `
+          : html`
+              <svg
+                class="icon icon-fallback"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/icons/vehicles.svg#${this.icon}" />
+              </svg>
+            `}
         <span class="title">
           <slot></slot>
         </span>
-        <small>(history: ${this.years} modern gen)</small>
       </a>
     `;
   }
@@ -76,8 +99,30 @@ export class CarModelCardElement extends LitElement {
       transform: scaleX(1);
     }
 
-    svg.icon {
-      display: block;
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--color-bg-hover);
+      margin-bottom: var(--space-md);
+      position: relative;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+
+    a.card-link:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    svg.icon,
+    svg.icon-fallback {
+      display: none;
       height: 3em;
       width: 3em;
       fill: currentColor;
@@ -86,26 +131,25 @@ export class CarModelCardElement extends LitElement {
       transition: transform var(--transition-base);
     }
 
-    a.card-link:hover svg.icon {
+    svg.icon-fallback {
+      display: block;
+    }
+
+    a.card-link:hover svg.icon,
+    a.card-link:hover svg.icon-fallback {
       transform: scale(1.1) rotate(5deg);
     }
 
     .title {
       color: var(--color-text);
       font-weight: var(--font-weight-bold);
-      font-size: var(--fs-500);
+      font-size: var(--fs-600);
       line-height: 1.3;
       transition: color var(--transition-base);
     }
 
     a.card-link:hover .title {
       color: var(--color-accent);
-    }
-
-    small {
-      color: var(--color-text-muted);
-      font-size: var(--fs-300);
-      font-weight: 500;
     }
   `;
 }

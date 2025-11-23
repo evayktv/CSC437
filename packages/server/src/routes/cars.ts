@@ -17,6 +17,7 @@ router.get("/", async (_req: Request, res: Response) => {
       icon: m.icon,
       href: m.href,
       years: m.years,
+      image: m.images?.hero || null,
     }));
     res.json(catalog);
   } catch (err) {

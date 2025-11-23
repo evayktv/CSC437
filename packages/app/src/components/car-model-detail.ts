@@ -203,8 +203,8 @@ export class CarModelDetailElement extends LitElement {
             ?disabled=${!this._user.authenticated}
           >
             ${this._user.authenticated
-              ? html`🚗 Add to My Garage`
-              : html`🔒 Sign In to Add`}
+              ? html`Add to My Garage`
+              : html`Sign In to Add`}
           </button>
         </div>
       </div>
@@ -508,13 +508,13 @@ export class CarModelDetailElement extends LitElement {
     }
 
     .btn-hero-action {
-      padding: 1rem 2rem;
-      background: var(--color-accent-gradient);
+      padding: 1.25rem 2.5rem;
+      background: var(--color-accent);
       color: var(--color-text-inverted);
-      border: none;
-      border-radius: var(--radius-md);
-      font-size: var(--fs-400);
-      font-weight: var(--font-weight-semibold);
+      border: 2px solid var(--color-accent);
+      border-radius: var(--radius-lg);
+      font-size: var(--fs-500);
+      font-weight: var(--font-weight-bold);
       cursor: pointer;
       font-family: inherit;
       transition: all var(--transition-base);
@@ -522,34 +522,47 @@ export class CarModelDetailElement extends LitElement {
       white-space: nowrap;
       position: relative;
       overflow: hidden;
+      letter-spacing: 0.02em;
     }
 
     .btn-hero-action::before {
       content: "";
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
     }
 
     .btn-hero-action:hover:not(:disabled)::before {
-      width: 300px;
-      height: 300px;
+      left: 100%;
     }
 
     .btn-hero-action:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px 0 rgba(196, 30, 58, 0.4);
+      background: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px 0 rgba(196, 30, 58, 0.5);
+    }
+
+    .btn-hero-action:active:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px 0 rgba(196, 30, 58, 0.4);
     }
 
     .btn-hero-action:disabled {
-      opacity: 0.6;
+      opacity: 0.5;
       cursor: not-allowed;
+      background: var(--color-bg-hover);
+      border-color: var(--color-border-muted);
+      color: var(--color-text-muted);
     }
 
     /* Gallery Section */
