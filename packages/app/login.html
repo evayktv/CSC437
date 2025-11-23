@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
-    <script src="/scripts/dark-mode.js" defer></script>
+    <!-- Script will be updated by Vite build process -->
     <script type="module" src="/src/main.ts"></script>
     <style>
       .login-container {
@@ -86,8 +85,8 @@
     </style>
   </head>
   <body>
-    <mu-history provides="my:history" root="/app">
-      <mu-auth provides="my:auth" redirect="/login.html">
+    <mu-history provides="throttle:history" root="/app">
+      <mu-auth provides="throttle:auth" redirect="/login.html">
         <header>
           <h1>Throttle Vault</h1>
           <p>Login to access high-performance specs</p>
@@ -99,7 +98,7 @@
 
         <main class="container">
           <div class="login-container">
-            <login-form api="/auth" redirect="/"></login-form>
+            <login-form api="/auth" redirect="/app"></login-form>
           </div>
         </main>
 

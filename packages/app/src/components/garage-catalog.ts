@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
-import { Auth, Observer } from "@calpoly/mustang";
+import { Auth, History, Observer } from "@calpoly/mustang";
 import type { GarageCarFormData } from "./garage-car-form";
 
 interface GarageCar {
@@ -31,7 +31,7 @@ export class GarageCatalogElement extends LitElement {
   private editingCar?: GarageCarFormData;
 
   _user = new Auth.User();
-  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+  _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
 
   connectedCallback() {
     super.connectedCallback();
@@ -56,7 +56,7 @@ export class GarageCatalogElement extends LitElement {
 
   hydrate(src: string) {
     if (!this._user.authenticated) {
-      window.location.href = "/login.html";
+      History.dispatch(this, "history/navigate", { href: "/app/login" });
       return;
     }
 
@@ -65,7 +65,7 @@ export class GarageCatalogElement extends LitElement {
     })
       .then((res) => {
         if (res.status === 401) {
-          window.location.href = "/login.html";
+          History.dispatch(this, "history/navigate", { href: "/app/login" });
           throw new Error("Unauthorized");
         }
         if (res.ok) {

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import { state } from "lit/decorators.js";
-import { Auth, Observer } from "@calpoly/mustang";
+import { property, state } from "lit/decorators.js";
+import { Auth, History, Observer } from "@calpoly/mustang";
 
 interface CarModel {
   slug: string;
@@ -33,6 +33,9 @@ interface CarModel {
 }
 
 export class CarModelDetailElement extends LitElement {
+  @property()
+  slug?: string;
+
   @state()
   car: CarModel | null = null;
 
@@ -43,7 +46,7 @@ export class CarModelDetailElement extends LitElement {
   error: string | null = null;
 
   _user = new Auth.User();
-  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+  _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
 
   connectedCallback() {
     super.connectedCallback();
@@ -57,16 +60,25 @@ export class CarModelDetailElement extends LitElement {
     this.loadCarData();
   }
 
+  updated(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has("slug")) {
+      this.loadCarData();
+    }
+  }
+
   loadCarData() {
-    // Get the 'car' parameter from URL (?car=challenger)
-    const params = new URLSearchParams(window.location.search);
-    const carSlug = params.get("car");
+    // Get slug from property (from route) or fallback to URL param for backwards compatibility
+    const carSlug =
+      this.slug || new URLSearchParams(window.location.search).get("car");
 
     if (!carSlug) {
-      this.error = "No car specified in URL";
+      this.error = "No car specified";
       this.loading = false;
       return;
     }
+
+    this.loading = true;
+    this.error = null;
 
     // Fetch from API (no auth needed for GET)
     fetch(`/api/cars/${carSlug}`)
@@ -98,14 +110,18 @@ export class CarModelDetailElement extends LitElement {
   handleAddToGarage() {
     if (!this._user.authenticated) {
       // Redirect to login if not authenticated
-      window.location.href = "/login.html";
+      History.dispatch(this, "history/navigate", { href: "/login.html" });
       return;
     }
 
-    // Redirect to garage page with model slug as query param
-    const params = new URLSearchParams(window.location.search);
-    const carSlug = params.get("car");
-    window.location.href = `/garage.html?add=${carSlug}`;
+    // Navigate to garage page with model slug as query param
+    const carSlug =
+      this.slug || new URLSearchParams(window.location.search).get("car");
+    if (carSlug) {
+      History.dispatch(this, "history/navigate", {
+        href: `/app/garage?add=${carSlug}`,
+      });
+    }
   }
 
   render() {

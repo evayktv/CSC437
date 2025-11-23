@@ -39,7 +39,7 @@ export class GarageCarFormElement extends LitElement {
   private selectedModel: CarModel | null = null;
 
   _user = new Auth.User();
-  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+  _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
 
   async connectedCallback() {
     super.connectedCallback();

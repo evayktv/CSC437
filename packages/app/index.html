@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Throttle Vault • High-Performance Car Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@700;800&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <mu-history provides="throttle:history">
+      <mu-auth provides="throttle:auth" redirect="/app/login">
+        <article class="page">
+          <throttle-header></throttle-header>
+          <mu-switch></mu-switch>
+        </article>
+      </mu-auth>
+    </mu-history>
+  </body>
+</html>
