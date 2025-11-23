@@ -27,8 +27,7 @@ export default function update(
       return { ...model, carModel };
     }
     case "garage/request": {
-      // Don't re-fetch if we already have garage cars
-      if (model.garageCars) break;
+      // Always fetch garage cars to ensure fresh data
       return [
         model,
         requestGarage(user).then((cars) => ["garage/load", { cars }]),

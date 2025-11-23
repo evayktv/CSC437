@@ -85,12 +85,6 @@ export class CarModelDetailElement extends LitElement {
 
         // Update page title
         document.title = `${data.name} • Throttle Vault`;
-
-        // Update header elements
-        const carName = document.getElementById("car-name");
-        const carTitle = document.querySelector("#car-title span");
-        if (carName) carName.textContent = data.name;
-        if (carTitle) carTitle.textContent = data.name;
       })
       .catch((err) => {
         this.error = err.message;

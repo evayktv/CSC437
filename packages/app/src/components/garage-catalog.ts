@@ -1,24 +1,11 @@
 import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
 import { Auth, History, Observer } from "@calpoly/mustang";
+import { GarageCar } from "@csc437/server/models";
 import type { GarageCarFormData } from "./garage-car-form";
 
-interface GarageCar {
-  _id: string;
-  modelSlug: string;
-  modelName: string;
-  nickname: string;
-  year: number;
-  trim: string;
-  mileage?: number;
-  notes: string;
-}
-
 export class GarageCatalogElement extends LitElement {
-  @property()
-  src?: string;
-
-  @state()
+  @property({ type: Array })
   cars: Array<GarageCar> = [];
 
   @state()
@@ -39,7 +26,6 @@ export class GarageCatalogElement extends LitElement {
     this._authObserver.observe(({ user }) => {
       if (user) {
         this._user = user;
-        if (this.src) this.hydrate(this.src);
       }
     });
 
@@ -49,36 +35,11 @@ export class GarageCatalogElement extends LitElement {
     if (addModelSlug) {
       // Pre-populate form with model
       this.handleAddFromModel(addModelSlug);
-      // Remove query param
-      window.history.replaceState({}, "", window.location.pathname);
-    }
-  }
-
-  hydrate(src: string) {
-    if (!this._user.authenticated) {
-      History.dispatch(this, "history/navigate", { href: "/app/login" });
-      return;
-    }
-
-    fetch(src, {
-      headers: Auth.headers(this._user),
-    })
-      .then((res) => {
-        if (res.status === 401) {
-          History.dispatch(this, "history/navigate", { href: "/app/login" });
-          throw new Error("Unauthorized");
-        }
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error(`Failed to fetch: ${res.status}`);
-      })
-      .then((json: Array<GarageCar>) => {
-        this.cars = json;
-      })
-      .catch((error) => {
-        console.error("Error fetching garage cars:", error);
+      // Remove query param using History.dispatch
+      History.dispatch(this, "history/navigate", {
+        href: window.location.pathname,
       });
+    }
   }
 
   render() {
@@ -184,39 +145,31 @@ export class GarageCatalogElement extends LitElement {
   handleEdit(car: GarageCar) {
     this.formMode = "edit";
     this.editingCar = {
-      id: car._id,
+      id: car._id || "",
       modelSlug: car.modelSlug,
       modelName: car.modelName,
       nickname: car.nickname,
       year: car.year,
       trim: car.trim,
       mileage: car.mileage,
-      notes: car.notes,
+      notes: car.notes || "",
     };
     this.showForm = true;
   }
 
-  async handleDelete(car: GarageCar) {
+  handleDelete(car: GarageCar) {
     if (!confirm(`Remove "${car.nickname}" from your garage?`)) {
       return;
     }
 
-    try {
-      const response = await fetch(`/api/garage/${car._id}`, {
-        method: "DELETE",
-        headers: Auth.headers(this._user),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete vehicle");
-      }
-
-      // Refresh the list
-      if (this.src) this.hydrate(this.src);
-    } catch (error) {
-      alert("Failed to remove vehicle. Please try again.");
-      console.error(error);
-    }
+    // Dispatch custom event to parent view to handle deletion
+    this.dispatchEvent(
+      new CustomEvent("garage-delete", {
+        detail: { id: car._id },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   handleCloseForm() {
@@ -225,8 +178,13 @@ export class GarageCatalogElement extends LitElement {
   }
 
   handleSaveSuccess() {
-    // Refresh the list
-    if (this.src) this.hydrate(this.src);
+    // Dispatch custom event to parent view to refresh data
+    this.dispatchEvent(
+      new CustomEvent("garage-refresh", {
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   static styles = css`
