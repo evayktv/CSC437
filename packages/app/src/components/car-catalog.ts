@@ -24,6 +24,9 @@ export class CarCatalogElement extends LitElement {
   @state()
   sortBy: "alphabetical" | "default" = "default";
 
+  @state()
+  searchQuery: string = "";
+
   connectedCallback() {
     super.connectedCallback();
     if (this.src) this.hydrate(this.src);
@@ -75,6 +78,14 @@ export class CarCatalogElement extends LitElement {
   getFilteredAndSortedCars(): Array<Car> {
     let filtered = this.cars;
 
+    // Filter by search query (case-insensitive)
+    if (this.searchQuery.trim()) {
+      const query = this.searchQuery.toLowerCase().trim();
+      filtered = filtered.filter((car) =>
+        car.name.toLowerCase().includes(query)
+      );
+    }
+
     // Filter by category
     if (this.selectedCategory !== "all") {
       filtered = filtered.filter(
@@ -100,12 +111,29 @@ export class CarCatalogElement extends LitElement {
     this.sortBy = select.value as "alphabetical" | "default";
   };
 
+  handleSearchChange = (e: Event) => {
+    const input = e.target as HTMLInputElement;
+    this.searchQuery = input.value;
+  };
+
   render() {
     const filteredCars = this.getFilteredAndSortedCars();
     const categories = this.getUniqueCategories();
 
     return html`
       <div class="filters-container">
+        <div class="filter-group filter-group-search">
+          <label for="search-input">Search:</label>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search by car name..."
+            .value=${this.searchQuery}
+            @input=${this.handleSearchChange}
+          />
+        </div>
+
         <div class="filter-group">
           <label for="category-filter">Filter by Type:</label>
           <select
@@ -184,6 +212,11 @@ export class CarCatalogElement extends LitElement {
       min-width: 150px;
     }
 
+    .filter-group-search {
+      flex: 2;
+      min-width: 200px;
+    }
+
     .filter-group label {
       font-size: var(--fs-300);
       font-weight: var(--font-weight-semibold);
@@ -209,6 +242,31 @@ export class CarCatalogElement extends LitElement {
     }
 
     .filter-select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-accent-light);
+    }
+
+    .search-input {
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: var(--fs-400);
+      font-family: inherit;
+      transition: all var(--transition-base);
+    }
+
+    .search-input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .search-input:hover {
+      border-color: var(--color-accent);
+    }
+
+    .search-input:focus {
       outline: none;
       border-color: var(--color-accent);
       box-shadow: 0 0 0 3px var(--color-accent-light);
