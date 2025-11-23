@@ -393,13 +393,21 @@ export class GarageCatalogElement extends LitElement {
     }
 
     .btn-edit:hover {
-      background: #fff3cd;
+      background: rgba(255, 193, 7, 0.15);
       box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
     }
 
     .btn-delete:hover {
-      background: #ffebee;
+      background: rgba(244, 67, 54, 0.15);
       box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    }
+
+    :host-context(body.dark-mode) .btn-edit:hover {
+      background: rgba(255, 193, 7, 0.25);
+    }
+
+    :host-context(body.dark-mode) .btn-delete:hover {
+      background: rgba(244, 67, 54, 0.25);
     }
   `;
 }

@@ -190,8 +190,8 @@ export class LoginFormElement extends LitElement {
     .error-message {
       color: #d32f2f;
       padding: 0.875rem 1.25rem;
-      background: #ffebee;
-      border: 2px solid #ef9a9a;
+      background: rgba(255, 235, 238, 0.8);
+      border: 2px solid rgba(239, 154, 154, 0.6);
       border-radius: var(--radius-md);
       text-align: center;
       font-weight: var(--font-weight-semibold);
@@ -199,6 +199,12 @@ export class LoginFormElement extends LitElement {
       margin-bottom: var(--space-md);
       animation: shake 0.3s ease-in-out;
       box-shadow: var(--shadow-sm);
+    }
+
+    :host-context(body.dark-mode) .error-message {
+      background: rgba(211, 47, 47, 0.15);
+      border-color: rgba(239, 154, 154, 0.4);
+      color: #ff6b7a;
     }
 
     @keyframes shake {

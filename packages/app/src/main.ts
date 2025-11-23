@@ -3,7 +3,7 @@ import { html } from "lit";
 import { Msg } from "./messages";
 import { Model, init } from "./model";
 import update from "./update";
-import { ThrottleHeaderElement } from "./components/throttle-header";
+import { RidefolioHeaderElement } from "./components/throttle-header";
 import { CarCatalogElement } from "./components/car-catalog";
 import { CarModelCardElement } from "./components/car-model-card";
 import { CarModelDetailElement } from "./components/car-model-detail";
@@ -57,7 +57,7 @@ define({
       super(routes, "throttle:history", "throttle:auth");
     }
   },
-  "throttle-header": ThrottleHeaderElement,
+  "ridefolio-header": RidefolioHeaderElement,
   "car-catalog": CarCatalogElement,
   "car-model-card": CarModelCardElement,
   "car-model-detail": CarModelDetailElement,

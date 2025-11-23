@@ -47,7 +47,7 @@ export class CarModelDetailElement extends LitElement {
       this.loading = false;
       this.error = null;
       // Update page title
-      document.title = `${this.carModel.name} • Throttle Vault`;
+      document.title = `${this.carModel.name} • Ridefolio`;
       return;
     }
 
@@ -84,7 +84,7 @@ export class CarModelDetailElement extends LitElement {
         this.loading = false;
 
         // Update page title
-        document.title = `${data.name} • Throttle Vault`;
+        document.title = `${data.name} • Ridefolio`;
       })
       .catch((err) => {
         this.error = err.message;

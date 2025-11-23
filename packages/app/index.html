@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Throttle Vault • High-Performance Car Catalog</title>
+    <title>Ridefolio • High-Performance Car Catalog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
+    <script src="/scripts/dark-mode.js" defer></script>
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
@@ -19,7 +20,7 @@
       <mu-auth provides="throttle:auth" redirect="/app/login">
         <mu-store provides="throttle:model">
           <article class="page">
-            <throttle-header></throttle-header>
+            <ridefolio-header></ridefolio-header>
             <mu-switch></mu-switch>
           </article>
         </mu-store>
