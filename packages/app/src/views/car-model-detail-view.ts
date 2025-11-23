@@ -40,10 +40,6 @@ export class CarModelDetailViewElement extends View<Model, Msg> {
 
     return html`
       <main class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/app">Models</a> ▸
-          <strong>${this.carModel.name}</strong>
-        </nav>
         <car-model-detail .carModel=${this.carModel}></car-model-detail>
       </main>
     `;
@@ -58,19 +54,6 @@ export class CarModelDetailViewElement extends View<Model, Msg> {
       padding: 2rem;
       max-width: 1200px;
       margin: 0 auto;
-    }
-
-    nav.breadcrumb {
-      margin-bottom: 1rem;
-    }
-
-    nav.breadcrumb a {
-      color: var(--color-accent, #c41e3a);
-      text-decoration: none;
-    }
-
-    nav.breadcrumb a:hover {
-      text-decoration: underline;
     }
   `;
 }

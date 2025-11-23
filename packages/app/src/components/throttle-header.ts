@@ -66,7 +66,17 @@ export class RidefolioHeaderElement extends LitElement {
       <header>
         <div class="header-content">
           <div class="header-left">
-            <h1>Ridefolio</h1>
+            <h1>
+              <a
+                href="/app"
+                class="logo-link"
+                @click=${(e: Event) => {
+                  e.preventDefault();
+                  History.dispatch(this, "history/navigate", { href: "/app" });
+                }}
+                >Ridefolio</a
+              >
+            </h1>
           </div>
           <div class="header-right">
             <a href="/app" class="nav-box">Models</a>
@@ -145,8 +155,24 @@ export class RidefolioHeaderElement extends LitElement {
       margin: 0;
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 800;
-      color: var(--color-text-inverted);
       letter-spacing: -0.02em;
+    }
+
+    .logo-link {
+      color: var(--color-text-inverted);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      display: inline-block;
+    }
+
+    .logo-link:hover {
+      color: var(--color-accent-light);
+      transform: scale(1.02);
+    }
+
+    .logo-link:active {
+      transform: scale(0.98);
     }
 
     .header-right {

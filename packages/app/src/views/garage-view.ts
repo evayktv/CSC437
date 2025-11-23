@@ -52,11 +52,6 @@ export class GarageViewElement extends View<Model, Msg> {
   render() {
     return html`
       <main class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/app">Models</a> ▸
-          <strong>My Garage</strong>
-        </nav>
-
         <section aria-labelledby="garage">
           <h2 id="garage">Your Vehicles</h2>
           <garage-catalog .cars=${this.garageCars}></garage-catalog>
@@ -74,19 +69,6 @@ export class GarageViewElement extends View<Model, Msg> {
       padding: 2rem;
       max-width: 1200px;
       margin: 0 auto;
-    }
-
-    nav.breadcrumb {
-      margin-bottom: 1rem;
-    }
-
-    nav.breadcrumb a {
-      color: var(--color-accent, #c41e3a);
-      text-decoration: none;
-    }
-
-    nav.breadcrumb a:hover {
-      text-decoration: underline;
     }
 
     h2 {
