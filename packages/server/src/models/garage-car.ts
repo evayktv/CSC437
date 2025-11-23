@@ -1,4 +1,13 @@
 // src/models/garage-car.ts
+export interface ServiceLog {
+  _id?: string;
+  date: Date;
+  mileage?: number;
+  service: string;
+  cost?: number;
+  notes?: string;
+}
+
 export interface GarageCar {
   _id?: string;
   username: string;
@@ -10,4 +19,5 @@ export interface GarageCar {
   mileage?: number;
   notes: string;
   dateAdded?: Date;
+  serviceLogs?: ServiceLog[];
 }

@@ -1,6 +1,17 @@
 // src/services/garage-car-svc.ts
 import { Schema, model } from "mongoose";
-import { GarageCar } from "../models/garage-car";
+import { GarageCar, ServiceLog } from "../models/garage-car";
+
+const ServiceLogSchema = new Schema<ServiceLog>(
+  {
+    date: { type: Date, required: true },
+    service: { type: String, required: true, trim: true },
+    mileage: { type: Number },
+    cost: { type: Number },
+    notes: { type: String },
+  },
+  { _id: true }
+);
 
 const GarageCarSchema = new Schema<GarageCar>(
   {
@@ -13,6 +24,7 @@ const GarageCarSchema = new Schema<GarageCar>(
     mileage: { type: Number },
     notes: { type: String, default: "" },
     dateAdded: { type: Date, default: Date.now },
+    serviceLogs: { type: [ServiceLogSchema], default: [] },
   },
   {
     collection: "garage_cars",
@@ -38,7 +50,7 @@ function create(garageCar: GarageCar): Promise<GarageCar> {
 }
 
 // Update a garage car
-function update(id: string, garageCar: GarageCar): Promise<GarageCar> {
+function update(id: string, garageCar: Partial<GarageCar>): Promise<GarageCar> {
   return GarageCarModel.findByIdAndUpdate(id, garageCar, {
     new: true,
   }).then((updated) => {

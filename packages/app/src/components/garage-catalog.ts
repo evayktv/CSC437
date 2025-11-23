@@ -17,6 +17,9 @@ export class GarageCatalogElement extends LitElement {
   @state()
   private editingCar?: GarageCarFormData;
 
+  @state()
+  private carImages: Map<string, string> = new Map();
+
   _user = new Auth.User();
   _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
 
@@ -42,6 +45,40 @@ export class GarageCatalogElement extends LitElement {
     }
   }
 
+  updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // Load images when cars change
+    if (changedProperties.has("cars")) {
+      this.loadCarImages();
+    }
+  }
+
+  private async loadCarImages() {
+    if (!this.cars || this.cars.length === 0) return;
+
+    // Load images for all cars
+    const imagePromises = this.cars.map(async (car) => {
+      if (this.carImages.has(car._id || "")) return; // Already loaded
+
+      try {
+        const response = await fetch(`/api/cars/${car.modelSlug}`);
+        if (response.ok) {
+          const model = await response.json();
+          const image =
+            model.images?.trims?.[car.trim] || model.images?.hero || null;
+          if (image && car._id) {
+            this.carImages.set(car._id, image);
+            this.requestUpdate();
+          }
+        }
+      } catch (error) {
+        console.error(`Failed to load image for ${car.modelSlug}:`, error);
+      }
+    });
+
+    await Promise.all(imagePromises);
+  }
+
   render() {
     return html`
       <div class="catalog-header">
@@ -59,44 +96,75 @@ export class GarageCatalogElement extends LitElement {
           `
         : html`
             <ul class="grid-cards">
-              ${this.cars.map(
-                (car) => html`
+              ${this.cars.map((car) => {
+                const image = car._id ? this.carImages.get(car._id) : null;
+                return html`
                   <li class="car-card">
-                    <article class="garage-card">
-                      <h3>${car.nickname}</h3>
-                      <p class="model">${car.modelName}</p>
-                      <dl>
-                        <dt>Year:</dt>
-                        <dd>${car.year}</dd>
-                        <dt>Trim:</dt>
-                        <dd>${car.trim}</dd>
-                        ${car.mileage
-                          ? html`
-                              <dt>Mileage:</dt>
-                              <dd>${car.mileage.toLocaleString()} mi</dd>
-                            `
-                          : ""}
-                      </dl>
+                    <article
+                      class="garage-card"
+                      @click=${(e: Event) => {
+                        // Don't navigate if clicking on action buttons
+                        if (
+                          (e.target as HTMLElement).closest(".card-actions")
+                        ) {
+                          return;
+                        }
+                        if (car._id) {
+                          History.dispatch(this, "history/navigate", {
+                            href: `/app/garage/${car._id}`,
+                          });
+                        }
+                      }}
+                    >
+                      ${image
+                        ? html`
+                            <div class="card-image">
+                              <img src="${image}" alt="${car.modelName}" />
+                            </div>
+                          `
+                        : ""}
+                      <div class="card-content">
+                        <h3>${car.nickname}</h3>
+                        <p class="model">${car.modelName}</p>
+                        <dl>
+                          <dt>Year:</dt>
+                          <dd>${car.year}</dd>
+                          <dt>Trim:</dt>
+                          <dd>${car.trim}</dd>
+                          ${car.mileage
+                            ? html`
+                                <dt>Mileage:</dt>
+                                <dd>${car.mileage.toLocaleString()} mi</dd>
+                              `
+                            : ""}
+                        </dl>
+                      </div>
                     </article>
                     <div class="card-actions">
                       <button
                         class="btn-icon btn-edit"
-                        @click=${() => this.handleEdit(car)}
+                        @click=${(e: Event) => {
+                          e.stopPropagation();
+                          this.handleEdit(car);
+                        }}
                         title="Edit vehicle"
                       >
                         ✏️
                       </button>
                       <button
                         class="btn-icon btn-delete"
-                        @click=${() => this.handleDelete(car)}
+                        @click=${(e: Event) => {
+                          e.stopPropagation();
+                          this.handleDelete(car);
+                        }}
                         title="Remove from garage"
                       >
                         🗑️
                       </button>
                     </div>
                   </li>
-                `
-              )}
+                `;
+              })}
             </ul>
           `}
       ${this.showForm
@@ -290,13 +358,43 @@ export class GarageCatalogElement extends LitElement {
     }
 
     .garage-card {
-      padding: var(--space-xl);
+      padding: 0;
       border: 1px solid var(--color-border-muted);
       border-radius: var(--radius-lg);
       background: var(--color-bg-card);
       transition: all var(--transition-base);
+      cursor: pointer;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--color-bg-hover);
+      position: relative;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+
+    li.car-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: var(--space-xl);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .garage-card::before {

@@ -10,10 +10,12 @@ import { CarModelDetailElement } from "./components/car-model-detail";
 import { LoginFormElement } from "./components/login-form";
 import { GarageCatalogElement } from "./components/garage-catalog";
 import { GarageCarFormElement } from "./components/garage-car-form";
+import { ServiceLogFormElement } from "./components/service-log-form";
 import { HomeViewElement } from "./views/home-view";
 import { CarModelDetailViewElement } from "./views/car-model-detail-view";
 import { LoginViewElement } from "./views/login-view";
 import { GarageViewElement } from "./views/garage-view";
+import { GarageCarDetailViewElement } from "./views/garage-car-detail-view";
 
 const routes: Switch.Route[] = [
   {
@@ -21,6 +23,14 @@ const routes: Switch.Route[] = [
     view: (params: Switch.Params) =>
       html`<car-model-detail-view slug=${params.slug}></car-model-detail-view>`,
     auth: "public" as const,
+  },
+  {
+    path: "/app/garage/:id",
+    view: (params: Switch.Params) =>
+      html`<garage-car-detail-view
+        car-id=${params.id}
+      ></garage-car-detail-view>`,
+    auth: "protected" as const,
   },
   {
     path: "/app/garage",
@@ -66,6 +76,8 @@ define({
   "login-view": LoginViewElement,
   "garage-catalog": GarageCatalogElement,
   "garage-car-form": GarageCarFormElement,
+  "garage-car-detail-view": GarageCarDetailViewElement,
+  "service-log-form": ServiceLogFormElement,
   "garage-view": GarageViewElement,
   "home-view": HomeViewElement,
 });
