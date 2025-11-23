@@ -130,6 +130,13 @@ export class CarModelDetailElement extends LitElement {
     const categoryMap: { [key: string]: string } = {
       "muscle-car": "American Muscle",
       "sports-car": "Sports Car",
+      "german-sports": "German Sports",
+      "japanese-sports": "Japanese Sports",
+      "american-sports": "American Sports",
+      "korean-sports": "Korean Sports",
+      "luxury-sports": "Luxury Sports",
+      "luxury-sedan": "Luxury Sedan",
+      supercar: "Supercar",
       suv: "SUV",
       coupe: "Coupe",
       electric: "Electric",
