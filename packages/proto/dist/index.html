@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="/styles/page.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
     <script src="/scripts/dark-mode.js" defer></script>
-    <script type="module" crossorigin src="/assets/main-ZZ-oJ5zH.js"></script>
+    <script type="module" crossorigin src="/assets/main-CJRX7UJY.js"></script>
   </head>
   <body>
+    <mu-history provides="my:history" root="/app">
+      <mu-auth provides="my:auth" redirect="/login.html">
     <header>
       <div class="header-content">
         <div class="header-left">
@@ -26,28 +28,9 @@
         <div class="header-right">
           <nav class="main-nav">
             <a href="/index.html">Models</a>
-            <a href="/garage.html" id="garage-link" style="display: none"
-              >My Garage</a
-            >
+            <a href="/garage.html">My Garage</a>
           </nav>
-          <div id="auth-status" class="auth-status">
-            <span id="auth-message">Login to access your garage</span>
-            <button
-              id="sign-in-btn"
-              class="sign-in-btn"
-              onclick="window.location.href='/login.html'"
-            >
-              Sign In
-            </button>
-            <span id="username-display" style="display: none"></span>
-            <button
-              id="sign-out-btn"
-              class="sign-out-btn"
-              style="display: none"
-            >
-              Sign Out
-            </button>
-          </div>
+          <auth-status></auth-status>
           <label class="dark-mode-toggle">
             <input type="checkbox" autocomplete="off" />
             Dark mode
@@ -140,42 +123,6 @@
         }
       }
     </style>
-    <script>
-      // Check authentication status
-      document.addEventListener("DOMContentLoaded", () => {
-        const token = localStorage.getItem("auth_token");
-        const username = localStorage.getItem("username");
-        const usernameDisplay = document.getElementById("username-display");
-        const signOutBtn = document.getElementById("sign-out-btn");
-        const signInBtn = document.getElementById("sign-in-btn");
-        const authMessage = document.getElementById("auth-message");
-        const garageLink = document.getElementById("garage-link");
-
-        if (token && username) {
-          // User is logged in - show username and sign out
-          authMessage.style.display = "none";
-          signInBtn.style.display = "none";
-          usernameDisplay.textContent = `Welcome, ${username}`;
-          usernameDisplay.style.display = "block";
-          signOutBtn.style.display = "block";
-          if (garageLink) garageLink.style.display = "block";
-        } else {
-          // User is not logged in - show sign in button and message
-          authMessage.style.display = "block";
-          signInBtn.style.display = "block";
-          usernameDisplay.style.display = "none";
-          signOutBtn.style.display = "none";
-          if (garageLink) garageLink.style.display = "none";
-        }
-
-        // Handle sign out
-        signOutBtn.addEventListener("click", () => {
-          localStorage.removeItem("auth_token");
-          localStorage.removeItem("username");
-          window.location.href = "/login.html";
-        });
-      });
-    </script>
 
     <main class="container">
       <section aria-labelledby="models">
@@ -192,5 +139,7 @@
         </p>
       </nav>
     </footer>
+      </mu-auth>
+    </mu-history>
   </body>
 </html>

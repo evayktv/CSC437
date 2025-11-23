@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 
 interface CarModel {
   slug: string;
@@ -41,8 +42,18 @@ export class CarModelDetailElement extends LitElement {
   @state()
   error: string | null = null;
 
+  _user = new Auth.User();
+  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+
   connectedCallback() {
     super.connectedCallback();
+
+    this._authObserver.observe(({ user }) => {
+      if (user) {
+        this._user = user;
+      }
+    });
+
     this.loadCarData();
   }
 
@@ -85,8 +96,7 @@ export class CarModelDetailElement extends LitElement {
   }
 
   handleAddToGarage() {
-    const token = localStorage.getItem("auth_token");
-    if (!token) {
+    if (!this._user.authenticated) {
       // Redirect to login if not authenticated
       window.location.href = "/login.html";
       return;

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 
 export interface GarageCarFormData {
   id?: string;
@@ -37,8 +38,18 @@ export class GarageCarFormElement extends LitElement {
   @state()
   private selectedModel: CarModel | null = null;
 
+  _user = new Auth.User();
+  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+
   async connectedCallback() {
     super.connectedCallback();
+
+    this._authObserver.observe(({ user }) => {
+      if (user) {
+        this._user = user;
+      }
+    });
+
     // Load available models
     try {
       const response = await fetch("/api/cars");
@@ -114,9 +125,8 @@ export class GarageCarFormElement extends LitElement {
     };
 
     try {
-      const token = localStorage.getItem("auth_token");
-      if (!token) {
-        this.errorMessage = "Authentication token missing. Please log in.";
+      if (!this._user.authenticated) {
+        this.errorMessage = "Authentication required. Please log in.";
         this.isLoading = false;
         return;
       }
@@ -130,7 +140,7 @@ export class GarageCarFormElement extends LitElement {
         method: this.mode === "create" ? "POST" : "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          ...Auth.headers(this._user),
         },
         body: JSON.stringify(garageCar),
       });

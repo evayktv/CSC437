@@ -86,25 +86,29 @@
     </style>
   </head>
   <body>
-    <header>
-      <h1>Throttle Vault</h1>
-      <p>Login to access high-performance specs</p>
-      <label class="dark-mode-toggle">
-        <input type="checkbox" autocomplete="off" />
-        Dark mode
-      </label>
-    </header>
+    <mu-history provides="my:history" root="/app">
+      <mu-auth provides="my:auth" redirect="/login.html">
+        <header>
+          <h1>Throttle Vault</h1>
+          <p>Login to access high-performance specs</p>
+          <label class="dark-mode-toggle">
+            <input type="checkbox" autocomplete="off" />
+            Dark mode
+          </label>
+        </header>
 
-    <main class="container">
-      <div class="login-container">
-        <login-form api="/auth" redirect="/"></login-form>
-      </div>
-    </main>
+        <main class="container">
+          <div class="login-container">
+            <login-form api="/auth" redirect="/"></login-form>
+          </div>
+        </main>
 
-    <footer>
-      <nav aria-label="Site">
-        <p>Throttle Vault • Authentication Required</p>
-      </nav>
-    </footer>
+        <footer>
+          <nav aria-label="Site">
+            <p>Throttle Vault • Authentication Required</p>
+          </nav>
+        </footer>
+      </mu-auth>
+    </mu-history>
   </body>
 </html>

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 import type { GarageCarFormData } from "./garage-car-form";
 
 interface GarageCar {
@@ -29,9 +30,18 @@ export class GarageCatalogElement extends LitElement {
   @state()
   private editingCar?: GarageCarFormData;
 
+  _user = new Auth.User();
+  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+
   connectedCallback() {
     super.connectedCallback();
-    if (this.src) this.hydrate(this.src);
+
+    this._authObserver.observe(({ user }) => {
+      if (user) {
+        this._user = user;
+        if (this.src) this.hydrate(this.src);
+      }
+    });
 
     // Check for add query param
     const params = new URLSearchParams(window.location.search);
@@ -45,14 +55,13 @@ export class GarageCatalogElement extends LitElement {
   }
 
   hydrate(src: string) {
-    const token = localStorage.getItem("auth_token");
-    if (!token) {
+    if (!this._user.authenticated) {
       window.location.href = "/login.html";
       return;
     }
 
     fetch(src, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: Auth.headers(this._user),
     })
       .then((res) => {
         if (res.status === 401) {
@@ -193,12 +202,9 @@ export class GarageCatalogElement extends LitElement {
     }
 
     try {
-      const token = localStorage.getItem("auth_token");
       const response = await fetch(`/api/garage/${car._id}`, {
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: Auth.headers(this._user),
       });
 
       if (!response.ok) {

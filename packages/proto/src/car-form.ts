@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 
 export interface CarFormData {
   slug: string;
@@ -23,6 +24,19 @@ export class CarFormElement extends LitElement {
 
   @state()
   private isSubmitting: boolean = false;
+
+  _user = new Auth.User();
+  _authObserver = new Observer<Auth.Model>(this, "my:auth");
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this._authObserver.observe(({ user }) => {
+      if (user) {
+        this._user = user;
+      }
+    });
+  }
 
   render() {
     const title = this.mode === "create" ? "Add New Model" : "Edit Model";
@@ -236,7 +250,6 @@ export class CarFormElement extends LitElement {
     };
 
     try {
-      const token = localStorage.getItem("auth_token");
       const url =
         this.mode === "create"
           ? "/api/cars"
@@ -247,7 +260,7 @@ export class CarFormElement extends LitElement {
         method,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          ...Auth.headers(this._user),
         },
         body: JSON.stringify(carModel),
       });

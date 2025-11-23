@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
+import { Auth } from "@calpoly/mustang";
 
 export class LoginFormElement extends LitElement {
   @property()
@@ -100,21 +101,8 @@ export class LoginFormElement extends LitElement {
 
       const { token } = await response.json();
 
-      // Store token in localStorage
-      localStorage.setItem("auth_token", token);
-      localStorage.setItem("username", username);
-
-      // Dispatch event for other components
-      this.dispatchEvent(
-        new CustomEvent("auth:login", {
-          bubbles: true,
-          composed: true,
-          detail: { username, token },
-        })
-      );
-
-      // Redirect
-      window.location.href = this.redirect;
+      // Dispatch auth/signin message to Auth.Provider
+      Auth.dispatch(this, "auth/signin", { token, redirect: this.redirect });
     } catch (error) {
       this.errorMessage =
         error instanceof Error ? error.message : "An error occurred";

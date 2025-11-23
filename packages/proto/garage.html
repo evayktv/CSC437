@@ -17,157 +17,124 @@
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <header>
-      <div class="header-content">
-        <div class="header-left">
-          <h1>My Garage</h1>
-          <p>Track your vehicles, modifications, and maintenance</p>
-        </div>
-        <div class="header-right">
-          <nav class="main-nav">
-            <a href="/index.html">Models</a>
-            <a href="/garage.html" id="garage-link">My Garage</a>
-          </nav>
-          <div id="auth-status" class="auth-status">
-            <span id="username-display"></span>
-            <button
-              id="sign-out-btn"
-              class="sign-out-btn"
-              style="display: none"
-            >
-              Sign Out
-            </button>
+    <mu-history provides="my:history" root="/app">
+      <mu-auth provides="my:auth" redirect="/login.html">
+        <header>
+          <div class="header-content">
+            <div class="header-left">
+              <h1>My Garage</h1>
+              <p>Track your vehicles, modifications, and maintenance</p>
+            </div>
+            <div class="header-right">
+              <nav class="main-nav">
+                <a href="/index.html">Models</a>
+                <a href="/garage.html">My Garage</a>
+              </nav>
+              <auth-status></auth-status>
+              <label class="dark-mode-toggle">
+                <input type="checkbox" autocomplete="off" />
+                Dark mode
+              </label>
+            </div>
           </div>
-          <label class="dark-mode-toggle">
-            <input type="checkbox" autocomplete="off" />
-            Dark mode
-          </label>
-        </div>
-      </div>
-    </header>
-    <style>
-      header .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 2rem;
-      }
-      .header-right {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      .main-nav {
-        display: flex;
-        gap: 1rem;
-      }
-      .main-nav a {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        transition: background 0.2s;
-      }
-      .main-nav a:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
-      .auth-status {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-      }
-      #username-display {
-        font-weight: 600;
-        color: white;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-      }
-      .sign-out-btn {
-        padding: 0.5rem 1rem;
-        background: var(--color-accent, #c41e3a);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        font-weight: 600;
-        font-family: inherit;
-      }
-      .sign-out-btn:hover {
-        opacity: 0.85;
-      }
-      nav.breadcrumb {
-        margin-bottom: 1rem;
-      }
-      nav.breadcrumb a {
-        color: var(--color-accent);
-        text-decoration: none;
-      }
-      nav.breadcrumb a:hover {
-        text-decoration: underline;
-      }
-      @media (max-width: 768px) {
-        header .header-content {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .header-right {
-          width: 100%;
-          justify-content: space-between;
-        }
-      }
-    </style>
-    <script>
-      // Check authentication status and redirect if not logged in
-      document.addEventListener("DOMContentLoaded", () => {
-        const token = localStorage.getItem("auth_token");
-        const username = localStorage.getItem("username");
-        const usernameDisplay = document.getElementById("username-display");
-        const signOutBtn = document.getElementById("sign-out-btn");
-        const garageLink = document.getElementById("garage-link");
+        </header>
+        <style>
+          header .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+          }
+          .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+          }
+          .main-nav {
+            display: flex;
+            gap: 1rem;
+          }
+          .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+          }
+          .main-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+          }
+          .auth-status {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+          }
+          #username-display {
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+          }
+          .sign-out-btn {
+            padding: 0.5rem 1rem;
+            background: var(--color-accent, #c41e3a);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+          }
+          .sign-out-btn:hover {
+            opacity: 0.85;
+          }
+          nav.breadcrumb {
+            margin-bottom: 1rem;
+          }
+          nav.breadcrumb a {
+            color: var(--color-accent);
+            text-decoration: none;
+          }
+          nav.breadcrumb a:hover {
+            text-decoration: underline;
+          }
+          @media (max-width: 768px) {
+            header .header-content {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+            .header-right {
+              width: 100%;
+              justify-content: space-between;
+            }
+          }
+        </style>
 
-        // Redirect to login if not authenticated
-        if (!token || !username) {
-          window.location.href = "/login.html";
-          return;
-        }
+        <main class="container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="./index.html">Models</a> ▸
+            <strong>My Garage</strong>
+          </nav>
 
-        // User is logged in
-        usernameDisplay.textContent = `Welcome, ${username}`;
-        signOutBtn.style.display = "block";
-        if (garageLink) garageLink.style.display = "block";
+          <section aria-labelledby="garage">
+            <h2 id="garage">Your Vehicles</h2>
+            <garage-catalog src="/api/garage"></garage-catalog>
+          </section>
+        </main>
 
-        // Handle sign out
-        signOutBtn.addEventListener("click", () => {
-          localStorage.removeItem("auth_token");
-          localStorage.removeItem("username");
-          window.location.href = "/login.html";
-        });
-      });
-    </script>
-
-    <main class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="./index.html">Models</a> ▸
-        <strong>My Garage</strong>
-      </nav>
-
-      <section aria-labelledby="garage">
-        <h2 id="garage">Your Vehicles</h2>
-        <garage-catalog src="/api/garage"></garage-catalog>
-      </section>
-    </main>
-
-    <footer>
-      <nav aria-label="Site">
-        <p>Throttle Vault • Where horsepower meets passion</p>
-        <p>
-          <small>Track your build, plan your upgrades</small>
-        </p>
-      </nav>
-    </footer>
+        <footer>
+          <nav aria-label="Site">
+            <p>Throttle Vault • Where horsepower meets passion</p>
+            <p>
+              <small>Track your build, plan your upgrades</small>
+            </p>
+          </nav>
+        </footer>
+      </mu-auth>
+    </mu-history>
   </body>
 </html>
