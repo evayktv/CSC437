@@ -199,29 +199,68 @@ export class GarageCatalogElement extends LitElement {
     }
 
     .btn-add {
-      padding: 0.75rem 1.5rem;
-      background: #c41e3a;
-      color: white;
+      padding: 0.875rem 2rem;
+      background: var(--color-accent-gradient);
+      color: var(--color-text-inverted);
       border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: 600;
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
+      font-weight: var(--font-weight-semibold);
       cursor: pointer;
       font-family: inherit;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-add::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
     }
 
     .btn-add:hover {
-      background: #a01828;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(196, 30, 58, 0.4);
+    }
+
+    .btn-add:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-add:active {
+      transform: translateY(0);
     }
 
     .empty-state {
       text-align: center;
-      padding: 3rem 1rem;
-      color: var(--color-text-muted, #666);
+      padding: var(--space-2xl) var(--space-lg);
+      color: var(--color-text-muted);
+      background: var(--color-bg-card);
+      border: 2px dashed var(--color-border-muted);
+      border-radius: var(--radius-lg);
+      margin: var(--space-xl) 0;
     }
 
     .empty-state p {
-      margin: 0.5rem 0;
+      margin: var(--space-sm) 0;
+      font-size: var(--fs-400);
+      line-height: 1.6;
+    }
+
+    .empty-state p:first-child {
+      font-size: var(--fs-500);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text);
     }
 
     ul.grid-cards {
@@ -251,74 +290,116 @@ export class GarageCatalogElement extends LitElement {
     }
 
     .garage-card {
-      padding: 1.5rem;
-      border: 1px solid var(--color-border, #ccc);
-      border-radius: 8px;
-      background: var(--color-background-card, #fff);
+      padding: var(--space-xl);
+      border: 1px solid var(--color-border-muted);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-card);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .garage-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-base);
+    }
+
+    li.car-card:hover .garage-card {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      border-color: var(--color-accent);
+    }
+
+    li.car-card:hover .garage-card::before {
+      transform: scaleX(1);
     }
 
     .garage-card h3 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.25rem;
+      margin: 0 0 var(--space-sm) 0;
+      font-size: var(--fs-600);
       color: var(--color-text);
+      font-weight: var(--font-weight-bold);
     }
 
     .garage-card .model {
-      font-size: 1rem;
-      color: var(--color-text-muted, #666);
-      margin-bottom: 1rem;
+      font-size: var(--fs-400);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+      font-weight: 500;
     }
 
     .garage-card dl {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 0.5rem;
-      font-size: 0.9rem;
+      gap: var(--space-sm) var(--space-md);
+      font-size: var(--fs-300);
     }
 
     .garage-card dt {
-      font-weight: 600;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
     }
 
     .garage-card dd {
       margin: 0;
+      color: var(--color-text);
+      font-weight: var(--font-weight-regular);
     }
 
     .card-actions {
       position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
+      top: var(--space-md);
+      right: var(--space-md);
       display: flex;
-      gap: 0.5rem;
+      gap: var(--space-sm);
       opacity: 0;
-      transition: opacity 0.2s;
+      transition: all var(--transition-base);
+      transform: translateY(-4px);
     }
 
     li.car-card:hover .card-actions {
       opacity: 1;
+      transform: translateY(0);
     }
 
     .btn-icon {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.75rem;
+      height: 2.75rem;
       border: none;
-      border-radius: 4px;
-      font-size: 1.2rem;
+      border-radius: var(--radius-md);
+      font-size: 1.1rem;
       cursor: pointer;
-      background: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      background: var(--color-bg-card);
+      box-shadow: var(--shadow-md);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0;
+      transition: all var(--transition-base);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-icon:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-lg);
     }
 
     .btn-edit:hover {
       background: #fff3cd;
+      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
     }
 
     .btn-delete:hover {
       background: #ffebee;
+      box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
     }
   `;
 }

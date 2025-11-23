@@ -128,40 +128,77 @@ export class LoginFormElement extends LitElement {
     }
 
     input {
-      padding: 0.75rem;
-      border: 1px solid var(--color-border, #ccc);
-      border-radius: 4px;
-      font-size: 1rem;
+      padding: 0.875rem 1.25rem;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
       font-family: inherit;
+      background: var(--color-bg-card);
+      color: var(--color-text);
+      transition: all var(--transition-base);
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
     }
 
     button {
-      padding: 0.75rem;
-      background: var(--color-accent, #007bff);
-      color: white;
+      padding: 0.875rem 2rem;
+      background: var(--color-accent-gradient);
+      color: var(--color-text-inverted);
       border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: bold;
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
+      font-weight: var(--font-weight-semibold);
       cursor: pointer;
       font-family: inherit;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
     }
 
     button:hover {
-      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(196, 30, 58, 0.4);
+    }
+
+    button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    button:active {
+      transform: translateY(0);
     }
 
     .error-message {
       color: #d32f2f;
-      padding: 0.75rem 1rem;
+      padding: 0.875rem 1.25rem;
       background: #ffebee;
-      border: 1px solid #ef9a9a;
-      border-radius: 4px;
+      border: 2px solid #ef9a9a;
+      border-radius: var(--radius-md);
       text-align: center;
-      font-weight: 500;
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--fs-300);
+      margin-bottom: var(--space-md);
       animation: shake 0.3s ease-in-out;
+      box-shadow: var(--shadow-sm);
     }
 
     @keyframes shake {

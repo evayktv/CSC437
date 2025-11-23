@@ -221,20 +221,46 @@ export class CarModelDetailElement extends LitElement {
     }
 
     .btn-add-to-garage {
-      padding: 0.75rem 1.5rem;
-      background: #c41e3a;
-      color: white;
+      padding: 0.875rem 2rem;
+      background: var(--color-accent-gradient);
+      color: var(--color-text-inverted);
       border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: 600;
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
+      font-weight: var(--font-weight-semibold);
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.2s ease-in-out;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-add-to-garage::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
     }
 
     .btn-add-to-garage:hover {
-      background: #a01828;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(196, 30, 58, 0.4);
+    }
+
+    .btn-add-to-garage:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-add-to-garage:active {
+      transform: translateY(0);
     }
 
     section {
@@ -278,10 +304,37 @@ export class CarModelDetailElement extends LitElement {
     }
 
     .card {
-      padding: var(--space-md, 1rem);
-      border: 1px solid var(--color-border-muted, #ccc);
-      border-radius: 8px;
-      background: var(--color-bg-section, #fff);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border-muted);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-card);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-base);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--color-accent);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
     }
 
     ul {

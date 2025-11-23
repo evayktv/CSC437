@@ -102,14 +102,15 @@ a:focus-visible {
 section {
   background: var(--color-bg-section);
   border: 1px solid var(--color-border-muted);
-  padding: var(--space-lg);
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
 }
 
 section:hover {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border);
 }
 
 /* Footer navigation */

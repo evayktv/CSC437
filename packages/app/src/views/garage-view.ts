@@ -90,9 +90,11 @@ export class GarageViewElement extends View<Model, Msg> {
     }
 
     h2 {
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
+      margin-bottom: var(--space-xl);
+      font-size: var(--fs-800);
       color: var(--color-text);
+      font-weight: var(--font-weight-extrabold);
+      letter-spacing: -0.02em;
     }
   `;
 }
