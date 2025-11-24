@@ -5,29 +5,33 @@ set -e  # Exit on error
 
 echo "🚀 Starting deployment..."
 
-# Navigate to project directory
-cd /home/evcao/CSC437
+# Navigate to project directory (always start from root)
+PROJECT_ROOT="/home/evcao/CSC437"
+cd "$PROJECT_ROOT" || exit 1
 
 # Clean up any unstaged changes in dist (these are generated files)
 echo "📦 Cleaning up dist files..."
-git restore packages/proto/dist/ 2>/dev/null || true
-git clean -fd packages/proto/dist/assets/ 2>/dev/null || true
+git restore packages/app/dist/ 2>/dev/null || true
+git clean -fd packages/app/dist/assets/ 2>/dev/null || true
 
 # Pull latest code
 echo "⬇️  Pulling latest code..."
 git pull --rebase
 
-# Rebuild frontend
-echo "🔨 Building frontend..."
-cd packages/proto
-npm run build
-cd ../..
-
 # Install any new dependencies
 echo "📥 Installing dependencies..."
 npm install
+cd packages/app
+npm install
+cd ../..
 cd packages/server
 npm install
+cd ../..
+
+# Rebuild frontend
+echo "🔨 Building frontend..."
+cd packages/app
+npm run build
 cd ../..
 
 # Stop existing server
@@ -38,7 +42,7 @@ sleep 2
 # Start server
 echo "▶️  Starting server..."
 cd packages/server
-nohup npm start > ../../nohup.out 2>&1 &
+nohup npm run start:app > ../../nohup.out 2>&1 &
 
 # Wait a moment for server to start
 sleep 3
