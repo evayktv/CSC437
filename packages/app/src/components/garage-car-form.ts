@@ -1,6 +1,6 @@
 import { html, css } from "lit";
 import { property, state } from "lit/decorators.js";
-import { Auth, Form, Observer, View } from "@calpoly/mustang";
+import { Auth, Observer, View } from "@calpoly/mustang";
 import { GarageCar } from "@csc437/server/models";
 import { Msg } from "../messages";
 import { Model } from "../model";
@@ -13,7 +13,6 @@ export interface GarageCarFormData {
   year: number;
   trim: string;
   mileage?: number;
-  notes: string;
 }
 
 interface CarModel {
@@ -23,10 +22,6 @@ interface CarModel {
 }
 
 export class GarageCarFormElement extends View<Model, Msg> {
-  static uses = {
-    "mu-form": Form.Element,
-  };
-
   @property({ type: String })
   mode: "create" | "edit" = "create";
 
@@ -83,79 +78,50 @@ export class GarageCarFormElement extends View<Model, Msg> {
       console.error("Failed to load models:", error);
     }
 
-    // Hide mu-form's default submit button after render
-    this.hideDefaultSubmitButton();
+    // Hide the default submit button after form renders
+    setTimeout(() => this.hideDefaultSubmitButton(), 100);
   }
 
-  updated(changedProperties: Map<string, unknown>) {
-    super.updated(changedProperties);
-    // Hide mu-form's default submit button after each update
-    this.hideDefaultSubmitButton();
+  firstUpdated() {
+    // Hide the default submit button after first render
+    setTimeout(() => this.hideDefaultSubmitButton(), 100);
   }
 
-  private _submitButtonObserver?: MutationObserver;
+  updated() {
+    // Hide the default submit button after each update
+    setTimeout(() => this.hideDefaultSubmitButton(), 100);
+  }
 
-  private hideDefaultSubmitButton() {
-    // Use multiple strategies to hide the default submit button
+  hideDefaultSubmitButton() {
+    // Use requestAnimationFrame to ensure the form is rendered
     requestAnimationFrame(() => {
-      // Strategy 1: Query from shadowRoot
-      const muForm = this.shadowRoot?.querySelector("mu-form");
-      if (muForm) {
-        this.hideSubmitButtonsInElement(muForm);
-      }
-
-      // Strategy 2: Query from light DOM
-      const muFormLight = this.querySelector("mu-form");
-      if (muFormLight) {
-        this.hideSubmitButtonsInElement(muFormLight);
-      }
-
-      // Strategy 3: Setup MutationObserver to catch buttons added dynamically
-      if (!this._submitButtonObserver) {
-        this.setupSubmitButtonObserver();
-      }
-    });
-  }
-
-  private setupSubmitButtonObserver() {
-    const targetNode = this.shadowRoot || this;
-    this._submitButtonObserver = new MutationObserver(() => {
-      const muForm =
-        this.shadowRoot?.querySelector("mu-form") ||
-        this.querySelector("mu-form");
-      if (muForm) {
-        this.hideSubmitButtonsInElement(muForm);
+      const form = this.shadowRoot?.querySelector("mu-form");
+      if (form) {
+        // Try to access shadow DOM
+        const shadowRoot = (form as any).shadowRoot;
+        if (shadowRoot) {
+          const submitButton = shadowRoot.querySelector(
+            'button[type="submit"]'
+          );
+          if (submitButton) {
+            (submitButton as HTMLElement).style.display = "none";
+            (submitButton as HTMLElement).style.visibility = "hidden";
+            (submitButton as HTMLElement).style.height = "0";
+            (submitButton as HTMLElement).style.padding = "0";
+            (submitButton as HTMLElement).style.margin = "0";
+          }
+        }
+        // Also try light DOM (in case button is not in shadow)
+        const lightSubmitButton = form.querySelector('button[type="submit"]');
+        if (lightSubmitButton) {
+          (lightSubmitButton as HTMLElement).style.display = "none";
+          (lightSubmitButton as HTMLElement).style.visibility = "hidden";
+          (lightSubmitButton as HTMLElement).style.height = "0";
+          (lightSubmitButton as HTMLElement).style.padding = "0";
+          (lightSubmitButton as HTMLElement).style.margin = "0";
+        }
       }
     });
-
-    this._submitButtonObserver.observe(targetNode, {
-      childList: true,
-      subtree: true,
-    });
-  }
-
-  private hideSubmitButtonsInElement(element: Element) {
-    // Hide our custom "Add to Garage" button
-    const customButtons = element.querySelectorAll("button.btn-submit");
-    customButtons.forEach((button) => {
-      const btn = button as HTMLElement;
-      btn.style.display = "none";
-      btn.style.visibility = "hidden";
-      btn.style.height = "0";
-      btn.style.width = "0";
-      btn.style.padding = "0";
-      btn.style.margin = "0";
-      btn.style.opacity = "0";
-      btn.style.position = "absolute";
-      btn.setAttribute("aria-hidden", "true");
-    });
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this._submitButtonObserver) {
-      this._submitButtonObserver.disconnect();
-    }
   }
 
   private async handleModelChange(e: Event) {
@@ -185,7 +151,8 @@ export class GarageCarFormElement extends View<Model, Msg> {
     }
   }
 
-  handleSubmit(event: Form.SubmitEvent<GarageCar>) {
+  handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
     this.errorMessage = null;
 
     if (!this._user.authenticated) {
@@ -193,18 +160,15 @@ export class GarageCarFormElement extends View<Model, Msg> {
       return;
     }
 
-    const formData = event.detail;
-
-    // Debug: Log form data to see what we're getting
-    console.log("Form data received:", formData);
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     // Extract and validate required fields
-    const modelSlug = formData.modelSlug || "";
-    const nickname = formData.nickname || "";
-    const yearValue = formData.year;
-    const trimValue = formData.trim || "";
-    const mileageValue = formData.mileage;
-    const notes = formData.notes || "";
+    const modelSlug = formData.get("modelSlug")?.toString() || "";
+    const nickname = formData.get("nickname")?.toString() || "";
+    const yearValue = formData.get("year");
+    const trimValue = formData.get("trim")?.toString() || "";
+    const mileageValue = formData.get("mileage");
 
     // Validate required fields
     if (!modelSlug) {
@@ -260,7 +224,6 @@ export class GarageCarFormElement extends View<Model, Msg> {
       year,
       trim: trimValue,
       mileage,
-      notes,
       username: this._user.username || "",
     };
 
@@ -302,20 +265,7 @@ export class GarageCarFormElement extends View<Model, Msg> {
             ? html`<div class="error-message">${this.errorMessage}</div>`
             : ""}
 
-          <mu-form
-            .init=${this.carData
-              ? {
-                  modelSlug: this.carData.modelSlug,
-                  modelName: this.carData.modelName,
-                  nickname: this.carData.nickname,
-                  year: this.carData.year,
-                  trim: this.carData.trim,
-                  mileage: this.carData.mileage,
-                  notes: this.carData.notes,
-                }
-              : undefined}
-            @mu-form:submit=${this.handleSubmit}
-          >
+          <form id="garage-car-form" @submit=${this.handleSubmit}>
             <label>
               <span>Select Model *</span>
               <select
@@ -402,20 +352,19 @@ export class GarageCarFormElement extends View<Model, Msg> {
               />
             </label>
 
-            <label>
-              <span>Notes</span>
-              <textarea
-                name="notes"
-                rows="6"
-                .value=${this.carData?.notes || ""}
-                placeholder="Mods installed, maintenance history, future plans..."
-              ></textarea>
-            </label>
-
-            <button type="button" class="btn-cancel" @click=${this.handleClose}>
-              Cancel
-            </button>
-          </mu-form>
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn-cancel"
+                @click=${this.handleClose}
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn-submit">
+                ${this.mode === "create" ? "Add Vehicle" : "Save Changes"}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     `;
@@ -436,21 +385,15 @@ export class GarageCarFormElement extends View<Model, Msg> {
     }
 
     .modal-content {
-      background: var(--color-background-card, #ffffff);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      background: var(--color-bg-card);
+      padding: var(--space-2xl);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
       width: 90%;
-      max-width: 500px;
+      max-width: 550px;
       max-height: 90vh;
       overflow-y: auto;
-    }
-
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      .modal-content {
-        background: #1e1e1e;
-      }
+      border: 1px solid var(--color-border-muted);
     }
 
     h2 {
@@ -459,38 +402,10 @@ export class GarageCarFormElement extends View<Model, Msg> {
       color: var(--color-text);
     }
 
-    mu-form {
+    form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-    }
-
-    /* Hide our custom submit button - use mu-form's default instead */
-    mu-form button.btn-submit {
-      display: none !important;
-    }
-
-    /* Style mu-form's default submit button */
-    mu-form button[type="submit"]:not(.btn-cancel) {
-      padding: 0.8rem 1.5rem;
-      background: #c41e3a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 1rem;
-      font-family: inherit;
-    }
-
-    mu-form button[type="submit"]:not(.btn-cancel):hover:not(:disabled) {
-      background: #a01828;
-    }
-
-    mu-form button[type="submit"]:not(.btn-cancel):disabled {
-      background: #cccccc;
-      cursor: not-allowed;
     }
 
     label {
@@ -508,80 +423,106 @@ export class GarageCarFormElement extends View<Model, Msg> {
     input,
     textarea,
     select {
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--color-border, #ddd);
-      border-radius: 6px;
-      font-size: 1rem;
-      background: var(--color-background-input, #f9f9f9);
-      color: var(--color-text, #333);
+      padding: 0.875rem 1.25rem;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
+      background: var(--color-bg-card);
+      color: var(--color-text);
       font-family: inherit;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      input,
-      textarea,
-      select {
-        background: #2a2a2a;
-        color: #fff;
-        border-color: #444;
-      }
+      transition: all var(--transition-base);
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: var(--color-accent);
       outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
     }
 
-    button[type="submit"] {
-      padding: 0.8rem 1.5rem;
-      background: #c41e3a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.05rem;
-      font-weight: 700;
+    .form-actions {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border-muted);
+      justify-content: flex-end;
+      align-items: stretch;
+    }
+
+    .btn-cancel,
+    .btn-submit {
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
       cursor: pointer;
-      margin-top: 1rem;
       font-family: inherit;
-    }
-
-    button[type="submit"]:hover:not(:disabled) {
-      background: #a01828;
-    }
-
-    button[type="submit"]:disabled {
-      background: #cccccc;
-      cursor: not-allowed;
+      transition: all 0.2s ease;
+      min-width: 140px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     .btn-cancel {
-      background: var(--color-background-button-secondary);
+      background: transparent;
       color: var(--color-text);
       border: 1px solid var(--color-border);
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
+      font-weight: var(--font-weight-medium);
     }
 
     .btn-cancel:hover {
-      background: var(--color-background-button-secondary-hover);
+      background: var(--color-bg-hover);
+      border-color: var(--color-border-muted);
+    }
+
+    .btn-submit {
+      background: var(--color-accent);
+      color: var(--color-text-inverted);
+      border: none;
+      font-weight: var(--font-weight-semibold);
+      box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: #a01828;
+      box-shadow: 0 4px 8px rgba(196, 30, 58, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+    }
+
+    .btn-submit:disabled {
+      background: var(--color-text-muted);
+      cursor: not-allowed;
+      opacity: 0.6;
+      box-shadow: none;
     }
 
     .error-message {
       color: #d32f2f;
-      padding: 0.75rem 1rem;
-      background: #ffebee;
-      border: 1px solid #ef9a9a;
-      border-radius: 4px;
+      padding: 0.875rem 1.25rem;
+      background: rgba(255, 235, 238, 0.8);
+      border: 2px solid rgba(239, 154, 154, 0.6);
+      border-radius: var(--radius-md);
       text-align: center;
-      font-weight: 500;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--fs-300);
+      margin-bottom: var(--space-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    :host-context(body.dark-mode) .error-message {
+      background: rgba(211, 47, 47, 0.15);
+      border-color: rgba(239, 154, 154, 0.4);
+      color: #ff6b7a;
     }
   `;
 }

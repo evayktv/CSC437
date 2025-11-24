@@ -16,15 +16,17 @@ export class HomeViewElement extends LitElement {
     }
 
     section {
-      padding: 2rem;
-      max-width: 1200px;
+      padding: var(--space-2xl) var(--space-xl);
+      max-width: var(--container-max);
       margin: 0 auto;
     }
 
     h2 {
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
+      margin-bottom: var(--space-xl);
+      font-size: var(--fs-800);
       color: var(--color-text);
+      font-weight: var(--font-weight-extrabold);
+      letter-spacing: -0.02em;
     }
   `;
 }

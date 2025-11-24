@@ -36,6 +36,11 @@ const CarModelSchema = new Schema<CarModel>(
       },
     ],
     history: [String],
+    images: {
+      hero: String,
+      gallery: [String],
+      trims: Schema.Types.Mixed,
+    },
   },
   {
     collection: "cars",

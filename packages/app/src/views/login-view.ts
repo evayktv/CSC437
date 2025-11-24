@@ -26,9 +26,10 @@ export class LoginViewElement extends LitElement {
       max-width: 400px;
       margin: 2rem auto;
       padding: 2rem;
-      border: 1px solid var(--color-border, #ccc);
-      border-radius: 8px;
-      background: var(--color-background-card, #fff);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-card);
+      box-shadow: var(--shadow-md);
     }
   `;
 }

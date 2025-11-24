@@ -1,0 +1,2377 @@
+[
+  {
+    "slug": "challenger",
+    "name": "Dodge Challenger",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=challenger",
+    "years": "2008–2023",
+    "overview": {
+      "manufacturer": "Dodge",
+      "bodyStyle": "Coupe",
+      "history": "Modern generation (2008–2023) - The third generation Challenger revived the classic muscle car with modern performance"
+    },
+    "trims": [
+      {
+        "name": "SXT",
+        "engine": "3.6L V6",
+        "horsepower": 303,
+        "torque": 268,
+        "zeroToSixty": "~6.3 s",
+        "topSpeed": "~130 mph",
+        "years": "2011–2023"
+      },
+      {
+        "name": "GT",
+        "engine": "3.6L V6",
+        "horsepower": 305,
+        "torque": 268,
+        "zeroToSixty": "~6.2 s",
+        "topSpeed": "~130 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "R/T",
+        "engine": "5.7L V8 HEMI",
+        "horsepower": 375,
+        "torque": 410,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~155 mph",
+        "years": "2008–2023"
+      },
+      {
+        "name": "R/T Scat Pack",
+        "engine": "6.4L V8 HEMI",
+        "horsepower": 485,
+        "torque": 475,
+        "zeroToSixty": "~4.2 s",
+        "topSpeed": "~175 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "SRT Hellcat",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 717,
+        "torque": 656,
+        "zeroToSixty": "~3.6 s",
+        "topSpeed": "~199 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "SRT Hellcat Redeye",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 797,
+        "torque": 707,
+        "zeroToSixty": "~3.4 s",
+        "topSpeed": "~203 mph",
+        "years": "2018–2023"
+      },
+      {
+        "name": "SRT Demon",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 808,
+        "torque": 717,
+        "zeroToSixty": "~2.3 s",
+        "topSpeed": "~211 mph",
+        "years": "2018"
+      },
+      {
+        "name": "SRT Demon 170",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 1025,
+        "torque": 945,
+        "zeroToSixty": "~1.66 s",
+        "topSpeed": "~211 mph",
+        "years": "2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~5 hp",
+        "costRange": "$150–$400",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Cat-Back Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~8 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Pulley Upgrade",
+        "type": "Performance (Supercharger)",
+        "hpGain": "+~50 hp",
+        "costRange": "$300–$600",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "1970–1974: First generation Challenger introduced as Dodge's answer to the Mustang and Camaro, available in multiple body styles",
+      "1978–1983: Second generation Challenger (rebadged Mitsubishi Galant Lambda) - smaller, fuel-efficient model",
+      "2008: Third generation Challenger debuts at Chicago Auto Show, reviving the classic muscle car design",
+      "2008–2010: Early production years with 5.7L V8 and 6.1L V8 SRT8 models",
+      "2011: Introduction of 3.6L Pentastar V6 engine, improving fuel economy while maintaining performance",
+      "2015: Major refresh with new 6.4L Scat Pack and 6.2L Hellcat supercharged V8 (717 hp)",
+      "2018: Limited production SRT Demon (808 hp) sets world record for fastest production car 0-60 mph",
+      "2018–2020: Hellcat Redeye introduced with 797 hp, plus widebody options",
+      "2021–2023: Final years with special editions including Last Call series",
+      "2023: Final production year with Demon 170 (1025 hp) - the most powerful production muscle car ever made"
+    ],
+    "images": {
+      "hero": "/images/cars/dodge-challenger.webp"
+    }
+  },
+  {
+    "slug": "camaro",
+    "name": "Chevrolet Camaro",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=camaro",
+    "years": "1967–2024",
+    "overview": {
+      "manufacturer": "Chevrolet",
+      "bodyStyle": "Coupe",
+      "history": "Six generations of American muscle car, from the original pony car to modern performance machine"
+    },
+    "trims": [
+      {
+        "name": "LS",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 275,
+        "torque": 295,
+        "zeroToSixty": "~5.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2018"
+      },
+      {
+        "name": "LT",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 275,
+        "torque": 295,
+        "zeroToSixty": "~5.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "LT1",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~165 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "SS",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~165 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "1LE",
+        "engine": "6.2L V8",
+        "horsepower": 455,
+        "torque": 455,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~165 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "ZL1",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~3.5 s",
+        "topSpeed": "~198 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "ZL1 1LE",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~3.4 s",
+        "topSpeed": "~198 mph",
+        "years": "2018–2024"
+      },
+      {
+        "name": "Z/28",
+        "engine": "7.0L V8",
+        "horsepower": 505,
+        "torque": 481,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~190 mph",
+        "years": "2014–2015"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~8 hp",
+        "costRange": "$200–$500",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Cat-Back Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~10 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Supercharger Kit",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~150 hp",
+        "costRange": "$5000–$8000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Headers",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~15 hp",
+        "costRange": "$600–$1200",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "1967–1969: First generation Camaro introduced to compete with Ford Mustang, available in multiple body styles and engine options",
+      "1970–1981: Second generation with iconic split-bumper design, Z28 performance package, and IROC-Z variants",
+      "1982–1992: Third generation with modern fuel injection, IROC-Z becoming a standalone model",
+      "1993–2002: Fourth generation with complete redesign, LS1 V8 engine, and SS performance package",
+      "2010–2015: Fifth generation revival with retro styling, V6 and V8 options, ZL1 supercharged model",
+      "2016–2024: Sixth generation with Alpha platform, lighter weight, improved handling, and track-focused 1LE packages",
+      "2017: ZL1 introduced with 650 hp supercharged V8, competing directly with Hellcat and GT500",
+      "2018: ZL1 1LE track package adds extreme aerodynamics and suspension for road course dominance",
+      "2020: LT1 trim introduced as entry-level V8 option, making 455 hp more accessible",
+      "2024: Final model year announced, marking the end of Camaro production after 57 years"
+    ],
+    "images": {
+      "hero": "/images/cars/chevrolet-camaro.webp"
+    }
+  },
+  {
+    "slug": "mustang",
+    "name": "Ford Mustang",
+    "category": "muscle-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=mustang",
+    "years": "1964–2024",
+    "overview": {
+      "manufacturer": "Ford",
+      "bodyStyle": "Coupe",
+      "history": "The original pony car, continuously produced since 1964, defining the American muscle car segment"
+    },
+    "trims": [
+      {
+        "name": "EcoBoost",
+        "engine": "2.3L Turbo I4",
+        "horsepower": 310,
+        "torque": 350,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~145 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "EcoBoost Premium",
+        "engine": "2.3L Turbo I4",
+        "horsepower": 310,
+        "torque": 350,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~145 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "GT",
+        "engine": "5.0L V8",
+        "horsepower": 450,
+        "torque": 410,
+        "zeroToSixty": "~4.3 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "GT Premium",
+        "engine": "5.0L V8",
+        "horsepower": 450,
+        "torque": 410,
+        "zeroToSixty": "~4.3 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2023"
+      },
+      {
+        "name": "Bullitt",
+        "engine": "5.0L V8",
+        "horsepower": 480,
+        "torque": 420,
+        "zeroToSixty": "~4.2 s",
+        "topSpeed": "~163 mph",
+        "years": "2019–2020"
+      },
+      {
+        "name": "Mach 1",
+        "engine": "5.0L V8",
+        "horsepower": 480,
+        "torque": 420,
+        "zeroToSixty": "~4.1 s",
+        "topSpeed": "~168 mph",
+        "years": "2021–2023"
+      },
+      {
+        "name": "Shelby GT350",
+        "engine": "5.2L Flat-Plane V8",
+        "horsepower": 526,
+        "torque": 429,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~189 mph",
+        "years": "2016–2020"
+      },
+      {
+        "name": "Shelby GT350R",
+        "engine": "5.2L Flat-Plane V8",
+        "horsepower": 526,
+        "torque": 429,
+        "zeroToSixty": "~3.8 s",
+        "topSpeed": "~189 mph",
+        "years": "2016–2020"
+      },
+      {
+        "name": "Shelby GT500",
+        "engine": "5.2L Supercharged V8",
+        "horsepower": 760,
+        "torque": 625,
+        "zeroToSixty": "~3.3 s",
+        "topSpeed": "~180 mph",
+        "years": "2020–2023"
+      },
+      {
+        "name": "Dark Horse",
+        "engine": "5.0L V8",
+        "horsepower": 500,
+        "torque": 418,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~168 mph",
+        "years": "2024–"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~10 hp",
+        "costRange": "$250–$600",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Performance Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~30 hp",
+        "costRange": "$400–$800",
+        "install": "Professional required"
+      },
+      {
+        "name": "Supercharger Kit",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~200 hp",
+        "costRange": "$6000–$10000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~12 hp",
+        "costRange": "$700–$1500",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "1964: Mustang introduced at World's Fair, creating the 'pony car' segment - over 22,000 sold on first day",
+      "1965–1973: First generation with multiple body styles, high-performance variants including GT, Mach 1, and Boss 302/429",
+      "1974–1978: Second generation Mustang II - smaller, fuel-efficient model responding to oil crisis",
+      "1979–1993: Third generation Fox platform with modern unibody construction, 5.0L V8 becoming legendary",
+      "1994–2004: Fourth generation with complete redesign, SN95 platform, and New Edge styling refresh",
+      "2005–2014: Fifth generation retro-styling revival, S197 platform, reintroduction of GT500 and Boss 302",
+      "2015–2023: Sixth generation S550 platform with independent rear suspension, EcoBoost turbo option, and track-focused GT350/GT500",
+      "2016: Shelby GT350 introduced with flat-plane crank V8, focused on road course performance",
+      "2020: Shelby GT500 debuts with 760 hp supercharged V8, most powerful production Mustang ever",
+      "2021: Mach 1 returns as mid-tier performance model, bridging gap between GT and GT500",
+      "2024: Seventh generation S650 platform launches with Dark Horse as new performance flagship, continuing Mustang legacy"
+    ],
+    "images": {
+      "hero": "/images/cars/ford-mustang.webp"
+    }
+  },
+  {
+    "slug": "corvette",
+    "name": "Chevrolet Corvette",
+    "category": "sports-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=corvette",
+    "years": "1953–2024",
+    "overview": {
+      "manufacturer": "Chevrolet",
+      "bodyStyle": "Coupe",
+      "history": "America's sports car - eight generations of performance, from fiberglass roadster to mid-engine supercar"
+    },
+    "trims": [
+      {
+        "name": "Stingray",
+        "engine": "6.2L V8",
+        "horsepower": 490,
+        "torque": 465,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~194 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "Stingray Z51",
+        "engine": "6.2L V8",
+        "horsepower": 495,
+        "torque": 470,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~194 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "Z06",
+        "engine": "5.5L Flat-Plane V8",
+        "horsepower": 670,
+        "torque": 460,
+        "zeroToSixty": "~2.6 s",
+        "topSpeed": "~212 mph",
+        "years": "2023–2024"
+      },
+      {
+        "name": "E-Ray",
+        "engine": "6.2L V8 + Electric",
+        "horsepower": 655,
+        "torque": 595,
+        "zeroToSixty": "~2.5 s",
+        "topSpeed": "~194 mph",
+        "years": "2024–"
+      },
+      {
+        "name": "ZR1",
+        "engine": "5.5L Twin-Turbo V8",
+        "horsepower": 1064,
+        "torque": 828,
+        "zeroToSixty": "~2.0 s",
+        "topSpeed": "~215 mph",
+        "years": "2025–"
+      },
+      {
+        "name": "Grand Sport",
+        "engine": "6.2L V8",
+        "horsepower": 460,
+        "torque": 465,
+        "zeroToSixty": "~3.6 s",
+        "topSpeed": "~194 mph",
+        "years": "2017–2019"
+      },
+      {
+        "name": "Z06 (C7)",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~205 mph",
+        "years": "2015–2019"
+      },
+      {
+        "name": "ZR1 (C7)",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 755,
+        "torque": 715,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~212 mph",
+        "years": "2019"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Cold Air Intake",
+        "type": "Performance (Intake)",
+        "hpGain": "+~12 hp",
+        "costRange": "$300–$700",
+        "install": "Bolt-on; DIY-friendly"
+      },
+      {
+        "name": "Headers & Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~25 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Supercharger Kit",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~200 hp",
+        "costRange": "$8000–$12000",
+        "install": "Professional required"
+      },
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~40 hp",
+        "costRange": "$500–$1000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "1953: First generation Corvette introduced at GM Motorama, America's first mass-produced fiberglass sports car",
+      "1953–1962: C1 generation with inline-6 and V8 engine options, establishing Corvette as performance icon",
+      "1963–1967: C2 Sting Ray with split-window coupe, independent rear suspension, and big-block V8 options up to 427ci",
+      "1968–1982: C3 generation with iconic styling, T-top roof option, and performance variants including ZR1 and Z28",
+      "1984–1996: C4 generation with complete redesign, digital dashboard, and modern performance technology",
+      "1997–2004: C5 generation with LS1 V8 engine, improved handling, and Z06 high-performance variant",
+      "2005–2013: C6 generation with LS2/LS3 V8 engines, Z06 with 7.0L V8, and ZR1 with supercharged 6.2L",
+      "2014–2019: C7 Stingray with new LT1 V8, Z06 with supercharged 650 hp, and ZR1 with 755 hp",
+      "2020: C8 generation debuts with revolutionary mid-engine layout, first production mid-engine Corvette",
+      "2020–2024: C8 Stingray establishes new performance benchmarks, Z06 with flat-plane crank V8, E-Ray hybrid",
+      "2025: ZR1 announced with twin-turbo V8 producing over 1000 hp, marking pinnacle of Corvette performance"
+    ],
+    "images": {
+      "hero": "/images/cars/chevrolet-corvette.webp"
+    }
+  },
+  {
+    "slug": "bmw-m4",
+    "name": "BMW M4",
+    "category": "german-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=bmw-m4",
+    "years": "2014–2024",
+    "overview": {
+      "manufacturer": "BMW",
+      "bodyStyle": "Coupe",
+      "history": "High-performance coupe from BMW's M division, combining luxury with track-focused engineering"
+    },
+    "trims": [
+      {
+        "name": "M4",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 473,
+        "torque": 406,
+        "zeroToSixty": "~4.1 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2020"
+      },
+      {
+        "name": "M4 Competition",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 503,
+        "torque": 479,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2020"
+      },
+      {
+        "name": "M4 CS",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 454,
+        "torque": 443,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~174 mph",
+        "years": "2018–2019"
+      },
+      {
+        "name": "M4 GTS",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 493,
+        "torque": 443,
+        "zeroToSixty": "~3.8 s",
+        "topSpeed": "~190 mph",
+        "years": "2016"
+      },
+      {
+        "name": "M4 (G82)",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 473,
+        "torque": 406,
+        "zeroToSixty": "~4.1 s",
+        "topSpeed": "~155 mph",
+        "years": "2021–2024"
+      },
+      {
+        "name": "M4 Competition (G82)",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 503,
+        "torque": 479,
+        "zeroToSixty": "~3.8 s",
+        "topSpeed": "~155 mph",
+        "years": "2021–2024"
+      },
+      {
+        "name": "M4 CSL",
+        "engine": "3.0L Twin-Turbo I6",
+        "horsepower": 543,
+        "torque": 479,
+        "zeroToSixty": "~3.6 s",
+        "topSpeed": "~191 mph",
+        "years": "2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~80 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional required"
+      },
+      {
+        "name": "Downpipes",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~30 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Intercooler Upgrade",
+        "type": "Performance (Cooling)",
+        "hpGain": "+~15 hp",
+        "costRange": "$1000–$2000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Suspension Kit",
+        "type": "Handling",
+        "hpGain": "N/A",
+        "costRange": "$2000–$4000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2014: M4 introduced as successor to M3 Coupe, featuring new twin-turbo inline-6 engine",
+      "2015–2020: F82 generation establishes M4 as benchmark for luxury sports coupes",
+      "2016: M4 GTS limited edition with water injection system, track-focused performance",
+      "2018: M4 CS introduced as lighter, more focused variant between Competition and GTS",
+      "2021: G82 generation debuts with controversial styling, improved performance and technology",
+      "2021–2024: M4 Competition becomes standard bearer with 503 hp and advanced all-wheel drive option",
+      "2023: M4 CSL limited edition celebrates 50 years of BMW M, most powerful M4 to date"
+    ],
+    "images": {
+      "hero": "/images/cars/bmw-m4.webp"
+    }
+  },
+  {
+    "slug": "mercedes-amg-c63",
+    "name": "Mercedes-AMG C63",
+    "category": "german-sports",
+    "icon": "icon-sedan",
+    "href": "./model.html?car=mercedes-amg-c63",
+    "years": "2008–2024",
+    "overview": {
+      "manufacturer": "Mercedes-Benz",
+      "bodyStyle": "Sedan",
+      "history": "AMG's compact performance sedan, known for its thunderous V8 engine and luxury appointments"
+    },
+    "trims": [
+      {
+        "name": "C63 AMG",
+        "engine": "6.2L V8",
+        "horsepower": 451,
+        "torque": 443,
+        "zeroToSixty": "~4.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2008–2014"
+      },
+      {
+        "name": "C63 AMG S",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 503,
+        "torque": 516,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2021"
+      },
+      {
+        "name": "C63 S",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 503,
+        "torque": 516,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2021"
+      },
+      {
+        "name": "C63 S Coupe",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 503,
+        "torque": 516,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2016–2021"
+      },
+      {
+        "name": "C63 Black Series",
+        "engine": "6.2L V8",
+        "horsepower": 510,
+        "torque": 457,
+        "zeroToSixty": "~4.2 s",
+        "topSpeed": "~186 mph",
+        "years": "2012"
+      },
+      {
+        "name": "C63 AMG (W206)",
+        "engine": "2.0L Turbo I4 + Electric",
+        "horsepower": 469,
+        "torque": 545,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2022–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~100 hp",
+        "costRange": "$1000–$2000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Downpipes",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~40 hp",
+        "costRange": "$1200–$2000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Pulley Upgrade",
+        "type": "Performance (Supercharger)",
+        "hpGain": "+~60 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional required"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~15 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2008: C63 AMG introduced with naturally aspirated 6.2L V8, replacing C55 AMG",
+      "2008–2014: W204 generation establishes C63 as benchmark for compact performance sedans",
+      "2012: C63 Black Series limited edition with 510 hp, track-focused aerodynamics",
+      "2015: W205 generation debuts with new 4.0L twin-turbo V8, improved efficiency and performance",
+      "2016: C63 S Coupe introduced, bringing AMG performance to two-door body style",
+      "2015–2021: C63 S becomes flagship with 503 hp, drift mode, and advanced technology",
+      "2022: W206 generation transitions to hybrid powertrain, maintaining AMG performance heritage"
+    ],
+    "images": {
+      "hero": "/images/cars/mercedes-amg-c63.webp"
+    }
+  },
+  {
+    "slug": "audi-rs5",
+    "name": "Audi RS5",
+    "category": "german-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=audi-rs5",
+    "years": "2010–2024",
+    "overview": {
+      "manufacturer": "Audi",
+      "bodyStyle": "Coupe",
+      "history": "Audi Sport's high-performance coupe, combining quattro all-wheel drive with powerful V8 and V6 engines"
+    },
+    "trims": [
+      {
+        "name": "RS5 (B8)",
+        "engine": "4.2L V8",
+        "horsepower": 450,
+        "torque": 317,
+        "zeroToSixty": "~4.5 s",
+        "topSpeed": "~155 mph",
+        "years": "2010–2015"
+      },
+      {
+        "name": "RS5 (B9)",
+        "engine": "2.9L Twin-Turbo V6",
+        "horsepower": 444,
+        "torque": 443,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2017–2023"
+      },
+      {
+        "name": "RS5 Sportback",
+        "engine": "2.9L Twin-Turbo V6",
+        "horsepower": 444,
+        "torque": 443,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2018–2023"
+      },
+      {
+        "name": "RS5 Competition",
+        "engine": "2.9L Twin-Turbo V6",
+        "horsepower": 444,
+        "torque": 443,
+        "zeroToSixty": "~3.8 s",
+        "topSpeed": "~174 mph",
+        "years": "2021–2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~80 hp",
+        "costRange": "$1000–$1800",
+        "install": "Professional required"
+      },
+      {
+        "name": "Downpipes",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~35 hp",
+        "costRange": "$1000–$1800",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Intercooler Upgrade",
+        "type": "Performance (Cooling)",
+        "hpGain": "+~20 hp",
+        "costRange": "$1500–$2500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~12 hp",
+        "costRange": "$2000–$3500",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2010: First generation RS5 introduced with naturally aspirated 4.2L V8, quattro all-wheel drive",
+      "2010–2015: B8 generation establishes RS5 as premium performance coupe",
+      "2017: B9 generation debuts with new 2.9L twin-turbo V6, improved efficiency and torque",
+      "2018: RS5 Sportback introduced, adding practicality to high-performance formula",
+      "2021: RS5 Competition package adds track-focused upgrades and higher top speed",
+      "2017–2023: RS5 continues as benchmark for all-wheel drive performance coupes"
+    ],
+    "images": {
+      "hero": "/images/cars/audi-rs5.webp"
+    }
+  },
+  {
+    "slug": "porsche-911",
+    "name": "Porsche 911",
+    "category": "german-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=porsche-911",
+    "years": "1964–2024",
+    "overview": {
+      "manufacturer": "Porsche",
+      "bodyStyle": "Coupe",
+      "history": "Iconic rear-engine sports car, continuously refined for over 60 years, defining the sports car segment"
+    },
+    "trims": [
+      {
+        "name": "Carrera",
+        "engine": "3.0L Twin-Turbo H6",
+        "horsepower": 379,
+        "torque": 331,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~182 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "Carrera S",
+        "engine": "3.0L Twin-Turbo H6",
+        "horsepower": 443,
+        "torque": 390,
+        "zeroToSixty": "~3.5 s",
+        "topSpeed": "~191 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "Carrera GTS",
+        "engine": "3.0L Twin-Turbo H6",
+        "horsepower": 473,
+        "torque": 420,
+        "zeroToSixty": "~3.3 s",
+        "topSpeed": "~193 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "Turbo",
+        "engine": "3.8L Twin-Turbo H6",
+        "horsepower": 572,
+        "torque": 553,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~198 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "Turbo S",
+        "engine": "3.8L Twin-Turbo H6",
+        "horsepower": 640,
+        "torque": 590,
+        "zeroToSixty": "~2.6 s",
+        "topSpeed": "~205 mph",
+        "years": "2016–2024"
+      },
+      {
+        "name": "GT3",
+        "engine": "4.0L H6",
+        "horsepower": 502,
+        "torque": 346,
+        "zeroToSixty": "~3.2 s",
+        "topSpeed": "~199 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "GT3 RS",
+        "engine": "4.0L H6",
+        "horsepower": 520,
+        "torque": 346,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~184 mph",
+        "years": "2018–2024"
+      },
+      {
+        "name": "GT2 RS",
+        "engine": "3.8L Twin-Turbo H6",
+        "horsepower": 700,
+        "torque": 553,
+        "zeroToSixty": "~2.7 s",
+        "topSpeed": "~211 mph",
+        "years": "2018–2022"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~15 hp",
+        "costRange": "$3000–$6000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Suspension Kit",
+        "type": "Handling",
+        "hpGain": "N/A",
+        "costRange": "$4000–$8000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Aero Package",
+        "type": "Aerodynamics",
+        "hpGain": "N/A",
+        "costRange": "$5000–$10000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "1964: 911 introduced as successor to 356, establishing rear-engine layout that continues today",
+      "1964–1973: Original 911 with air-cooled flat-6 engines, multiple body styles including Targa",
+      "1974–1989: G-series with impact bumpers, turbocharging introduced in 1975",
+      "1989–1994: 964 generation with all-wheel drive option and modernized technology",
+      "1994–1998: 993 generation, last air-cooled 911, Turbo with twin-turbo setup",
+      "1998–2004: 996 generation with water-cooled engines, controversial styling",
+      "2005–2012: 997 generation returning to classic styling, GT3 and Turbo variants",
+      "2012–2019: 991 generation with longer wheelbase, improved handling and performance",
+      "2016–2024: 992 generation with new platform, hybrid technology, and advanced aerodynamics",
+      "2024: 911 continues as benchmark sports car, balancing tradition with innovation"
+    ],
+    "images": {
+      "hero": "/images/cars/porsche-911.webp"
+    }
+  },
+  {
+    "slug": "nissan-gtr",
+    "name": "Nissan GT-R",
+    "category": "sports-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=nissan-gtr",
+    "years": "2009–2024",
+    "overview": {
+      "manufacturer": "Nissan",
+      "bodyStyle": "Coupe",
+      "history": "Godzilla - Supercar performance at a fraction of the cost, continuously refined for over a decade"
+    },
+    "trims": [
+      {
+        "name": "GT-R",
+        "engine": "3.8L Twin-Turbo V6",
+        "horsepower": 565,
+        "torque": 467,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~196 mph",
+        "years": "2009–2016"
+      },
+      {
+        "name": "GT-R Premium",
+        "engine": "3.8L Twin-Turbo V6",
+        "horsepower": 565,
+        "torque": 467,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~196 mph",
+        "years": "2009–2016"
+      },
+      {
+        "name": "GT-R NISMO",
+        "engine": "3.8L Twin-Turbo V6",
+        "horsepower": 600,
+        "torque": 481,
+        "zeroToSixty": "~2.7 s",
+        "topSpeed": "~196 mph",
+        "years": "2014–2024"
+      },
+      {
+        "name": "GT-R (R35)",
+        "engine": "3.8L Twin-Turbo V6",
+        "horsepower": 565,
+        "torque": 467,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~196 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "GT-R Track Edition",
+        "engine": "3.8L Twin-Turbo V6",
+        "horsepower": 565,
+        "torque": 467,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~196 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "GT-R 50th Anniversary",
+        "engine": "3.8L Twin-Turbo V6",
+        "horsepower": 565,
+        "torque": 467,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~196 mph",
+        "years": "2019"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~100 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Downpipes",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~40 hp",
+        "costRange": "$1500–$2500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Turbo Upgrade",
+        "type": "Performance (Forced Induction)",
+        "hpGain": "+~200 hp",
+        "costRange": "$8000–$15000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Intercooler Upgrade",
+        "type": "Performance (Cooling)",
+        "hpGain": "+~25 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2009: R35 GT-R introduced to US market, revolutionizing supercar performance benchmarks",
+      "2009–2016: Early R35 establishes GT-R as supercar killer, Nürburgring record holder",
+      "2011: GT-R receives power bump to 530 hp, improved transmission programming",
+      "2014: GT-R NISMO introduced with 600 hp, track-focused aerodynamics and suspension",
+      "2017: GT-R receives major refresh with updated styling, improved interior, and refined performance",
+      "2019: 50th Anniversary edition celebrates GT-R heritage with special paint and badging",
+      "2009–2024: R35 generation continues as benchmark for accessible supercar performance"
+    ],
+    "images": {
+      "hero": "/images/cars/nissan-gtr.webp"
+    }
+  },
+  {
+    "slug": "toyota-supra",
+    "name": "Toyota Supra",
+    "category": "sports-car",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=toyota-supra",
+    "years": "2019–2024",
+    "overview": {
+      "manufacturer": "Toyota",
+      "bodyStyle": "Coupe",
+      "history": "Legendary nameplate returns after 20-year hiatus, co-developed with BMW for modern performance"
+    },
+    "trims": [
+      {
+        "name": "2.0",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 255,
+        "torque": 295,
+        "zeroToSixty": "~5.0 s",
+        "topSpeed": "~155 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "3.0",
+        "engine": "3.0L Turbo I6",
+        "horsepower": 382,
+        "torque": 368,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2019–2024"
+      },
+      {
+        "name": "3.0 Premium",
+        "engine": "3.0L Turbo I6",
+        "horsepower": 382,
+        "torque": 368,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2019–2024"
+      },
+      {
+        "name": "A91 Edition",
+        "engine": "3.0L Turbo I6",
+        "horsepower": 382,
+        "torque": 368,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2020–2021"
+      },
+      {
+        "name": "A91-CF Edition",
+        "engine": "3.0L Turbo I6",
+        "horsepower": 382,
+        "torque": 368,
+        "zeroToSixty": "~3.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2022–2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~80 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional required"
+      },
+      {
+        "name": "Downpipes",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~30 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Intercooler Upgrade",
+        "type": "Performance (Cooling)",
+        "hpGain": "+~20 hp",
+        "costRange": "$1000–$2000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~12 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2019: Fifth generation Supra debuts after 20-year hiatus, co-developed with BMW",
+      "2019–2024: A90 generation brings modern turbocharged performance to Supra nameplate",
+      "2020: 2.0L four-cylinder option introduced for more accessible entry point",
+      "2020–2021: A91 Edition special models with unique colors and styling",
+      "2022: A91-CF Edition adds carbon fiber accents and special badging",
+      "2019–2024: Supra continues to evolve with special editions and refinements"
+    ],
+    "images": {
+      "hero": "/images/cars/toyota-supra.webp"
+    }
+  },
+  {
+    "slug": "cadillac-ct5-v",
+    "name": "Cadillac CT5-V Blackwing",
+    "category": "luxury-sports",
+    "icon": "icon-sedan",
+    "href": "./model.html?car=cadillac-ct5-v",
+    "years": "2022–2024",
+    "overview": {
+      "manufacturer": "Cadillac",
+      "bodyStyle": "Sedan",
+      "history": "America's ultimate performance sedan, combining supercharged V8 power with luxury and track capability"
+    },
+    "trims": [
+      {
+        "name": "CT5-V",
+        "engine": "3.0L Twin-Turbo V6",
+        "horsepower": 360,
+        "torque": 405,
+        "zeroToSixty": "~4.6 s",
+        "topSpeed": "~155 mph",
+        "years": "2020–2024"
+      },
+      {
+        "name": "CT5-V Blackwing",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 668,
+        "torque": 659,
+        "zeroToSixty": "~3.4 s",
+        "topSpeed": "~200 mph",
+        "years": "2022–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Pulley Upgrade",
+        "type": "Performance (Supercharger)",
+        "hpGain": "+~80 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional required"
+      },
+      {
+        "name": "Headers & Exhaust",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~30 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$1000–$2000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Intercooler Upgrade",
+        "type": "Performance (Cooling)",
+        "hpGain": "+~15 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2020: CT5-V introduced as performance variant with twin-turbo V6, replacing ATS-V",
+      "2022: CT5-V Blackwing debuts as ultimate performance sedan with 668 hp supercharged V8",
+      "2022–2024: Blackwing becomes fastest production Cadillac, setting benchmarks for American performance sedans",
+      "2024: Final model year announced, marking end of V8-powered performance sedans from Cadillac"
+    ],
+    "images": {
+      "hero": "/images/cars/cadillac-ct5-v-blackwing.webp"
+    }
+  },
+  {
+    "slug": "lamborghini-huracan",
+    "name": "Lamborghini Huracán",
+    "category": "supercar",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=lamborghini-huracan",
+    "years": "2014–2024",
+    "overview": {
+      "manufacturer": "Lamborghini",
+      "bodyStyle": "Coupe",
+      "history": "Entry-level supercar from Lamborghini, replacing the Gallardo with V10 power and advanced technology"
+    },
+    "trims": [
+      {
+        "name": "Huracán",
+        "engine": "5.2L V10",
+        "horsepower": 602,
+        "torque": 413,
+        "zeroToSixty": "~3.2 s",
+        "topSpeed": "~201 mph",
+        "years": "2014–2019"
+      },
+      {
+        "name": "Huracán EVO",
+        "engine": "5.2L V10",
+        "horsepower": 631,
+        "torque": 443,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~201 mph",
+        "years": "2019–2024"
+      },
+      {
+        "name": "Huracán Performante",
+        "engine": "5.2L V10",
+        "horsepower": 631,
+        "torque": 443,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~202 mph",
+        "years": "2017–2019"
+      },
+      {
+        "name": "Huracán STO",
+        "engine": "5.2L V10",
+        "horsepower": 631,
+        "torque": 417,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~193 mph",
+        "years": "2021–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional required"
+      },
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~20 hp",
+        "costRange": "$3000–$6000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2014: Huracán debuts at Geneva Motor Show, replacing the Gallardo",
+      "2015: Huracán LP 610-4 Spyder introduced with retractable soft top",
+      "2017: Performante variant sets Nürburgring lap record for production cars",
+      "2019: EVO refresh brings improved aerodynamics and performance",
+      "2021: STO (Super Trofeo Omologata) track-focused variant launched",
+      "2024: Final V10-powered Huracán models before hybrid transition"
+    ],
+    "images": {
+      "hero": "/images/cars/lamborghini-huracan.webp"
+    }
+  },
+  {
+    "slug": "ferrari-488",
+    "name": "Ferrari 488",
+    "category": "supercar",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=ferrari-488",
+    "years": "2015–2019",
+    "overview": {
+      "manufacturer": "Ferrari",
+      "bodyStyle": "Coupe",
+      "history": "Mid-engine V8 supercar replacing the 458 Italia with twin-turbocharged power"
+    },
+    "trims": [
+      {
+        "name": "488 GTB",
+        "engine": "3.9L Twin-Turbo V8",
+        "horsepower": 661,
+        "torque": 561,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~205 mph",
+        "years": "2015–2019"
+      },
+      {
+        "name": "488 Spider",
+        "engine": "3.9L Twin-Turbo V8",
+        "horsepower": 661,
+        "torque": 561,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~203 mph",
+        "years": "2015–2019"
+      },
+      {
+        "name": "488 Pista",
+        "engine": "3.9L Twin-Turbo V8",
+        "horsepower": 710,
+        "torque": 568,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~211 mph",
+        "years": "2018–2020"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~80 hp",
+        "costRange": "$5000–$10000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2015: 488 GTB debuts at Geneva Motor Show with twin-turbo V8",
+      "2015: 488 Spider introduced with retractable hardtop",
+      "2018: Pista (track) variant launched with 710 hp",
+      "2019: Replaced by F8 Tributo"
+    ],
+    "images": {
+      "hero": "/images/cars/ferrari-488.webp"
+    }
+  },
+  {
+    "slug": "mclaren-720s",
+    "name": "McLaren 720S",
+    "category": "supercar",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=mclaren-720s",
+    "years": "2017–2024",
+    "overview": {
+      "manufacturer": "McLaren",
+      "bodyStyle": "Coupe",
+      "history": "Flagship supercar from McLaren Automotive with carbon fiber construction and advanced aerodynamics"
+    },
+    "trims": [
+      {
+        "name": "720S Coupe",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 710,
+        "torque": 568,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~212 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "720S Spider",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 710,
+        "torque": 568,
+        "zeroToSixty": "~2.8 s",
+        "topSpeed": "~212 mph",
+        "years": "2019–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~100 hp",
+        "costRange": "$4000–$8000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2017: 720S debuts at Geneva Motor Show, replacing 650S",
+      "2019: Spider variant introduced with retractable hardtop",
+      "2021: Special editions and track-focused variants released",
+      "2024: Production continues as flagship McLaren model"
+    ],
+    "images": {
+      "hero": "/images/cars/mclaren-720s.webp"
+    }
+  },
+  {
+    "slug": "lexus-lc500",
+    "name": "Lexus LC 500",
+    "category": "luxury-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=lexus-lc500",
+    "years": "2017–2024",
+    "overview": {
+      "manufacturer": "Lexus",
+      "bodyStyle": "Coupe",
+      "history": "Luxury grand tourer combining Japanese craftsmanship with V8 performance"
+    },
+    "trims": [
+      {
+        "name": "LC 500",
+        "engine": "5.0L V8",
+        "horsepower": 471,
+        "torque": 398,
+        "zeroToSixty": "~4.4 s",
+        "topSpeed": "~168 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "LC 500h",
+        "engine": "3.5L V6 Hybrid",
+        "horsepower": 354,
+        "torque": 369,
+        "zeroToSixty": "~4.7 s",
+        "topSpeed": "~155 mph",
+        "years": "2017–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~15 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2017: LC 500 debuts at North American International Auto Show",
+      "2018: Convertible variant introduced",
+      "2021: Updated styling and technology features",
+      "2024: Continues as flagship Lexus coupe"
+    ],
+    "images": {
+      "hero": "/images/cars/lexus-lc500.webp"
+    }
+  },
+  {
+    "slug": "acura-nsx",
+    "name": "Acura NSX",
+    "category": "japanese-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=acura-nsx",
+    "years": "2016–2022",
+    "overview": {
+      "manufacturer": "Acura",
+      "bodyStyle": "Coupe",
+      "history": "Second-generation NSX with hybrid powertrain and all-wheel drive"
+    },
+    "trims": [
+      {
+        "name": "NSX",
+        "engine": "3.5L Twin-Turbo V6 Hybrid",
+        "horsepower": 573,
+        "torque": 476,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~191 mph",
+        "years": "2016–2022"
+      },
+      {
+        "name": "NSX Type S",
+        "engine": "3.5L Twin-Turbo V6 Hybrid",
+        "horsepower": 600,
+        "torque": 492,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~191 mph",
+        "years": "2021–2022"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$3000–$6000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2016: Second-generation NSX debuts after 11-year hiatus",
+      "2017: Production begins in Ohio, USA",
+      "2021: Type S limited edition with 600 hp",
+      "2022: Final model year, production ends"
+    ],
+    "images": {
+      "hero": "/images/cars/acura-nsx.webp"
+    }
+  },
+  {
+    "slug": "honda-civic-type-r",
+    "name": "Honda Civic Type R",
+    "category": "japanese-sports",
+    "icon": "icon-hatchback",
+    "href": "./model.html?car=honda-civic-type-r",
+    "years": "2017–2024",
+    "overview": {
+      "manufacturer": "Honda",
+      "bodyStyle": "Hatchback",
+      "history": "High-performance front-wheel drive hot hatch with turbocharged power"
+    },
+    "trims": [
+      {
+        "name": "Type R (FK8)",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 306,
+        "torque": 295,
+        "zeroToSixty": "~5.2 s",
+        "topSpeed": "~169 mph",
+        "years": "2017–2021"
+      },
+      {
+        "name": "Type R (FL5)",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 315,
+        "torque": 310,
+        "zeroToSixty": "~5.0 s",
+        "topSpeed": "~169 mph",
+        "years": "2022–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$500–$1000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Intake System",
+        "type": "Performance (Intake)",
+        "hpGain": "+~10 hp",
+        "costRange": "$300–$600",
+        "install": "DIY-friendly"
+      }
+    ],
+    "history": [
+      "2017: FK8 generation debuts in North America",
+      "2019: Limited edition models and special colors",
+      "2022: FL5 generation introduced with updated styling",
+      "2024: Continues as flagship Honda performance model"
+    ],
+    "images": {
+      "hero": "/images/cars/honda-civic-type-r.webp"
+    }
+  },
+  {
+    "slug": "subaru-wrx-sti",
+    "name": "Subaru WRX STI",
+    "category": "japanese-sports",
+    "icon": "icon-sedan",
+    "href": "./model.html?car=subaru-wrx-sti",
+    "years": "2015–2021",
+    "overview": {
+      "manufacturer": "Subaru",
+      "bodyStyle": "Sedan",
+      "history": "All-wheel drive performance sedan with turbocharged boxer engine"
+    },
+    "trims": [
+      {
+        "name": "STI",
+        "engine": "2.5L Turbo Flat-4",
+        "horsepower": 305,
+        "torque": 290,
+        "zeroToSixty": "~4.9 s",
+        "topSpeed": "~159 mph",
+        "years": "2015–2021"
+      },
+      {
+        "name": "STI Limited",
+        "engine": "2.5L Turbo Flat-4",
+        "horsepower": 305,
+        "torque": 290,
+        "zeroToSixty": "~4.9 s",
+        "topSpeed": "~159 mph",
+        "years": "2016–2021"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~40 hp",
+        "costRange": "$500–$1000",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Downpipe",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~20 hp",
+        "costRange": "$400–$800",
+        "install": "DIY-friendly"
+      }
+    ],
+    "history": [
+      "2015: Fourth generation WRX STI debuts",
+      "2018: Final refresh with updated styling",
+      "2021: Final model year, replaced by WRX"
+    ],
+    "images": {
+      "hero": "/images/cars/subaru-wrx-sti.webp"
+    }
+  },
+  {
+    "slug": "mazda-rx7",
+    "name": "Mazda RX-7",
+    "category": "japanese-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=mazda-rx7",
+    "years": "1993–2002",
+    "overview": {
+      "manufacturer": "Mazda",
+      "bodyStyle": "Coupe",
+      "history": "Third-generation rotary-powered sports car, legendary for its unique engine and handling"
+    },
+    "trims": [
+      {
+        "name": "Base",
+        "engine": "1.3L Twin-Rotor Rotary",
+        "horsepower": 255,
+        "torque": 217,
+        "zeroToSixty": "~5.3 s",
+        "topSpeed": "~160 mph",
+        "years": "1993–1995"
+      },
+      {
+        "name": "R1",
+        "engine": "1.3L Twin-Rotor Rotary",
+        "horsepower": 255,
+        "torque": 217,
+        "zeroToSixty": "~5.2 s",
+        "topSpeed": "~160 mph",
+        "years": "1993–1995"
+      },
+      {
+        "name": "Type RZ",
+        "engine": "1.3L Twin-Rotor Rotary",
+        "horsepower": 280,
+        "torque": 231,
+        "zeroToSixty": "~4.9 s",
+        "topSpeed": "~165 mph",
+        "years": "1996–2002"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Turbo Upgrade",
+        "type": "Performance (Turbo)",
+        "hpGain": "+~100 hp",
+        "costRange": "$2000–$5000",
+        "install": "Professional required"
+      },
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~30 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "1993: Third-generation FD RX-7 debuts with sequential twin-turbo system",
+      "1995: Final year for base model, R1 track variant introduced",
+      "1996: Type RZ variant with 280 hp",
+      "2002: Production ends, marking end of rotary sports cars"
+    ],
+    "images": {
+      "hero": "/images/cars/mazda-rx7.webp"
+    }
+  },
+  {
+    "slug": "volkswagen-golf-r",
+    "name": "Volkswagen Golf R",
+    "category": "german-sports",
+    "icon": "icon-hatchback",
+    "href": "./model.html?car=volkswagen-golf-r",
+    "years": "2015–2024",
+    "overview": {
+      "manufacturer": "Volkswagen",
+      "bodyStyle": "Hatchback",
+      "history": "All-wheel drive hot hatch with turbocharged power and premium features"
+    },
+    "trims": [
+      {
+        "name": "Golf R (Mk7)",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 292,
+        "torque": 280,
+        "zeroToSixty": "~4.9 s",
+        "topSpeed": "~155 mph",
+        "years": "2015–2019"
+      },
+      {
+        "name": "Golf R (Mk8)",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 315,
+        "torque": 310,
+        "zeroToSixty": "~4.5 s",
+        "topSpeed": "~155 mph",
+        "years": "2022–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~70 hp",
+        "costRange": "$600–$1200",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2015: Mk7 Golf R debuts with 292 hp",
+      "2019: Final year for Mk7 generation",
+      "2022: Mk8 Golf R introduced with 315 hp",
+      "2024: Continues as flagship Golf model"
+    ],
+    "images": {
+      "hero": "/images/cars/volkswagen-golf-r.webp"
+    }
+  },
+  {
+    "slug": "ford-gt",
+    "name": "Ford GT",
+    "category": "american-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=ford-gt",
+    "years": "2017–2022",
+    "overview": {
+      "manufacturer": "Ford",
+      "bodyStyle": "Coupe",
+      "history": "Modern supercar celebrating 50 years of Ford GT heritage with carbon fiber construction"
+    },
+    "trims": [
+      {
+        "name": "GT",
+        "engine": "3.5L Twin-Turbo V6",
+        "horsepower": 647,
+        "torque": 550,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~216 mph",
+        "years": "2017–2022"
+      },
+      {
+        "name": "GT Heritage Edition",
+        "engine": "3.5L Twin-Turbo V6",
+        "horsepower": 647,
+        "torque": 550,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~216 mph",
+        "years": "2018–2022"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~100 hp",
+        "costRange": "$5000–$10000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2017: Second-generation Ford GT enters production",
+      "2018: Heritage Edition celebrates racing history",
+      "2021: Final production year announced",
+      "2022: Production ends after limited run"
+    ],
+    "images": {
+      "hero": "/images/cars/ford-gt.webp"
+    }
+  },
+  {
+    "slug": "dodge-viper",
+    "name": "Dodge Viper",
+    "category": "american-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=dodge-viper",
+    "years": "2013–2017",
+    "overview": {
+      "manufacturer": "Dodge",
+      "bodyStyle": "Coupe",
+      "history": "Fifth-generation V10-powered American supercar, final iteration of the Viper"
+    },
+    "trims": [
+      {
+        "name": "SRT",
+        "engine": "8.4L V10",
+        "horsepower": 640,
+        "torque": 600,
+        "zeroToSixty": "~3.5 s",
+        "topSpeed": "~206 mph",
+        "years": "2013–2017"
+      },
+      {
+        "name": "ACR",
+        "engine": "8.4L V10",
+        "horsepower": 645,
+        "torque": 600,
+        "zeroToSixty": "~3.3 s",
+        "topSpeed": "~177 mph",
+        "years": "2015–2017"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Exhaust System",
+        "type": "Performance (Exhaust)",
+        "hpGain": "+~20 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2013: Fifth-generation Viper debuts with 640 hp",
+      "2015: ACR (American Club Racer) track variant introduced",
+      "2017: Final model year, production ends"
+    ],
+    "images": {
+      "hero": "/images/cars/dodge-viper.webp"
+    }
+  },
+  {
+    "slug": "chevrolet-corvette-z06",
+    "name": "Chevrolet Corvette Z06",
+    "category": "american-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=chevrolet-corvette-z06",
+    "years": "2015–2023",
+    "overview": {
+      "manufacturer": "Chevrolet",
+      "bodyStyle": "Coupe",
+      "history": "Track-focused variant of the Corvette with enhanced performance and aerodynamics"
+    },
+    "trims": [
+      {
+        "name": "Z06",
+        "engine": "6.2L Supercharged V8",
+        "horsepower": 650,
+        "torque": 650,
+        "zeroToSixty": "~3.0 s",
+        "topSpeed": "~190 mph",
+        "years": "2015–2019"
+      },
+      {
+        "name": "Z06 (C8)",
+        "engine": "5.5L Flat-Plane V8",
+        "horsepower": 670,
+        "torque": 460,
+        "zeroToSixty": "~2.6 s",
+        "topSpeed": "~195 mph",
+        "years": "2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "Pulley Upgrade",
+        "type": "Performance (Supercharger)",
+        "hpGain": "+~80 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2015: C7 Z06 debuts with 650 hp supercharged V8",
+      "2019: Final year for C7 generation",
+      "2023: C8 Z06 introduced with flat-plane V8",
+      "2024: Continues as track-focused Corvette"
+    ],
+    "images": {
+      "hero": "/images/cars/chevrolet-corvette-z06.webp"
+    }
+  },
+  {
+    "slug": "aston-martin-vantage",
+    "name": "Aston Martin Vantage",
+    "category": "luxury-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=aston-martin-vantage",
+    "years": "2018–2024",
+    "overview": {
+      "manufacturer": "Aston Martin",
+      "bodyStyle": "Coupe",
+      "history": "Entry-level sports car from Aston Martin with Mercedes-AMG powertrain"
+    },
+    "trims": [
+      {
+        "name": "Vantage",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 503,
+        "torque": 505,
+        "zeroToSixty": "~3.6 s",
+        "topSpeed": "~195 mph",
+        "years": "2018–2024"
+      },
+      {
+        "name": "Vantage F1 Edition",
+        "engine": "4.0L Twin-Turbo V8",
+        "horsepower": 528,
+        "torque": 505,
+        "zeroToSixty": "~3.5 s",
+        "topSpeed": "~195 mph",
+        "years": "2021–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~60 hp",
+        "costRange": "$3000–$6000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2018: Second-generation Vantage debuts",
+      "2021: F1 Edition celebrates Formula 1 partnership",
+      "2024: Continues as entry-level Aston Martin"
+    ],
+    "images": {
+      "hero": "/images/cars/aston-martin-vantage.webp"
+    }
+  },
+  {
+    "slug": "jaguar-f-type",
+    "name": "Jaguar F-Type",
+    "category": "luxury-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=jaguar-f-type",
+    "years": "2014–2024",
+    "overview": {
+      "manufacturer": "Jaguar",
+      "bodyStyle": "Coupe",
+      "history": "British sports car combining luxury with performance, successor to the E-Type"
+    },
+    "trims": [
+      {
+        "name": "F-Type",
+        "engine": "3.0L Supercharged V6",
+        "horsepower": 340,
+        "torque": 332,
+        "zeroToSixty": "~5.1 s",
+        "topSpeed": "~161 mph",
+        "years": "2014–2020"
+      },
+      {
+        "name": "F-Type R",
+        "engine": "5.0L Supercharged V8",
+        "horsepower": 550,
+        "torque": 502,
+        "zeroToSixty": "~4.0 s",
+        "topSpeed": "~186 mph",
+        "years": "2014–2024"
+      },
+      {
+        "name": "F-Type SVR",
+        "engine": "5.0L Supercharged V8",
+        "horsepower": 575,
+        "torque": 516,
+        "zeroToSixty": "~3.5 s",
+        "topSpeed": "~200 mph",
+        "years": "2016–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2014: F-Type debuts as successor to E-Type",
+      "2016: SVR high-performance variant introduced",
+      "2020: Major refresh with updated styling",
+      "2024: Final model year announced"
+    ],
+    "images": {
+      "hero": "/images/cars/jaguar-f-type.webp"
+    }
+  },
+  {
+    "slug": "genesis-g90",
+    "name": "Genesis G90",
+    "category": "luxury-sedan",
+    "icon": "icon-sedan",
+    "href": "./model.html?car=genesis-g90",
+    "years": "2017–2024",
+    "overview": {
+      "manufacturer": "Genesis",
+      "bodyStyle": "Sedan",
+      "history": "Flagship luxury sedan from Hyundai's Genesis brand"
+    },
+    "trims": [
+      {
+        "name": "G90",
+        "engine": "3.3L Twin-Turbo V6",
+        "horsepower": 365,
+        "torque": 376,
+        "zeroToSixty": "~5.3 s",
+        "topSpeed": "~155 mph",
+        "years": "2017–2024"
+      },
+      {
+        "name": "G90 5.0",
+        "engine": "5.0L V8",
+        "horsepower": 420,
+        "torque": 383,
+        "zeroToSixty": "~5.0 s",
+        "topSpeed": "~155 mph",
+        "years": "2017–2022"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~40 hp",
+        "costRange": "$1500–$3000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2017: G90 debuts as Genesis flagship sedan",
+      "2019: Major refresh with updated styling",
+      "2022: Second generation introduced",
+      "2024: Continues as luxury flagship"
+    ],
+    "images": {
+      "hero": "/images/cars/genesis-g90.webp"
+    }
+  },
+  {
+    "slug": "kia-stinger",
+    "name": "Kia Stinger",
+    "category": "korean-sports",
+    "icon": "icon-sedan",
+    "href": "./model.html?car=kia-stinger",
+    "years": "2018–2023",
+    "overview": {
+      "manufacturer": "Kia",
+      "bodyStyle": "Sedan",
+      "history": "Rear-wheel drive sports sedan with turbocharged power"
+    },
+    "trims": [
+      {
+        "name": "GT",
+        "engine": "3.3L Twin-Turbo V6",
+        "horsepower": 365,
+        "torque": 376,
+        "zeroToSixty": "~4.7 s",
+        "topSpeed": "~167 mph",
+        "years": "2018–2023"
+      },
+      {
+        "name": "GT2",
+        "engine": "3.3L Twin-Turbo V6",
+        "horsepower": 365,
+        "torque": 376,
+        "zeroToSixty": "~4.7 s",
+        "topSpeed": "~167 mph",
+        "years": "2018–2023"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~60 hp",
+        "costRange": "$800–$1500",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2018: Stinger debuts as Kia's first rear-wheel drive sports sedan",
+      "2021: Final refresh with updated styling",
+      "2023: Final model year, production ends"
+    ],
+    "images": {
+      "hero": "/images/cars/kia-stinger.webp"
+    }
+  },
+  {
+    "slug": "hyundai-veloster-n",
+    "name": "Hyundai Veloster N",
+    "category": "korean-sports",
+    "icon": "icon-hatchback",
+    "href": "./model.html?car=hyundai-veloster-n",
+    "years": "2019–2022",
+    "overview": {
+      "manufacturer": "Hyundai",
+      "bodyStyle": "Hatchback",
+      "history": "High-performance hot hatch developed by Hyundai's N division"
+    },
+    "trims": [
+      {
+        "name": "Veloster N",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 250,
+        "torque": 260,
+        "zeroToSixty": "~5.6 s",
+        "topSpeed": "~155 mph",
+        "years": "2019–2021"
+      },
+      {
+        "name": "Veloster N (2021+)",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 275,
+        "torque": 260,
+        "zeroToSixty": "~5.4 s",
+        "topSpeed": "~155 mph",
+        "years": "2021–2022"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~40 hp",
+        "costRange": "$500–$1000",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2019: Veloster N debuts in North America",
+      "2021: Power increase to 275 hp",
+      "2022: Final model year, replaced by Elantra N"
+    ],
+    "images": {
+      "hero": "/images/cars/hyundai-veloster-n.webp"
+    }
+  },
+  {
+    "slug": "mitsubishi-lancer-evolution",
+    "name": "Mitsubishi Lancer Evolution",
+    "category": "japanese-sports",
+    "icon": "icon-sedan",
+    "href": "./model.html?car=mitsubishi-lancer-evolution",
+    "years": "2008–2015",
+    "overview": {
+      "manufacturer": "Mitsubishi",
+      "bodyStyle": "Sedan",
+      "history": "Final generation of the legendary all-wheel drive rally-bred sedan"
+    },
+    "trims": [
+      {
+        "name": "GSR",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 291,
+        "torque": 300,
+        "zeroToSixty": "~4.8 s",
+        "topSpeed": "~155 mph",
+        "years": "2008–2015"
+      },
+      {
+        "name": "MR",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 291,
+        "torque": 300,
+        "zeroToSixty": "~4.8 s",
+        "topSpeed": "~155 mph",
+        "years": "2008–2015"
+      },
+      {
+        "name": "Final Edition",
+        "engine": "2.0L Turbo I4",
+        "horsepower": 303,
+        "torque": 305,
+        "zeroToSixty": "~4.7 s",
+        "topSpeed": "~155 mph",
+        "years": "2015"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$600–$1200",
+        "install": "Professional recommended"
+      },
+      {
+        "name": "Turbo Upgrade",
+        "type": "Performance (Turbo)",
+        "hpGain": "+~100 hp",
+        "costRange": "$2000–$4000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2008: Tenth generation (X) Evo debuts",
+      "2011: Final refresh with updated styling",
+      "2015: Final Edition marks end of production",
+      "2015: Production ends after 25 years"
+    ],
+    "images": {
+      "hero": "/images/cars/mitsubishi-lancer-evolution.webp"
+    }
+  },
+  {
+    "slug": "ford-focus-rs",
+    "name": "Ford Focus RS",
+    "category": "american-sports",
+    "icon": "icon-hatchback",
+    "href": "./model.html?car=ford-focus-rs",
+    "years": "2016–2018",
+    "overview": {
+      "manufacturer": "Ford",
+      "bodyStyle": "Hatchback",
+      "history": "All-wheel drive hot hatch with drift mode and turbocharged power"
+    },
+    "trims": [
+      {
+        "name": "Focus RS",
+        "engine": "2.3L Turbo I4",
+        "horsepower": 350,
+        "torque": 350,
+        "zeroToSixty": "~4.6 s",
+        "topSpeed": "~165 mph",
+        "years": "2016–2018"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~50 hp",
+        "costRange": "$600–$1200",
+        "install": "Professional recommended"
+      }
+    ],
+    "history": [
+      "2016: Third-generation Focus RS debuts in North America",
+      "2017: Limited edition models released",
+      "2018: Final model year, production ends"
+    ],
+    "images": {
+      "hero": "/images/cars/ford-focus-rs.webp"
+    }
+  },
+  {
+    "slug": "maserati-mc20",
+    "name": "Maserati MC20",
+    "category": "luxury-sports",
+    "icon": "icon-coupe",
+    "href": "./model.html?car=maserati-mc20",
+    "years": "2021–2024",
+    "overview": {
+      "manufacturer": "Maserati",
+      "bodyStyle": "Coupe",
+      "history": "Mid-engine supercar marking Maserati's return to high-performance sports cars"
+    },
+    "trims": [
+      {
+        "name": "MC20",
+        "engine": "3.0L Twin-Turbo V6",
+        "horsepower": 621,
+        "torque": 538,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~202 mph",
+        "years": "2021–2024"
+      },
+      {
+        "name": "MC20 Cielo",
+        "engine": "3.0L Twin-Turbo V6",
+        "horsepower": 621,
+        "torque": 538,
+        "zeroToSixty": "~2.9 s",
+        "topSpeed": "~202 mph",
+        "years": "2022–2024"
+      }
+    ],
+    "modifications": [
+      {
+        "name": "ECU Tune",
+        "type": "Performance (ECU)",
+        "hpGain": "+~80 hp",
+        "costRange": "$4000–$8000",
+        "install": "Professional required"
+      }
+    ],
+    "history": [
+      "2021: MC20 debuts as Maserati's new flagship supercar",
+      "2022: Cielo (convertible) variant introduced",
+      "2024: Continues as Maserati's performance flagship"
+    ],
+    "images": {
+      "hero": "/images/cars/maserati-mc20.webp"
+    }
+  }
+]
