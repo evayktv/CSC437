@@ -1,6 +1,6 @@
 // src/services/garage-car-svc.ts
 import { Schema, model } from "mongoose";
-import { GarageCar, ServiceLog } from "../models/garage-car";
+import { GarageCar, ServiceLog, Note } from "../models/garage-car";
 
 const ServiceLogSchema = new Schema<ServiceLog>(
   {
@@ -9,6 +9,14 @@ const ServiceLogSchema = new Schema<ServiceLog>(
     mileage: { type: Number },
     cost: { type: Number },
     notes: { type: String },
+  },
+  { _id: true }
+);
+
+const NoteSchema = new Schema<Note>(
+  {
+    date: { type: Date, required: true },
+    content: { type: String, required: true, trim: true },
   },
   { _id: true }
 );
@@ -22,7 +30,7 @@ const GarageCarSchema = new Schema<GarageCar>(
     year: { type: Number, required: true },
     trim: { type: String, required: true, trim: true },
     mileage: { type: Number },
-    notes: { type: String, default: "" },
+    notes: { type: [NoteSchema], default: [] },
     dateAdded: { type: Date, default: Date.now },
     serviceLogs: { type: [ServiceLogSchema], default: [] },
   },

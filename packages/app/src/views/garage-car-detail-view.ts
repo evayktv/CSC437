@@ -1,7 +1,7 @@
 import { View } from "@calpoly/mustang";
 import { html, css } from "lit";
 import { property, state } from "lit/decorators.js";
-import { GarageCar, ServiceLog } from "@csc437/server/models";
+import { GarageCar, ServiceLog, Note } from "@csc437/server/models";
 import { Msg } from "../messages";
 import { Model } from "../model";
 import { History, Auth, Observer } from "@calpoly/mustang";
@@ -27,6 +27,12 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
 
   @state()
   private showEditForm: boolean = false;
+
+  @state()
+  private showNoteForm: boolean = false;
+
+  @state()
+  private editingNote: Note | null = null;
 
   _user = new Auth.User();
   _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
@@ -114,6 +120,96 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
     this.showServiceLogForm = false;
   }
 
+  handleAddNote() {
+    this.editingNote = null;
+    this.showNoteForm = true;
+  }
+
+  handleEditNote(note: Note) {
+    this.editingNote = note;
+    this.showNoteForm = true;
+  }
+
+  handleCloseNoteForm() {
+    this.showNoteForm = false;
+    this.editingNote = null;
+  }
+
+  async handleNoteSubmit(event: CustomEvent) {
+    const note: Note = event.detail;
+
+    if (!this.garageCar?._id) return;
+
+    try {
+      const headers = {
+        ...Auth.headers(this._user),
+        "Content-Type": "application/json",
+      };
+
+      let response;
+      if (this.editingNote && this.editingNote._id) {
+        // Update existing note
+        response = await fetch(
+          `/api/garage/${this.garageCar._id}/notes/${this.editingNote._id}`,
+          {
+            method: "PUT",
+            headers,
+            body: JSON.stringify(note),
+          }
+        );
+      } else {
+        // Add new note
+        response = await fetch(`/api/garage/${this.garageCar._id}/notes`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify(note),
+        });
+      }
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || "Failed to save note");
+      }
+
+      // Reload garage car to get updated notes
+      await this.loadGarageCar();
+      this.showNoteForm = false;
+      this.editingNote = null;
+    } catch (err: any) {
+      console.error("Error saving note:", err);
+      alert(err.message || "Failed to save note");
+    }
+  }
+
+  async handleDeleteNote(noteId: string) {
+    if (!this.garageCar?._id || !noteId) return;
+
+    if (!confirm("Are you sure you want to delete this note?")) {
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `/api/garage/${this.garageCar._id}/notes/${noteId}`,
+        {
+          method: "DELETE",
+          headers: Auth.headers(this._user),
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || "Failed to delete note");
+      }
+
+      // Reload garage car to get updated notes
+      await this.loadGarageCar();
+    } catch (err: any) {
+      console.error("Error deleting note:", err);
+      alert(err.message || "Failed to delete note");
+    }
+  }
+
   async handleServiceLogSubmit(event: CustomEvent) {
     const serviceLog: ServiceLog = event.detail;
 
@@ -170,6 +266,16 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
       this.carModel?.images?.hero ||
       null;
     const serviceLogs = car.serviceLogs || [];
+
+    // Handle legacy notes format (string) vs new format (array)
+    let notes: Note[] = [];
+    if (Array.isArray(car.notes)) {
+      notes = car.notes;
+    } else if (car.notes && typeof car.notes === "string" && car.notes.trim()) {
+      // Legacy format: convert old string notes to array (optional migration)
+      // For now, just use empty array
+      notes = [];
+    }
 
     return html`
       <main class="container">
@@ -253,14 +359,125 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
                 `
               : ""}
           </div>
-          ${car.notes
+        </section>
+
+        <!-- Notes Section -->
+        <section class="notes-section">
+          <div class="section-header">
+            <h2>Notes</h2>
+            <button class="btn-add-note" @click=${this.handleAddNote}>
+              + Add Note
+            </button>
+          </div>
+
+          ${notes.length === 0
             ? html`
-                <div class="notes-card">
-                  <h3>Notes</h3>
-                  <p>${car.notes}</p>
+                <div class="empty-state">
+                  <p>
+                    No notes yet. Add your first note to start tracking
+                    information about this vehicle!
+                  </p>
                 </div>
               `
-            : ""}
+            : html`
+                <div class="timeline">
+                  ${[...notes]
+                    .sort((a, b) => {
+                      // Sort by date (newest first)
+                      const dateA = new Date(a.date).getTime();
+                      const dateB = new Date(b.date).getTime();
+                      const dateDiff = dateB - dateA;
+
+                      // If dates are different, sort by date
+                      if (dateDiff !== 0) {
+                        return dateDiff;
+                      }
+
+                      // If dates are the same, sort by _id (ObjectId contains timestamp)
+                      if (a._id && b._id) {
+                        return b._id > a._id ? 1 : -1;
+                      }
+
+                      return 0;
+                    })
+                    .map(
+                      (note) => html`
+                        <div class="timeline-item">
+                          <div class="timeline-marker"></div>
+                          <div class="timeline-content">
+                            <div class="note-header">
+                              <span class="note-date"
+                                >${note.date
+                                  ? this.formatDate(note.date)
+                                  : "Invalid date"}</span
+                              >
+                              <div class="note-actions">
+                                <button
+                                  class="btn-icon btn-edit-note"
+                                  @click=${() => this.handleEditNote(note)}
+                                  title="Edit note"
+                                >
+                                  <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  >
+                                    <path
+                                      d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                                    ></path>
+                                    <path
+                                      d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                                    ></path>
+                                  </svg>
+                                </button>
+                                <button
+                                  class="btn-icon btn-delete-note"
+                                  @click=${() =>
+                                    note._id && this.handleDeleteNote(note._id)}
+                                  title="Delete note"
+                                >
+                                  <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  >
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                                    ></path>
+                                    <line
+                                      x1="10"
+                                      y1="11"
+                                      x2="10"
+                                      y2="17"
+                                    ></line>
+                                    <line
+                                      x1="14"
+                                      y1="11"
+                                      x2="14"
+                                      y2="17"
+                                    ></line>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                            <p class="note-content">${note.content}</p>
+                          </div>
+                        </div>
+                      `
+                    )}
+                </div>
+              `}
         </section>
 
         <!-- Service Logs Section -->
@@ -342,6 +559,15 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
               `}
         </section>
 
+        ${this.showNoteForm
+          ? html`
+              <note-form
+                .note=${this.editingNote}
+                @close=${this.handleCloseNoteForm}
+                @submit=${this.handleNoteSubmit}
+              ></note-form>
+            `
+          : ""}
         ${this.showServiceLogForm
           ? html`
               <service-log-form
@@ -363,7 +589,6 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
                   year: this.garageCar.year,
                   trim: this.garageCar.trim,
                   mileage: this.garageCar.mileage,
-                  notes: this.garageCar.notes || "",
                 }}
                 @close=${this.handleCloseEditForm}
                 @save-success=${this.handleEditSuccess}
@@ -564,23 +789,78 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
       font-weight: var(--font-weight-semibold);
     }
 
-    .notes-card {
-      padding: var(--space-lg);
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border-muted);
-      border-radius: var(--radius-lg);
+    .notes-section {
+      margin-bottom: var(--space-2xl);
     }
 
-    .notes-card h3 {
+    .btn-add-note {
+      background: var(--color-accent);
+      color: var(--color-text-inverted);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
       font-size: var(--fs-400);
-      margin: 0 0 var(--space-sm) 0;
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+    }
+
+    .btn-add-note:hover {
+      background: #a01828;
+      box-shadow: 0 4px 8px rgba(196, 30, 58, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .note-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    .note-date {
+      color: var(--color-text-muted);
+      font-size: var(--fs-300);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .note-actions {
+      display: flex;
+      gap: var(--space-xs);
+    }
+
+    .btn-icon {
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-icon:hover {
+      background: var(--color-bg-hover);
       color: var(--color-text);
     }
 
-    .notes-card p {
+    .btn-edit-note:hover {
+      color: var(--color-accent);
+    }
+
+    .btn-delete-note:hover {
+      color: #d32f2f;
+    }
+
+    .note-content {
       margin: 0;
-      color: var(--color-text-muted);
+      color: var(--color-text);
       line-height: 1.6;
+      white-space: pre-wrap;
     }
 
     .service-logs-section {

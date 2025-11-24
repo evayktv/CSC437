@@ -11,6 +11,7 @@ import { LoginFormElement } from "./components/login-form";
 import { GarageCatalogElement } from "./components/garage-catalog";
 import { GarageCarFormElement } from "./components/garage-car-form";
 import { ServiceLogFormElement } from "./components/service-log-form";
+import { NoteFormElement } from "./components/note-form";
 import { HomeViewElement } from "./views/home-view";
 import { CarModelDetailViewElement } from "./views/car-model-detail-view";
 import { LoginViewElement } from "./views/login-view";
@@ -78,6 +79,7 @@ define({
   "garage-car-form": GarageCarFormElement,
   "garage-car-detail-view": GarageCarDetailViewElement,
   "service-log-form": ServiceLogFormElement,
+  "note-form": NoteFormElement,
   "garage-view": GarageViewElement,
   "home-view": HomeViewElement,
 });

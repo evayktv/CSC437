@@ -201,7 +201,6 @@ export class GarageCatalogElement extends LitElement {
         year: new Date().getFullYear(),
         trim: model.trims?.[0]?.name || "",
         mileage: undefined,
-        notes: "",
       };
       this.showForm = true;
     } catch (error) {
@@ -226,7 +225,6 @@ export class GarageCatalogElement extends LitElement {
       year: car.year,
       trim: car.trim,
       mileage: car.mileage,
-      notes: car.notes || "",
     };
     this.showForm = true;
   }

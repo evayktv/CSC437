@@ -1,6 +1,6 @@
 import { html, css } from "lit";
 import { property, state } from "lit/decorators.js";
-import { Auth, Form, Observer, View } from "@calpoly/mustang";
+import { Auth, Observer, View } from "@calpoly/mustang";
 import { GarageCar } from "@csc437/server/models";
 import { Msg } from "../messages";
 import { Model } from "../model";
@@ -13,7 +13,6 @@ export interface GarageCarFormData {
   year: number;
   trim: string;
   mileage?: number;
-  notes: string;
 }
 
 interface CarModel {
@@ -23,10 +22,6 @@ interface CarModel {
 }
 
 export class GarageCarFormElement extends View<Model, Msg> {
-  static uses = {
-    "mu-form": Form.Element,
-  };
-
   @property({ type: String })
   mode: "create" | "edit" = "create";
 
@@ -82,6 +77,51 @@ export class GarageCarFormElement extends View<Model, Msg> {
     } catch (error) {
       console.error("Failed to load models:", error);
     }
+
+    // Hide the default submit button after form renders
+    setTimeout(() => this.hideDefaultSubmitButton(), 100);
+  }
+
+  firstUpdated() {
+    // Hide the default submit button after first render
+    setTimeout(() => this.hideDefaultSubmitButton(), 100);
+  }
+
+  updated() {
+    // Hide the default submit button after each update
+    setTimeout(() => this.hideDefaultSubmitButton(), 100);
+  }
+
+  hideDefaultSubmitButton() {
+    // Use requestAnimationFrame to ensure the form is rendered
+    requestAnimationFrame(() => {
+      const form = this.shadowRoot?.querySelector("mu-form");
+      if (form) {
+        // Try to access shadow DOM
+        const shadowRoot = (form as any).shadowRoot;
+        if (shadowRoot) {
+          const submitButton = shadowRoot.querySelector(
+            'button[type="submit"]'
+          );
+          if (submitButton) {
+            (submitButton as HTMLElement).style.display = "none";
+            (submitButton as HTMLElement).style.visibility = "hidden";
+            (submitButton as HTMLElement).style.height = "0";
+            (submitButton as HTMLElement).style.padding = "0";
+            (submitButton as HTMLElement).style.margin = "0";
+          }
+        }
+        // Also try light DOM (in case button is not in shadow)
+        const lightSubmitButton = form.querySelector('button[type="submit"]');
+        if (lightSubmitButton) {
+          (lightSubmitButton as HTMLElement).style.display = "none";
+          (lightSubmitButton as HTMLElement).style.visibility = "hidden";
+          (lightSubmitButton as HTMLElement).style.height = "0";
+          (lightSubmitButton as HTMLElement).style.padding = "0";
+          (lightSubmitButton as HTMLElement).style.margin = "0";
+        }
+      }
+    });
   }
 
   private async handleModelChange(e: Event) {
@@ -111,7 +151,8 @@ export class GarageCarFormElement extends View<Model, Msg> {
     }
   }
 
-  handleSubmit(event: Form.SubmitEvent<GarageCar>) {
+  handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
     this.errorMessage = null;
 
     if (!this._user.authenticated) {
@@ -119,18 +160,15 @@ export class GarageCarFormElement extends View<Model, Msg> {
       return;
     }
 
-    const formData = event.detail;
-
-    // Debug: Log form data to see what we're getting
-    console.log("Form data received:", formData);
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     // Extract and validate required fields
-    const modelSlug = formData.modelSlug || "";
-    const nickname = formData.nickname || "";
-    const yearValue = formData.year;
-    const trimValue = formData.trim || "";
-    const mileageValue = formData.mileage;
-    const notes = formData.notes || "";
+    const modelSlug = formData.get("modelSlug")?.toString() || "";
+    const nickname = formData.get("nickname")?.toString() || "";
+    const yearValue = formData.get("year");
+    const trimValue = formData.get("trim")?.toString() || "";
+    const mileageValue = formData.get("mileage");
 
     // Validate required fields
     if (!modelSlug) {
@@ -186,7 +224,6 @@ export class GarageCarFormElement extends View<Model, Msg> {
       year,
       trim: trimValue,
       mileage,
-      notes,
       username: this._user.username || "",
     };
 
@@ -228,20 +265,7 @@ export class GarageCarFormElement extends View<Model, Msg> {
             ? html`<div class="error-message">${this.errorMessage}</div>`
             : ""}
 
-          <mu-form
-            .init=${this.carData
-              ? {
-                  modelSlug: this.carData.modelSlug,
-                  modelName: this.carData.modelName,
-                  nickname: this.carData.nickname,
-                  year: this.carData.year,
-                  trim: this.carData.trim,
-                  mileage: this.carData.mileage,
-                  notes: this.carData.notes,
-                }
-              : undefined}
-            @mu-form:submit=${this.handleSubmit}
-          >
+          <form id="garage-car-form" @submit=${this.handleSubmit}>
             <label>
               <span>Select Model *</span>
               <select
@@ -328,20 +352,19 @@ export class GarageCarFormElement extends View<Model, Msg> {
               />
             </label>
 
-            <label>
-              <span>Notes</span>
-              <textarea
-                name="notes"
-                rows="6"
-                .value=${this.carData?.notes || ""}
-                placeholder="Mods installed, maintenance history, future plans..."
-              ></textarea>
-            </label>
-
-            <button type="button" class="btn-cancel" @click=${this.handleClose}>
-              Cancel
-            </button>
-          </mu-form>
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn-cancel"
+                @click=${this.handleClose}
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn-submit">
+                ${this.mode === "create" ? "Add Vehicle" : "Save Changes"}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     `;
@@ -379,7 +402,7 @@ export class GarageCarFormElement extends View<Model, Msg> {
       color: var(--color-text);
     }
 
-    mu-form {
+    form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -418,45 +441,69 @@ export class GarageCarFormElement extends View<Model, Msg> {
       box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
     }
 
-    button[type="submit"] {
-      padding: 0.8rem 1.5rem;
-      background: #c41e3a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 1rem;
-      font-family: inherit;
+    .form-actions {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border-muted);
+      justify-content: flex-end;
+      align-items: stretch;
     }
 
-    button[type="submit"]:hover:not(:disabled) {
-      background: #a01828;
-    }
-
-    button[type="submit"]:disabled {
-      background: #cccccc;
-      cursor: not-allowed;
-    }
-
-    .btn-cancel {
-      background: var(--color-bg-hover);
-      color: var(--color-text);
-      border: 2px solid var(--color-border);
+    .btn-cancel,
+    .btn-submit {
       padding: 0.875rem 2rem;
       border-radius: var(--radius-md);
       font-size: var(--fs-400);
-      font-weight: var(--font-weight-semibold);
       cursor: pointer;
       font-family: inherit;
-      transition: all var(--transition-base);
+      transition: all 0.2s ease;
+      min-width: 140px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .btn-cancel {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      font-weight: var(--font-weight-medium);
     }
 
     .btn-cancel:hover {
-      background: var(--color-border-muted);
-      border-color: var(--color-text-muted);
+      background: var(--color-bg-hover);
+      border-color: var(--color-border-muted);
+    }
+
+    .btn-submit {
+      background: var(--color-accent);
+      color: var(--color-text-inverted);
+      border: none;
+      font-weight: var(--font-weight-semibold);
+      box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: #a01828;
+      box-shadow: 0 4px 8px rgba(196, 30, 58, 0.3);
       transform: translateY(-1px);
+    }
+
+    .btn-submit:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+    }
+
+    .btn-submit:disabled {
+      background: var(--color-text-muted);
+      cursor: not-allowed;
+      opacity: 0.6;
+      box-shadow: none;
     }
 
     .error-message {
