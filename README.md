@@ -1,24 +1,49 @@
-# Car Enthusiast Community Platform
+# Ridefolio
 
-A responsive web platform for car enthusiasts to browse vehicle models, trims, and modifications.
+A single-page application for car enthusiasts to view car models and their history, plus manage your personal garage inventory with service logs and notes.
 
-## 🚗 What This Is
+## Features
 
-A **car information website** featuring:
+- **Browse Models** - View all cars and models with detailed specifications and history
+- **My Garage** - Manage your car inventory with service logs and notes to easily keep track of all information for your vehicles
+- **Service Logs** - Track maintenance, repairs, and service history for each vehicle
+- **Notes** - Add and manage notes for each car in your garage
+- **Authentication** - Secure user accounts with JWT-based authentication
+- **Responsive Design** - Modern UI with dark mode support
 
-- **Vehicle Models** - Browse different car makes and models
-- **Trim Details** - Engine specifications and performance metrics
-- **Modifications** - Performance parts and compatibility information
-- **Responsive Design** - Mobile-first layout that adapts to all screen sizes
+## Tech Stack
 
-## 🚀 Getting Started
+- **Frontend**: Lit, TypeScript, Vite, Mustang Framework
+- **Backend**: Express, MongoDB, Mongoose
+- **Styling**: CSS Custom Properties, Racing-themed fonts
 
-1. **Start the development server:**
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- MongoDB Atlas connection (configured in `.env`)
+
+### Development
+
+1. **Start the backend server:**
 
    ```bash
-   cd packages/proto
-   npm start
+   cd packages/server
+   npm run start:app
    ```
 
-2. **View the website:**
-   Open your browser to `http://localhost:8081`
+2. **Start the frontend dev server (in a separate terminal):**
+
+   ```bash
+   cd packages/app
+   npm run dev
+   ```
+
+3. **Access the app:**
+   - Frontend: `http://localhost:5173`
+   - Backend API: `http://localhost:3000`
+
+## Production
+
+The production version is available at [https://evcao.csse.dev/](https://evcao.csse.dev/)
