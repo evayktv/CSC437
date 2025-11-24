@@ -66,17 +66,27 @@ export class RidefolioHeaderElement extends LitElement {
       <header>
         <div class="header-content">
           <div class="header-left">
-            <h1>
-              <a
-                href="/app"
-                class="logo-link"
-                @click=${(e: Event) => {
-                  e.preventDefault();
-                  History.dispatch(this, "history/navigate", { href: "/app" });
-                }}
-                >Ridefolio</a
-              >
-            </h1>
+            <div class="logo-container">
+              <div class="logo-pattern">
+                <div class="pattern-square"></div>
+                <div class="pattern-square"></div>
+                <div class="pattern-square"></div>
+                <div class="pattern-square"></div>
+              </div>
+              <h1>
+                <a
+                  href="/app"
+                  class="logo-link"
+                  @click=${(e: Event) => {
+                    e.preventDefault();
+                    History.dispatch(this, "history/navigate", {
+                      href: "/app",
+                    });
+                  }}
+                  >Ridefolio</a
+                >
+              </h1>
+            </div>
           </div>
           <div class="header-right">
             <a href="/app" class="nav-box">Models</a>
@@ -138,6 +148,34 @@ export class RidefolioHeaderElement extends LitElement {
       height: 3px;
       background: var(--color-accent-gradient);
       opacity: 0.8;
+      z-index: 2;
+    }
+
+    /* Racing checkered pattern background */
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.03) 0px,
+          rgba(255, 255, 255, 0.03) 8px,
+          transparent 8px,
+          transparent 16px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.03) 0px,
+          rgba(255, 255, 255, 0.03) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .header-content {
@@ -151,11 +189,46 @@ export class RidefolioHeaderElement extends LitElement {
       z-index: 1;
     }
 
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .logo-pattern {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 2px;
+      width: 32px;
+      height: 32px;
+      opacity: 0.9;
+    }
+
+    .pattern-square {
+      width: 100%;
+      height: 100%;
+      background: var(--color-text-inverted);
+    }
+
+    .pattern-square:nth-child(1),
+    .pattern-square:nth-child(4) {
+      background: var(--color-text-inverted);
+    }
+
+    .pattern-square:nth-child(2),
+    .pattern-square:nth-child(3) {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
     .header-left h1 {
       margin: 0;
       font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      font-family: var(--font-family-logo);
+      text-transform: uppercase;
     }
 
     .logo-link {
@@ -199,7 +272,9 @@ export class RidefolioHeaderElement extends LitElement {
       transition: all var(--transition-base);
       white-space: nowrap;
       cursor: pointer;
-      font-family: inherit;
+      font-family: var(--font-family-display);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     .nav-box:hover {
@@ -250,6 +325,9 @@ export class RidefolioHeaderElement extends LitElement {
     .dark-mode-toggle span {
       font-size: 0.9rem;
       font-weight: var(--font-weight-semibold);
+      font-family: var(--font-family-display);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     @media (max-width: 768px) {

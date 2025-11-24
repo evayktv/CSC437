@@ -48,7 +48,8 @@
 
   /* Font families */
   --font-family-body: "Roboto", "Helvetica Neue", Arial, sans-serif;
-  --font-family-display: "Montserrat", "Arial Black", sans-serif;
+  --font-family-display: "Rajdhani", "Montserrat", "Arial Black", sans-serif;
+  --font-family-logo: "Racing Sans One", "Rajdhani", cursive;
   --font-family-mono: "Roboto Mono", "Courier New", monospace;
 
   /* Font weights */

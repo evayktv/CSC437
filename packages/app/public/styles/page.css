@@ -50,6 +50,7 @@ h3 {
   font-family: var(--font-family-display);
   line-height: var(--lh-heading);
   margin: 0 0 0.5em;
+  letter-spacing: 0.02em;
 }
 
 h1 {
