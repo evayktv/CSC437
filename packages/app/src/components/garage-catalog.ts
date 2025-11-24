@@ -142,16 +142,6 @@ export class GarageCatalogElement extends LitElement {
                     </article>
                     <div class="card-actions">
                       <button
-                        class="btn-icon btn-edit"
-                        @click=${(e: Event) => {
-                          e.stopPropagation();
-                          this.handleEdit(car);
-                        }}
-                        title="Edit vehicle"
-                      >
-                        ✏️
-                      </button>
-                      <button
                         class="btn-icon btn-delete"
                         @click=${(e: Event) => {
                           e.stopPropagation();
@@ -159,7 +149,23 @@ export class GarageCatalogElement extends LitElement {
                         }}
                         title="Remove from garage"
                       >
-                        🗑️
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path
+                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                          ></path>
+                          <line x1="10" y1="11" x2="10" y2="17"></line>
+                          <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg>
                       </button>
                     </div>
                   </li>
@@ -469,11 +475,10 @@ export class GarageCatalogElement extends LitElement {
     }
 
     .btn-icon {
-      width: 2.75rem;
-      height: 2.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border: none;
       border-radius: var(--radius-md);
-      font-size: 1.1rem;
       cursor: pointer;
       background: var(--color-bg-card);
       box-shadow: var(--shadow-md);
@@ -481,31 +486,27 @@ export class GarageCatalogElement extends LitElement {
       align-items: center;
       justify-content: center;
       padding: 0;
-      transition: all var(--transition-base);
+      transition: all 0.2s ease;
       backdrop-filter: blur(10px);
+      color: var(--color-text-muted);
     }
 
-    .btn-icon:hover {
-      transform: scale(1.1);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .btn-edit:hover {
-      background: rgba(255, 193, 7, 0.15);
-      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    .btn-icon svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
 
     .btn-delete:hover {
-      background: rgba(244, 67, 54, 0.15);
+      transform: scale(1.05);
       box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
-    }
-
-    :host-context(body.dark-mode) .btn-edit:hover {
-      background: rgba(255, 193, 7, 0.25);
+      color: #d32f2f;
+      background: rgba(244, 67, 54, 0.1);
     }
 
     :host-context(body.dark-mode) .btn-delete:hover {
-      background: rgba(244, 67, 54, 0.25);
+      background: rgba(244, 67, 54, 0.2);
+      color: #ff6b7a;
     }
   `;
 }

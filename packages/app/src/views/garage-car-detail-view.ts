@@ -205,7 +205,24 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
                 @click=${this.handleEdit}
                 title="Edit vehicle"
               >
-                ✏️ Edit
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                  ></path>
+                  <path
+                    d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                  ></path>
+                </svg>
+                <span>Edit</span>
               </button>
             </div>
           </div>
@@ -455,26 +472,42 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
     .btn-edit {
       padding: var(--space-sm) var(--space-lg);
       background: var(--color-bg-card);
-      border: 2px solid var(--color-border);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       color: var(--color-text);
       cursor: pointer;
       font-family: inherit;
       font-size: var(--fs-400);
-      font-weight: var(--font-weight-semibold);
-      transition: all var(--transition-base);
+      font-weight: var(--font-weight-medium);
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       gap: var(--space-xs);
       white-space: nowrap;
       height: fit-content;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-edit svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .btn-edit span {
+      line-height: 1;
     }
 
     .btn-edit:hover {
       background: var(--color-bg-hover);
       border-color: var(--color-accent);
       transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-edit:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
     .hero-tags {
