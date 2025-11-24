@@ -269,12 +269,14 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
 
     // Handle legacy notes format (string) vs new format (array)
     let notes: Note[] = [];
-    if (Array.isArray(car.notes)) {
-      notes = car.notes;
-    } else if (car.notes && typeof car.notes === "string" && car.notes.trim()) {
-      // Legacy format: convert old string notes to array (optional migration)
-      // For now, just use empty array
-      notes = [];
+    if (car.notes) {
+      if (Array.isArray(car.notes)) {
+        notes = car.notes;
+      } else if (typeof car.notes === "string") {
+        // Legacy format: convert old string notes to array (optional migration)
+        // For now, just use empty array
+        notes = [];
+      }
     }
 
     return html`
@@ -291,46 +293,59 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
         <div class="hero-section">
           ${image
             ? html`
-                <div class="hero-image">
-                  <img src="${image}" alt="${car.modelName}" />
+                <div class="hero-image-container">
+                  <img
+                    src="${image}"
+                    alt="${car.modelName}"
+                    class="hero-image"
+                    @error=${(e: Event) => {
+                      const img = e.target as HTMLImageElement;
+                      img.style.display = "none";
+                    }}
+                  />
+                  <div class="hero-overlay"></div>
                 </div>
               `
-            : ""}
-          <div class="hero-content">
-            <div class="hero-header">
-              <div>
-                <h1>${car.nickname}</h1>
-                <p class="model-name">${car.modelName}</p>
-                <div class="hero-tags">
-                  <span class="tag">${car.year}</span>
-                  <span class="tag">${car.trim}</span>
+            : html`
+                <div class="hero-placeholder">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons/vehicles.svg#car" />
+                  </svg>
                 </div>
+              `}
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1 class="hero-title">${car.nickname}</h1>
+              <p class="model-name">${car.modelName}</p>
+              <div class="hero-meta">
+                <span class="meta-badge">${car.year}</span>
+                <span class="meta-badge">${car.trim}</span>
               </div>
-              <button
-                class="btn-edit"
-                @click=${this.handleEdit}
-                title="Edit vehicle"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
-                  ></path>
-                  <path
-                    d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
-                  ></path>
-                </svg>
-                <span>Edit</span>
-              </button>
             </div>
+            <button
+              class="btn-edit"
+              @click=${this.handleEdit}
+              title="Edit vehicle"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                ></path>
+                <path
+                  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                ></path>
+              </svg>
+              <span>Edit</span>
+            </button>
           </div>
         </div>
 
@@ -622,6 +637,7 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
       padding: 2rem;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
     }
 
     .loading,
@@ -636,62 +652,144 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
     }
 
     .btn-back {
-      margin-bottom: var(--space-xl);
-      padding: var(--space-sm) var(--space-md);
-      background: transparent;
+      margin-bottom: var(--space-2xl);
+      margin-top: var(--space-md);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--color-bg-card);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       color: var(--color-text);
       cursor: pointer;
       font-family: inherit;
       font-size: var(--fs-400);
+      font-weight: var(--font-weight-medium);
       transition: all var(--transition-base);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      box-shadow: var(--shadow-sm);
     }
 
     .btn-back:hover {
       background: var(--color-bg-hover);
       border-color: var(--color-accent);
+      transform: translateX(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-back:active {
+      transform: translateX(0);
     }
 
     .hero-section {
+      position: relative;
+      margin: 0 -2rem 3rem -2rem;
+      min-height: 500px;
       display: flex;
-      flex-direction: column;
-      gap: var(--space-xl);
-      margin-bottom: var(--space-2xl);
+      align-items: flex-end;
+      background: var(--color-bg-hover);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
     }
 
     .hero-image {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: var(--radius-lg);
-      background: var(--color-bg-hover);
-    }
-
-    .hero-image img {
-      width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center center;
     }
 
-    .hero-header {
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.7) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-hover);
+      z-index: 0;
+    }
+
+    .hero-placeholder .icon {
+      width: 200px;
+      height: 200px;
+      opacity: 0.3;
+      color: var(--color-text-muted);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: var(--space-2xl);
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: flex-end;
       gap: var(--space-lg);
-      width: 100%;
     }
 
-    .hero-content h1 {
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-title {
       font-size: var(--fs-800);
-      margin: 0 0 var(--space-sm) 0;
-      color: var(--color-text);
+      font-weight: var(--font-weight-extrabold);
+      margin: 0 0 var(--space-xs) 0;
+      color: var(--color-text-inverted, #ffffff);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      line-height: 1.1;
     }
 
     .model-name {
       font-size: var(--fs-500);
-      color: var(--color-text-muted);
+      color: rgba(255, 255, 255, 0.9);
       margin: 0 0 var(--space-md) 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .meta-badge {
+      display: inline-block;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--color-accent);
+      color: var(--color-text-inverted);
+      border-radius: var(--radius-full);
+      font-size: var(--fs-300);
+      font-weight: var(--font-weight-semibold);
+      text-shadow: none;
     }
 
     .btn-edit {
@@ -727,7 +825,7 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
       background: var(--color-bg-hover);
       border-color: var(--color-accent);
       transform: translateY(-1px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     .btn-edit:active {
@@ -746,6 +844,7 @@ export class GarageCarDetailViewElement extends View<Model, Msg> {
       background: var(--color-accent);
       color: var(--color-text-inverted);
       border-radius: var(--radius-full);
+      text-shadow: none;
       font-size: var(--fs-300);
       font-weight: var(--font-weight-semibold);
     }
