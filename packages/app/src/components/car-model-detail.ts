@@ -90,19 +90,32 @@ export class CarModelDetailElement extends LitElement {
       });
   }
 
-  handleAddToGarage() {
+  handleAddToGarage(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (!this._user.authenticated) {
       History.dispatch(this, "history/navigate", { href: "/app/login" });
       return;
     }
 
-    const carSlug =
-      this.slug || new URLSearchParams(window.location.search).get("car");
-    if (carSlug) {
-      History.dispatch(this, "history/navigate", {
-        href: `/app/garage?add=${carSlug}`,
-      });
+    // Get the car model to pass to the form
+    const car = this.car || this.carModel;
+
+    if (!car) {
+      console.error("Cannot add to garage: no car model available");
+      alert("Error: Could not determine car model. Please try again.");
+      return;
     }
+
+    // Dispatch custom event to parent view to show the form
+    this.dispatchEvent(
+      new CustomEvent("add-to-garage", {
+        detail: { carModel: car },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   getHeroImage(): string | null {

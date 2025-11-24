@@ -47,3 +47,19 @@ A single-page application for car enthusiasts to view car models and their histo
 ## Production
 
 The production version is available at [https://evcao.csse.dev/](https://evcao.csse.dev/)
+
+### How to deploy change
+
+```
+ssh evcao@evcao-host.csse.dev
+cd /home/evcao/CSC437
+git pull --rebase
+cd packages/app
+npm install  # This will now install vite and typescript
+npm run build
+cd ../..
+cd packages/server
+npm run build
+pkill -f "node.*dist/index.js"
+nohup npm run start:app > ../../nohup.out 2>&1 &
+```

@@ -38,7 +38,40 @@ export class GarageCatalogElement extends LitElement {
       }
     });
 
-    // Check for add query param
+    // Listen for popstate events to detect URL changes
+    window.addEventListener("popstate", this.checkForAddParam);
+    // Also listen for custom navigation events
+    window.addEventListener("locationchange", this.checkForAddParam);
+
+    // Check for add query param on mount
+    this.checkForAddParam();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("popstate", this.checkForAddParam);
+    window.removeEventListener("locationchange", this.checkForAddParam);
+  }
+
+  willUpdate() {
+    // Check for add query param before update
+    this.checkForAddParam();
+  }
+
+  updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // Load images when cars change
+    if (changedProperties.has("cars")) {
+      this.loadCarImages();
+    }
+  }
+
+  private checkForAddParam = () => {
+    // Only check if form is not already showing
+    if (this.showForm) {
+      return;
+    }
+
     const params = new URLSearchParams(window.location.search);
     const addModelSlug = params.get("add");
     if (addModelSlug) {
@@ -49,15 +82,7 @@ export class GarageCatalogElement extends LitElement {
         href: window.location.pathname,
       });
     }
-  }
-
-  updated(changedProperties: Map<string, unknown>) {
-    super.updated(changedProperties);
-    // Load images when cars change
-    if (changedProperties.has("cars")) {
-      this.loadCarImages();
-    }
-  }
+  };
 
   private async loadCarImages() {
     if (!this.cars || this.cars.length === 0) return;
