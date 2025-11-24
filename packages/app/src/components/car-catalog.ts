@@ -169,21 +169,35 @@ export class CarCatalogElement extends LitElement {
         </div>
       </div>
 
-      <ul class="grid-cards">
-        ${filteredCars.map(
-          (car) => html`
-            <li class="car-card">
-              <car-model-card
-                icon="${car.icon}"
-                href="/app/models/${car.slug}"
-                .image="${car.image || null}"
-              >
-                ${car.name}
-              </car-model-card>
-            </li>
+      ${filteredCars.length === 0
+        ? html`
+            <div class="empty-state">
+              <div class="empty-icon">🔍</div>
+              <h3>No cars found</h3>
+              <p>
+                ${this.searchQuery || this.selectedCategory !== "all"
+                  ? "Try adjusting your search or filter criteria."
+                  : "No cars available at the moment."}
+              </p>
+            </div>
           `
-        )}
-      </ul>
+        : html`
+            <ul class="grid-cards">
+              ${filteredCars.map(
+                (car) => html`
+                  <li class="car-card">
+                    <car-model-card
+                      icon="${car.icon}"
+                      href="/app/models/${car.slug}"
+                      .image="${car.image || null}"
+                    >
+                      ${car.name}
+                    </car-model-card>
+                  </li>
+                `
+              )}
+            </ul>
+          `}
     `;
   }
 
@@ -306,6 +320,34 @@ export class CarCatalogElement extends LitElement {
 
     li.car-card {
       display: block;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-xl);
+      background: var(--color-bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-muted);
+      margin-top: var(--space-xl);
+    }
+
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: var(--space-md);
+      opacity: 0.5;
+    }
+
+    .empty-state h3 {
+      font-size: var(--fs-600);
+      color: var(--color-text);
+      margin: 0 0 var(--space-sm) 0;
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .empty-state p {
+      color: var(--color-text-muted);
+      margin: 0;
+      font-size: var(--fs-400);
     }
   `;
 }

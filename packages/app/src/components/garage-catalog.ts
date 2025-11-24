@@ -20,6 +20,12 @@ export class GarageCatalogElement extends LitElement {
   @state()
   private carImages: Map<string, string> = new Map();
 
+  @state()
+  private showDeleteConfirm: boolean = false;
+
+  @state()
+  private carToDelete?: GarageCar;
+
   _user = new Auth.User();
   _authObserver = new Observer<Auth.Model>(this, "throttle:auth");
 
@@ -183,6 +189,34 @@ export class GarageCatalogElement extends LitElement {
             ></garage-car-form>
           `
         : ""}
+      ${this.showDeleteConfirm && this.carToDelete
+        ? html`
+            <div class="modal-overlay" @click=${this.handleCancelDelete}>
+              <div
+                class="modal-content"
+                @click=${(e: Event) => e.stopPropagation()}
+              >
+                <h2>Remove Vehicle?</h2>
+                <p>
+                  Are you sure you want to remove
+                  <strong>"${this.carToDelete.nickname}"</strong> from your
+                  garage? This action cannot be undone.
+                </p>
+                <div class="modal-actions">
+                  <button class="btn-cancel" @click=${this.handleCancelDelete}>
+                    Cancel
+                  </button>
+                  <button
+                    class="btn-confirm"
+                    @click=${this.handleConfirmDelete}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          `
+        : ""}
     `;
   }
 
@@ -230,18 +264,28 @@ export class GarageCatalogElement extends LitElement {
   }
 
   handleDelete(car: GarageCar) {
-    if (!confirm(`Remove "${car.nickname}" from your garage?`)) {
-      return;
-    }
+    this.carToDelete = car;
+    this.showDeleteConfirm = true;
+  }
 
-    // Dispatch custom event to parent view to handle deletion
-    this.dispatchEvent(
-      new CustomEvent("garage-delete", {
-        detail: { id: car._id },
-        bubbles: true,
-        composed: true,
-      })
-    );
+  handleConfirmDelete() {
+    if (this.carToDelete?._id) {
+      // Dispatch custom event to parent view to handle deletion
+      this.dispatchEvent(
+        new CustomEvent("garage-delete", {
+          detail: { id: this.carToDelete._id },
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+    this.showDeleteConfirm = false;
+    this.carToDelete = undefined;
+  }
+
+  handleCancelDelete() {
+    this.showDeleteConfirm = false;
+    this.carToDelete = undefined;
   }
 
   handleCloseForm() {
@@ -505,6 +549,123 @@ export class GarageCatalogElement extends LitElement {
     :host-context(body.dark-mode) .btn-delete:hover {
       background: rgba(244, 67, 54, 0.2);
       color: #ff6b7a;
+    }
+
+    /* Delete Confirmation Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: var(--color-bg-card);
+      padding: var(--space-2xl);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid var(--color-border-muted);
+      animation: slideUp 0.2s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-content h2 {
+      margin: 0 0 var(--space-md) 0;
+      font-size: var(--fs-600);
+      color: var(--color-text);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .modal-content p {
+      margin: 0 0 var(--space-xl) 0;
+      color: var(--color-text-muted);
+      font-size: var(--fs-400);
+      line-height: 1.6;
+    }
+
+    .modal-content strong {
+      color: var(--color-text);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: flex-end;
+    }
+
+    .btn-cancel,
+    .btn-confirm {
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-md);
+      font-size: var(--fs-400);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition-base);
+      min-width: 120px;
+      border: none;
+    }
+
+    .btn-cancel {
+      background: var(--color-bg-hover);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-cancel:hover {
+      background: var(--color-border-muted);
+      border-color: var(--color-text-muted);
+      transform: translateY(-1px);
+    }
+
+    .btn-confirm {
+      background: #dc3545;
+      color: var(--color-text-inverted);
+      box-shadow: 0 4px 14px 0 rgba(220, 53, 69, 0.25);
+    }
+
+    .btn-confirm:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(220, 53, 69, 0.35);
+    }
+
+    .btn-confirm:active,
+    .btn-cancel:active {
+      transform: translateY(0);
+    }
+
+    :host-context(body.dark-mode) .modal-content {
+      background: var(--color-bg-card);
+      border-color: var(--color-border);
+    }
+
+    :host-context(body.dark-mode) .btn-confirm {
+      background: #ff4757;
+    }
+
+    :host-context(body.dark-mode) .btn-confirm:hover {
+      background: #ff6b7a;
     }
   `;
 }
