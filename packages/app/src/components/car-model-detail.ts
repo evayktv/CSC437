@@ -173,6 +173,14 @@ export class CarModelDetailElement extends LitElement {
     const heroImage = this.getHeroImage();
 
     return html`
+      <button
+        class="btn-back"
+        @click=${() =>
+          History.dispatch(this, "history/navigate", { href: "/app" })}
+      >
+        ← Back to Models
+      </button>
+
       <!-- Hero Section -->
       <div class="hero-section">
         ${heroImage
@@ -248,26 +256,22 @@ export class CarModelDetailElement extends LitElement {
       <!-- Overview Section -->
       <section class="overview-section" aria-labelledby="overview-heading">
         <h2 id="overview-heading">Overview</h2>
-        <div class="overview-card">
-          <div class="overview-details">
-            <div class="overview-detail-item">
-              <span class="detail-label">Manufacturer</span>
-              <span class="detail-value"
-                >${this.car.overview.manufacturer}</span
-              >
-            </div>
-            <div class="overview-detail-item">
-              <span class="detail-label">Body Style</span>
-              <span class="detail-value">${this.car.overview.bodyStyle}</span>
-            </div>
-            <div class="overview-detail-item">
-              <span class="detail-label">Years</span>
-              <span class="detail-value">${this.car.years}</span>
-            </div>
-            <div class="overview-detail-item">
-              <span class="detail-label">Generation</span>
-              <span class="detail-value">${this.car.overview.history}</span>
-            </div>
+        <div class="overview-grid">
+          <div class="overview-card">
+            <h3>Manufacturer</h3>
+            <p>${this.car.overview.manufacturer}</p>
+          </div>
+          <div class="overview-card">
+            <h3>Body Style</h3>
+            <p>${this.car.overview.bodyStyle}</p>
+          </div>
+          <div class="overview-card">
+            <h3>Years</h3>
+            <p>${this.car.years}</p>
+          </div>
+          <div class="overview-card">
+            <h3>Generation</h3>
+            <p>${this.car.overview.history}</p>
           </div>
         </div>
       </section>
@@ -408,16 +412,47 @@ export class CarModelDetailElement extends LitElement {
       font-weight: var(--font-weight-semibold);
     }
 
+    .btn-back {
+      margin-bottom: var(--space-2xl);
+      margin-top: var(--space-md);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: var(--fs-400);
+      font-weight: var(--font-weight-medium);
+      transition: all var(--transition-base);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-back:hover {
+      background: var(--color-bg-hover);
+      border-color: var(--color-accent);
+      transform: translateX(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-back:active {
+      transform: translateX(0);
+    }
+
     /* Hero Section */
     .hero-section {
       position: relative;
-      margin: -2rem -2rem 3rem -2rem;
+      margin: 0 -2rem 3rem -2rem;
       min-height: 500px;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
-      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      border-radius: var(--radius-lg);
       background: var(--color-bg-hover);
+      box-shadow: var(--shadow-lg);
     }
 
     .hero-image-container {
@@ -515,13 +550,13 @@ export class CarModelDetailElement extends LitElement {
     }
 
     .btn-hero-action {
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 2rem;
       background: var(--color-accent);
       color: var(--color-text-inverted);
       border: 2px solid var(--color-accent);
       border-radius: var(--radius-lg);
-      font-size: var(--fs-500);
-      font-weight: var(--font-weight-bold);
+      font-size: var(--fs-400);
+      font-weight: var(--font-weight-semibold);
       cursor: pointer;
       font-family: inherit;
       transition: all var(--transition-base);
@@ -614,12 +649,17 @@ export class CarModelDetailElement extends LitElement {
       margin-bottom: var(--space-2xl);
     }
 
-    h2 {
-      margin: 0 0 var(--space-xl) 0;
-      font-size: var(--fs-800);
-      font-weight: var(--font-weight-extrabold);
+    .overview-section h2 {
+      font-size: var(--fs-700);
+      margin-bottom: var(--space-lg);
       color: var(--color-text);
-      letter-spacing: -0.02em;
+    }
+
+    .overview-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
     }
 
     .overview-card {
@@ -627,58 +667,21 @@ export class CarModelDetailElement extends LitElement {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border-muted);
       border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition-base);
     }
 
-    .overview-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-      border-color: var(--color-accent);
-    }
-
-    .overview-tags {
-      display: flex;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-      flex-wrap: wrap;
-    }
-
-    .overview-tag {
-      padding: 0.4rem 0.9rem;
-      background: var(--color-bg-hover);
-      border: 1px solid var(--color-border-muted);
-      border-radius: var(--radius-full);
-      font-size: var(--fs-300);
-      color: var(--color-text);
-      font-weight: var(--font-weight-semibold);
-    }
-
-    .overview-details {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-
-    .overview-detail-item {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-
-    .detail-label {
+    .overview-card h3 {
       font-size: var(--fs-300);
       color: var(--color-text-muted);
-      font-weight: var(--font-weight-semibold);
+      margin: 0 0 var(--space-xs) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .detail-value {
-      font-size: var(--fs-400);
+    .overview-card p {
+      font-size: var(--fs-500);
+      margin: 0;
       color: var(--color-text);
-      font-weight: var(--font-weight-regular);
-      line-height: var(--lh-body);
+      font-weight: var(--font-weight-semibold);
     }
 
     /* Trims Section */
